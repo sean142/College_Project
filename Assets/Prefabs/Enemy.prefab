@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 2167878977054516752}
   - component: {fileID: 2167878977054516755}
   - component: {fileID: 2167878977054516754}
+  - component: {fileID: 976805935}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +109,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 500
@@ -136,6 +137,21 @@ MonoBehaviour:
   sighRadius: 8
   potralRange: 8
   isPatrol: 1
+--- !u!114 &976805935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2167878977054516757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0150a189142b0c4fb4f742c926db5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: 7b86405bdb2c4d3499ff5f268e5ae3fa, type: 2}
+  attackData: {fileID: 11400000, guid: 29b71c8087f6b7143a42a2b14ae00207, type: 2}
+  isCritical: 0
 --- !u!1 &2167878977694371679
 GameObject:
   m_ObjectHideFlags: 0
