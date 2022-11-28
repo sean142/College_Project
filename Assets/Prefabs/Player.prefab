@@ -100,16 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b92dc2e57c662549a4487d5bd725af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canMove: 1
-  canTalk: 0
   speed: 8
-  runSpeed: 15
-  crouchSpeed: 4
+  runSpeed: 30
+  canRun: 1
+  runningKey: 304
   jumpfarce: 5
   gravity: -19.14
   turnSmoothTime: 0.1
   cam: {fileID: 0}
-  bag: {fileID: 0}
   groundCheck: {fileID: 465579296029122774}
   groundDistance: 0.4
   groundMask:
@@ -125,7 +123,7 @@ CharacterController:
   m_GameObject: {fileID: 465579295399227284}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
