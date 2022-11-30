@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     public CharacterStats playerStats;
 
-    private CinemachineFreeLook followCinema;
+   // private CinemachineFreeLook followCinema;
 
     //List<IEndGameObserver> endGameObserver = new List<IEndGameObserver>();
 
@@ -21,11 +21,11 @@ public class GameManager : Singleton<GameManager>
     {
         playerStats = player;
 
-        followCinema = FindObjectOfType<CinemachineFreeLook>();
+        //followCinema = FindObjectOfType<CinemachineFreeLook>();
 
-        if (followCinema != null)
-            followCinema.Follow = playerStats.transform.GetChild(2);
-            followCinema.LookAt = playerStats.transform.GetChild(2);
+        //if (followCinema != null)
+           // followCinema.Follow = playerStats.transform.GetChild(2);
+           // followCinema.LookAt = playerStats.transform.GetChild(2);
     }
     /*
     public void AddObserver(IEndGameObserver observer)

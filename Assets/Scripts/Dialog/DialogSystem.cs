@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogSystem : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement player;
+    [SerializeField] private PlayerController player;
     
     public Text textLabel;
     public Image faceImage;

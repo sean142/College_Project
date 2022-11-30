@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TalkButton : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement player;
+    [SerializeField] private PlayerController player;
 
     public GameObject talkUI;
     public GameObject firstUI;
@@ -20,7 +20,7 @@ public class TalkButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {        
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && player.isGround == true)
         {
             player.canMove = false;
             player.canTalk = true;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("Player Bool")]
     public bool canMove = true;
@@ -26,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Bag")]
     public GameObject bag;
     bool isOpen;
-    bool isGround;
+
+    public bool isGround;
     Vector3 velocity;
 
     public Transform groundCheck;
@@ -54,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
     {
         characterStats.MaxHealth = 2;
         normalSpeed = speed;
+
+        GameManager.Instance.RigisterPlayer(characterStats);
     }
 
     private void Update()
