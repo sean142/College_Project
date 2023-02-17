@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.RigisterPlayer(characterStats);
         camObj = GameObject.FindGameObjectWithTag("MainCamera");        
         cam = camObj.transform;
-
+        
         //MouseManager.Instance.OnEnemyClicked += EventAttack;
     }  
 
@@ -118,11 +118,11 @@ public class PlayerController : MonoBehaviour
     {
         canMove = false;
 
+        transform.LookAt(lockedEnemy.transform);
         if (lockedEnemy != null)
         {
             if (Vector3.Distance(transform.position, lockedEnemy.transform.position) < characterStats.attackData.attackRange)
             {
-                transform.LookAt(lockedEnemy.transform);
 
                 animator.SetTrigger("Attack");
 
