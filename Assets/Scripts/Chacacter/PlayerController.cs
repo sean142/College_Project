@@ -116,89 +116,23 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator MoveToAttackTarget()
     {
-        canMove = false;
-
-        transform.LookAt(lockedEnemy.transform);
         if (lockedEnemy != null)
         {
             if (Vector3.Distance(transform.position, lockedEnemy.transform.position) < characterStats.attackData.attackRange)
             {
+                transform.LookAt(lockedEnemy.transform);
 
-                animator.SetTrigger("Attack");
-
-                yield return null;
-
-            }
-        }
-    }
-    /*將 NavMeshAgent 移除，只使用 CharacterController，同時加入冷卻時間的邏輯
-    private IEnumerator MoveToAttackTarget()
-    {
-        canMove = false;
-        transform.LookAt(lockedEnemy.transform);
-
-        if (lockedEnemy != null)
-        {
-            while (Vector3.Distance(transform.position, lockedEnemy.transform.position) > characterStats.attackData.attackRange)
-            {
-                Vector3 direction = lockedEnemy.transform.position - transform.position;
-                characterController.Move(direction.normalized * moveSpeed * Time.deltaTime);
-                yield return null;
-            }
-
-            if (lastAttackTime <= 0f)
-            {
-                animator.SetTrigger("Attack");
-                lastAttackTime = characterStats.attackData.coolDown;
-            }
-        }
-        canMove = true;
-    }*/
-
-    /* 有agent的攻擊
-    private IEnumerator MoveToAttackTarget()
-    {
-        canMove = false;
-        agent.stoppingDistance = characterStats.attackData.attackRange;
-        transform.LookAt(lockedEnemy.transform);
-
-        if (lockedEnemy != null)
-        {
-            while (Vector3.Distance(transform.position, lockedEnemy.transform.position) < characterStats.attackData.attackRange)
-            {
-                agent.destination = lockedEnemy.transform.position;
                 yield return null;
             }
         }
-        agent.enabled = true;
 
-        if (lastAttackTime < 0)
+        if (lastAttackTime <= 0f)
         {
             animator.SetTrigger("Attack");
             lastAttackTime = characterStats.attackData.coolDown;
         }
-        canMove = true;
-
     }
-    */
-    /*
-    private IEnumerator Dodge()
-    {
-        canMove = false;
-
-        Vector3 direction = transform.forward * dodgeDistance;
-        Vector3 destination = transform.position + direction;
-        float duration = 0.3f;
-
-        while (duration > 0.0f)
-        {
-            transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * 10.0f);
-            duration -= Time.deltaTime;
-            yield return null;
-        }
-
-        canMove = true;
-    }*/
+   
 
     void Movement()
     {             
@@ -330,10 +264,7 @@ public class PlayerController : MonoBehaviour
         canJamp = true;
     }
 
-    public void OnAttackAnimationFinished()
-    {
-        canMove = true;
-    }
+    
 
     public void AbsorbAnimation()
     {

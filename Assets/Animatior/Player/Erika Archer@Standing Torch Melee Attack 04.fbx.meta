@@ -66,15 +66,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.6116853
+      - time: 0.59098357
         functionName: AbsorbAnimation
-        data: 
-        objectReferenceParameter: {fileID: 8438643661667704058, guid: bddf021c5489d804c88250175f52663d, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: OnAttackAnimationFinished
         data: 
         objectReferenceParameter: {fileID: 8438643661667704058, guid: bddf021c5489d804c88250175f52663d, type: 3}
         floatParameter: 0
