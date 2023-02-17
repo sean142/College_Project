@@ -73,6 +73,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 1
+        functionName: OnAttackAnimationFinished
+        data: 
+        objectReferenceParameter: {fileID: 8438643661667704058, guid: bddf021c5489d804c88250175f52663d, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
