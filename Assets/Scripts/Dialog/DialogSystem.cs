@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class DialogSystem : MonoBehaviour
 {
-    [SerializeField] private PlayerController player;
-    
+    public GameObject playerObj;
     public Text textLabel;
     public Image faceImage;
     public Image firstImage;
@@ -28,6 +27,11 @@ public class DialogSystem : MonoBehaviour
         GetTextFormFile(textFile);
     }
 
+    private void Start()
+    {
+        playerObj = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void OnEnable()
     {
         textFinished = true;
@@ -41,8 +45,9 @@ public class DialogSystem : MonoBehaviour
         {
             gameObject.SetActive(false);
             index = 0;
-            player.canMove = true;
-            player.canTalk = false;
+            PlayerController.instance.canMove = true;
+            PlayerController.instance.canTalk = false;
+            PlayerController.instance.canAnimator = true;
             return;
         }
         

@@ -1,19 +1,34 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [Header("Player Bool")]
     public bool canMove = true;
     public bool canTalk = false;
+    public bool canAnimator = true;
+    public bool canJamp = true;
+    public bool isGround;
+    public bool isOpenBag;
 
     [Header("Player Speed")]
     public float speed;
     public float runSpeed;
     public float crouchSpeed;
     private float normalSpeed;
-    
+
+    [Header("Player Attack")]
+    private GameObject lockedEnemy;
+    private float lastAttackTime;
+    public LayerMask enemyLayer;
+    private bool isLockedOn = false;  // 是否鎖定視角
+    private bool isAttacking = false;  // 
+
     [Header("Player Jump")]
     public float jumpfarce;
     public float gravity = -9.81f;
@@ -22,30 +37,29 @@ public class PlayerController : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public Transform cam;
-    
-    [Header("Bag")]
-    public GameObject bag;
-    bool isOpen;
+    public GameObject camObj;      
 
-    public bool isGround;
     Vector3 velocity;
 
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;        
+    public float groundDistance;
+    public LayerMask groundMask;
+    RaycastHit hit;
 
     private CharacterController coll;
     private Animator animator;
     private CharacterStats characterStats;
-    private GameObject attackTarget;
-
-    [Header("Basic Setting")]
-    public float sighRadius;
 
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Destroy(this);
+        }
+        instance = this;
+
         coll = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
@@ -57,36 +71,134 @@ public class PlayerController : MonoBehaviour
         normalSpeed = speed;
 
         GameManager.Instance.RigisterPlayer(characterStats);
-    }
+        camObj = GameObject.FindGameObjectWithTag("MainCamera");        
+        cam = camObj.transform;
+
+        //MouseManager.Instance.OnEnemyClicked += EventAttack;
+    }  
 
     private void Update()
     {
-        isGround = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGround = Physics.Raycast(groundCheck.position, -transform.up,groundDistance,groundMask);
+        //isGround = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        
+        if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            StartCoroutine(MoveToAttackTarget());
+        }
+        /*
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+            isLockedOn = !isLockedOn;
 
+        if (isLockedOn && lockedEnemy != null)
+        {
+            // 锁定状态下，朝向敌人
+            transform.LookAt(lockedEnemy.transform.position);
+        }
+        */
         if (isGround && velocity.y < 0)
+        {
             velocity.y = -2f;
+        }       
 
         if (canMove)
         {
             Movement();
-            Jump();
-            Absorb();
+            Jump();           
         }
 
         OpenMyBag();
-    }  
+        SwitchAnimator();
+        lastAttackTime -= Time.deltaTime;
 
-    void Absorb()
+       
+    }
+
+    private IEnumerator MoveToAttackTarget()
     {
-        if (FoundEnemy() && Input.GetKey(KeyCode.E))
+        canMove = false;
+
+        if (lockedEnemy != null)
         {
-            animator.SetBool("test", true);
-        }
-        else
-        {
-            animator.SetBool("test", false);
+            if (Vector3.Distance(transform.position, lockedEnemy.transform.position) < characterStats.attackData.attackRange)
+            {
+                transform.LookAt(lockedEnemy.transform);
+
+                animator.SetTrigger("Attack");
+
+                yield return null;
+
+            }
         }
     }
+    /*將 NavMeshAgent 移除，只使用 CharacterController，同時加入冷卻時間的邏輯
+    private IEnumerator MoveToAttackTarget()
+    {
+        canMove = false;
+        transform.LookAt(lockedEnemy.transform);
+
+        if (lockedEnemy != null)
+        {
+            while (Vector3.Distance(transform.position, lockedEnemy.transform.position) > characterStats.attackData.attackRange)
+            {
+                Vector3 direction = lockedEnemy.transform.position - transform.position;
+                characterController.Move(direction.normalized * moveSpeed * Time.deltaTime);
+                yield return null;
+            }
+
+            if (lastAttackTime <= 0f)
+            {
+                animator.SetTrigger("Attack");
+                lastAttackTime = characterStats.attackData.coolDown;
+            }
+        }
+        canMove = true;
+    }*/
+
+    /* 有agent的攻擊
+    private IEnumerator MoveToAttackTarget()
+    {
+        canMove = false;
+        agent.stoppingDistance = characterStats.attackData.attackRange;
+        transform.LookAt(lockedEnemy.transform);
+
+        if (lockedEnemy != null)
+        {
+            while (Vector3.Distance(transform.position, lockedEnemy.transform.position) < characterStats.attackData.attackRange)
+            {
+                agent.destination = lockedEnemy.transform.position;
+                yield return null;
+            }
+        }
+        agent.enabled = true;
+
+        if (lastAttackTime < 0)
+        {
+            animator.SetTrigger("Attack");
+            lastAttackTime = characterStats.attackData.coolDown;
+        }
+        canMove = true;
+
+    }
+    */
+    /*
+    private IEnumerator Dodge()
+    {
+        canMove = false;
+
+        Vector3 direction = transform.forward * dodgeDistance;
+        Vector3 destination = transform.position + direction;
+        float duration = 0.3f;
+
+        while (duration > 0.0f)
+        {
+            transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime * 10.0f);
+            duration -= Time.deltaTime;
+            yield return null;
+        }
+
+        canMove = true;
+    }*/
 
     void Movement()
     {             
@@ -94,6 +206,9 @@ public class PlayerController : MonoBehaviour
         float verticalMove = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector3(horizontalMove, 0f, verticalMove).normalized;
+
+        float inputMagnitude = Mathf.Clamp01(direction.magnitude);
+        animator.SetFloat("Speed", inputMagnitude, 0.6f, Time.deltaTime);
 
         if (direction.magnitude >= 0.1f)
         {
@@ -104,6 +219,11 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             coll.Move(moveDir.normalized * speed * Time.deltaTime);
+            animator.SetBool("Move", true);
+        }
+        else
+        {
+            animator.SetBool("Move", false);
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -118,60 +238,105 @@ public class PlayerController : MonoBehaviour
         {
             speed = normalSpeed;
         }
-    }              
+    }
 
     void OpenMyBag()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            isOpen = !isOpen;
-            bag.SetActive(isOpen);
+            isOpenBag = !isOpenBag;
+            InvertoryManager.instance.bag.SetActive(isOpenBag);
         }
     }
 
     void Jump()
     {
-        if (Input.GetButton("Jump") && isGround)
+        if (canJamp)
         {
-            velocity.y = Mathf.Sqrt(jumpfarce * -2f * gravity);
-        }
+            if (Input.GetButton("Jump") && isGround)
+            {
+                canJamp = false;
+                animator.SetBool("Move", false);
+                velocity.y = Mathf.Sqrt(jumpfarce * -2f * gravity);
+                animator.SetBool("Jump", true);
+            }
+        }        
+        
         velocity.y += gravity * Time.deltaTime;
         coll.Move(velocity * Time.deltaTime);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, sighRadius);
-    }
-
+    }   
+    
     bool FoundEnemy()
     {
-        var colliders = Physics.OverlapSphere(transform.position, sighRadius);
-
-        foreach(var target in colliders)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, characterStats.attackData.attackRange, enemyLayer);
+        if (colliders.Length > 0)
         {
-            if (target.CompareTag("Enemy"))
+            // 找到最近的敵人
+            float minDistance = Mathf.Infinity;
+            GameObject nearestEnemy = null;
+            foreach (Collider col in colliders)
             {
-                attackTarget = target.gameObject;
-                return true;
+                float distance = Vector3.Distance(transform.position, col.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    nearestEnemy = col.gameObject;
+                }
             }
+            lockedEnemy = nearestEnemy;
+            return true;
         }
-        attackTarget = null;
-        return false;
-    }
-    
-    public void AbsorbAnimation()
+        else
+        {
+            lockedEnemy = null;
+            return false;
+        }
+    }     
+
+    void SwitchAnimator()
     {
-        Destroy(attackTarget.gameObject);
+        if (!canAnimator)
+        {
+            animator.SetBool("Move", false);
+        }
+
+        if (isGround)
+        {
+            animator.SetBool("Grounded", true);
+            animator.SetBool("Fall", false);
+        }
+        else if (!isGround && velocity.y > 0)
+        {
+            animator.SetBool("Jump", true);
+            animator.SetBool("Fall", false);
+        }
+        else if (!isGround && velocity.y < 0)
+        {
+            animator.SetBool("Grounded", false);
+            animator.SetBool("Fall", true);
+        }
     }
-
-    //TODO MoveToAttackTarget
-
+   
     void Hit()
     {
-        var targetStats = attackTarget.GetComponent<CharacterStats>();
+        var targetStats = lockedEnemy.GetComponent<CharacterStats>();
 
         targetStats.TakeDamage(characterStats, targetStats);
     }     
+
+    public void AnimatorClear()
+    {
+        animator.SetBool("Jump", false);
+        canJamp = true;
+    }
+
+    public void OnAttackAnimationFinished()
+    {
+        canMove = true;
+    }
+
+    public void AbsorbAnimation()
+    {
+        Destroy(lockedEnemy.gameObject);
+    }
 }

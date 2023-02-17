@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/G2.unity
     guid: f98c1c3e7f9c43c4ca69e2681876221f
+  - enabled: 1
+    path: Assets/Scenes/Deep_Tunnel_set.unity
+    guid: 43287e45f2e40984da907fcfa18f5871
   m_configObjects: {}

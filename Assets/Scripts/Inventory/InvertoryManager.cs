@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class InvertoryManager : MonoBehaviour
 {
-    static InvertoryManager instance;
+    public static InvertoryManager instance;
 
     public Inventory myBag;
     public GameObject slotGrid;
     public Slot slotPrefab;
     public Text itemInformation;
- 
+    public GameObject bag;
+
     private void Awake()
     {
         if(instance != null)
@@ -19,6 +20,9 @@ public class InvertoryManager : MonoBehaviour
             Destroy(this);
         }
         instance = this;
+
+        if (bag == null)
+            bag = GameObject.Find("BagCanvas/Bag");
     }
 
     private void OnEnable()

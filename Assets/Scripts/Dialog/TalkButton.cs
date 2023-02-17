@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class TalkButton : MonoBehaviour
 {
-    [SerializeField] private PlayerController player;
+    public GameObject playerObj;
 
     public GameObject talkUI;
     public GameObject firstUI;
 
+    private void Start()
+    {
+        playerObj = GameObject.FindGameObjectWithTag("Player");
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && player.canTalk == true)
+        if (Input.GetKeyDown(KeyCode.F) && PlayerController.instance.canTalk == true)
         {
             firstUI.SetActive(false);
             talkUI.SetActive(true);  
@@ -20,10 +24,11 @@ public class TalkButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {        
-        if(other.gameObject.tag == "Player" && player.isGround == true)
+        if(other.gameObject.tag == "Player" && PlayerController.instance.isGround == true)
         {
-            player.canMove = false;
-            player.canTalk = true;
+            PlayerController.instance.canMove = false;
+            PlayerController.instance.canAnimator = false;
+            PlayerController.instance.canTalk = true;
             firstUI.SetActive(true);           
         }       
     }

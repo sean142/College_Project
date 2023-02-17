@@ -30,9 +30,11 @@ public class EnemyController : MonoBehaviour
     Vector3 guardPos;
 
     public bool isPatrol;
-    bool iswalk;
 
-    // Start is called before the first frame update
+    //bool iswalk;
+    //bool isrun;
+    //bool ischase;
+  
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -50,39 +52,31 @@ public class EnemyController : MonoBehaviour
         {
             enemyStates = EnemyStates.PATROL;
             GetNewWayPoint();
-            // Debug.Log("test");
         }
     }
-
-    // Update is called once per frame
-   
+    
     void Update()
     {
         SwitchStates();
-        SwitchAnimation();
         lastAttackTime -= Time.deltaTime;
-    }
-
-    void SwitchAnimation()
-    {
-       // animator.SetBool("Walk", iswalk);
-    }
+    }    
 
     void SwitchStates()
     {
         if (FoundPlayer())
         {
             enemyStates = EnemyStates.CHASE;
-            //Debug.Log("找到player");
-        }
+            
+        }       
         switch (enemyStates)
         {
             case EnemyStates.PATROL:
+                animator.SetBool("Chase", false);
                 agent.speed = speed * 0.5f;
 
                 if (Vector3.Distance(wayPoint, transform.position) <= agent.stoppingDistance)
                 {
-                    iswalk = false;
+                    animator.SetBool("Walk", false);
                     if (remainLookAtTime > 0)
                         remainLookAtTime -= Time.deltaTime;
                     else
@@ -90,33 +84,43 @@ public class EnemyController : MonoBehaviour
                 }
                 else
                 {
-                    iswalk = true;
+                    animator.SetBool("Walk", true);
+
                     agent.destination = wayPoint;
                 }
                 break;
             case EnemyStates.CHASE:
+                animator.SetBool("Walk", false);
+                animator.SetBool("Chase", true);
+
                 agent.speed = speed;
 
                 if (!FoundPlayer())
                 {
-                    iswalk = false;
+                    animator.SetBool("Run", false);
+
                     if (remainLookAtTime > 0)
-                    {
+                    {                        
                         agent.destination = transform.position; //拉托回到一個狀態
                         remainLookAtTime -= Time.deltaTime;
                     }
 
                     else if (isPatrol)
+                    {
                         enemyStates = EnemyStates.PATROL;
+                    }
                 }
                 else
-                {
-                    iswalk = true;
+                {                    
+                    animator.SetBool("Run", true);
+
                     agent.isStopped = false;
                     agent.destination = attackTarget.transform.position;
                 }
+                /*
                 if (TargetInAttackRange() || TargetInSkillRange())
                 {
+                    isrun = true;
                     agent.isStopped = true;
 
                     if (lastAttackTime < 0)
@@ -129,7 +133,7 @@ public class EnemyController : MonoBehaviour
                         Attack();
                     }
                 }
-
+                */
                 break;
             case EnemyStates.DEAD:
                 break;

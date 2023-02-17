@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3667932473af748a7441d450e25cea, type: 3}
   m_Name: PlayerBaseAttackData
   m_EditorClassIdentifier: 
-  attackRange: 1.5
+  attackRange: 5
   skillRange: 0
   coolDown: 1
   minDamage: 4
