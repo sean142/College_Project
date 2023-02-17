@@ -7,6 +7,12 @@ public class ItemOnWorld : MonoBehaviour
     public Item thisItem;
     public Inventory playerInventory;
 
+    private void Awake()
+    {
+        thisItem.itemHeld = 1;
+        playerInventory.itemList.Clear();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
