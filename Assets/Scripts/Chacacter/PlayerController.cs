@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance;
     public LayerMask groundMask;
-    RaycastHit hit;
 
     private CharacterController coll;
     private Animator animator;
@@ -67,14 +66,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        characterStats.MaxHealth = 2;
         normalSpeed = speed;
-
         GameManager.Instance.RigisterPlayer(characterStats);
         camObj = GameObject.FindGameObjectWithTag("MainCamera");        
         cam = camObj.transform;
+        characterStats.MaxHealth = 2;
         
-        //MouseManager.Instance.OnEnemyClicked += EventAttack;
     }  
 
     private void Update()
@@ -109,9 +106,7 @@ public class PlayerController : MonoBehaviour
 
         OpenMyBag();
         SwitchAnimator();
-        lastAttackTime -= Time.deltaTime;
-
-       
+        lastAttackTime -= Time.deltaTime;       
     }
 
     private IEnumerator MoveToAttackTarget()
@@ -126,13 +121,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (lastAttackTime <= 0f)
+        if (lastAttackTime <= 0f)        //cool down
+
         {
             animator.SetTrigger("Attack");
             lastAttackTime = characterStats.attackData.coolDown;
         }
-    }
-   
+    }   
 
     void Movement()
     {             
@@ -262,9 +257,7 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("Jump", false);
         canJamp = true;
-    }
-
-    
+    }   
 
     public void AbsorbAnimation()
     {

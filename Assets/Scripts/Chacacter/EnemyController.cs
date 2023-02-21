@@ -117,10 +117,10 @@ public class EnemyController : MonoBehaviour
                     agent.isStopped = false;
                     agent.destination = attackTarget.transform.position;
                 }
-                /*
+                
                 if (TargetInAttackRange() || TargetInSkillRange())
                 {
-                    isrun = true;
+                    animator.SetBool("Run", false);
                     agent.isStopped = true;
 
                     if (lastAttackTime < 0)
@@ -133,7 +133,7 @@ public class EnemyController : MonoBehaviour
                         Attack();
                     }
                 }
-                */
+                
                 break;
             case EnemyStates.DEAD:
                 break;
@@ -146,12 +146,12 @@ public class EnemyController : MonoBehaviour
 
         if (TargetInAttackRange())
         {
-            //TODO 近身攻擊動畫
+            animator.SetTrigger("Attack");
         }
 
         if (TargetInSkillRange())
         {
-             //TODO 技能攻擊動畫
+            animator.SetTrigger("Skill");
         }
     }
 
