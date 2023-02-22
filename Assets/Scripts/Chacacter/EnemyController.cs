@@ -53,6 +53,8 @@ public class EnemyController : MonoBehaviour
             enemyStates = EnemyStates.PATROL;
             GetNewWayPoint();
         }
+
+        characterStats.CurrentHealth = 50;
     }
     
     void Update()
@@ -127,7 +129,7 @@ public class EnemyController : MonoBehaviour
                     {
                         lastAttackTime = characterStats.attackData.coolDown;
 
-                        //爆擊判斷
+                        //爆擊判斷(我想使用的招式，變成輪子之類的)
                         characterStats.isCritical = Random.value < characterStats.attackData.criticalChance;
                         //執行攻擊
                         Attack();
@@ -212,7 +214,7 @@ public class EnemyController : MonoBehaviour
     }
 
     //攻擊事件
-    void Hit()
+    public void Hit()
     {
         if (attackTarget !=null)
         {

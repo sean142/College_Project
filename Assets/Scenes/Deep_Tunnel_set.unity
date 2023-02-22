@@ -1083,6 +1083,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 716224531140845327, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 716224531143737045, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -1167,6 +1171,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 716224531474578828, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 716224531477650045, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -1207,9 +1215,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 716224531753140516, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 716224531795743701, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 716224531795743701, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 716224531802921460, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
@@ -1238,6 +1254,10 @@ PrefabInstance:
     - target: {fileID: 716224531894416564, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 716224531894416564, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 716224531901707016, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
@@ -1271,9 +1291,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 716224532078603426, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 716224532082701128, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 716224532082701128, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 716224532114281781, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
@@ -1306,6 +1334,10 @@ PrefabInstance:
     - target: {fileID: 716224532224266033, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 716224532224266033, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 716224532232424212, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
@@ -1370,6 +1402,10 @@ PrefabInstance:
     - target: {fileID: 716224532525510536, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 716224532525510536, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 716224532532002231, guid: d4dc17aa93e96684abee244d95858d80, type: 3}
       propertyPath: m_Layer

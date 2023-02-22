@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.RigisterPlayer(characterStats);
         camObj = GameObject.FindGameObjectWithTag("MainCamera");        
         cam = camObj.transform;
-        characterStats.MaxHealth = 2;
+        characterStats.CurrentHealth =50 ;
         
     }  
 
@@ -245,22 +245,21 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Fall", true);
         }
     }
-   
-    void Hit()
+    
+    //Animation Event
+    public void Hit()
     {
         var targetStats = lockedEnemy.GetComponent<CharacterStats>();
 
         targetStats.TakeDamage(characterStats, targetStats);
-    }     
-
+    }
     public void AnimatorClear()
     {
         animator.SetBool("Jump", false);
         canJamp = true;
-    }   
-
+    }
     public void AbsorbAnimation()
-    {
-        Destroy(lockedEnemy.gameObject);
+    {       
+        //Destroy(lockedEnemy.gameObject);
     }
 }

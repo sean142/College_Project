@@ -15,7 +15,7 @@ public class AttackData_SO : ScriptableObject
 
     public int maxDamage;
 
-    public float criticalMultiplier;
+    public float criticalMultiplier; //爆擊的加成百分比
 
-    public float criticalChance;
+    public float criticalChance;//爆擊率
 }

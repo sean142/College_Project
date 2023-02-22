@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    public CharacterData_SO templateData;
+    //public CharacterData_SO templateData;
 
     public CharacterData_SO characterData;
 
@@ -12,13 +12,13 @@ public class CharacterStats : MonoBehaviour
 
     [HideInInspector]
     public bool isCritical;
-    
+    /*
     private void Awake()
     {
         if (templateData != null)
             characterData = Instantiate(templateData);
     }
-    
+    */
     public int MaxHealth
     {
         get
@@ -95,12 +95,13 @@ public class CharacterStats : MonoBehaviour
 
     private int CurrentDamage()
     {
+        //隨機從最小跟最大之間選擇一個數值
         float coreDamage = UnityEngine.Random.Range(attackData.minDamage, attackData.maxDamage);
 
         if (isCritical)
         {
             coreDamage *= attackData.criticalMultiplier;
-            Debug.Log("爆擊!" + coreDamage);
+            Debug.Log("爆擊" + coreDamage);
         }
         return (int)coreDamage;
     }
