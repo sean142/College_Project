@@ -999,6 +999,7 @@ MonoBehaviour:
   sighRadius: 8
   potralRange: 8
   isPatrol: 1
+  isDead: 0
 --- !u!136 &3223868700625164373
 CapsuleCollider:
   m_ObjectHideFlags: 0

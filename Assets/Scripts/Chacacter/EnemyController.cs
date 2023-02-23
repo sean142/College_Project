@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     NavMeshAgent agent;
     Animator animator;
     CharacterStats characterStats;
+    Collider _collider;
 
     private GameObject attackTarget; //player的位置
 
@@ -30,17 +31,14 @@ public class EnemyController : MonoBehaviour
     Vector3 guardPos;
 
     public bool isPatrol;
-
-    //bool iswalk;
-    //bool isrun;
-    //bool ischase;
-  
+    public bool isDead;
+     
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
-
+        _collider = GetComponent<Collider>();
         speed = agent.speed;
         guardPos = transform.position;
         remainLookAtTime = LookAtTime;
@@ -54,21 +52,31 @@ public class EnemyController : MonoBehaviour
             GetNewWayPoint();
         }
 
-        characterStats.CurrentHealth = 50;
+        characterStats.CurrentHealth = 2;
     }
     
     void Update()
     {
+        if (characterStats.CurrentHealth == 0)
+        {
+            animator.SetBool("Death", true);
+            isDead = true;
+        }
+
         SwitchStates();
         lastAttackTime -= Time.deltaTime;
+
+        animator.SetBool("Critical", characterStats.isCritical);
     }    
 
     void SwitchStates()
     {
-        if (FoundPlayer())
+        if (isDead)
+            enemyStates = EnemyStates.DEAD;
+
+        else if (FoundPlayer())
         {
-            enemyStates = EnemyStates.CHASE;
-            
+            enemyStates = EnemyStates.CHASE;            
         }       
         switch (enemyStates)
         {
@@ -128,16 +136,18 @@ public class EnemyController : MonoBehaviour
                     if (lastAttackTime < 0)
                     {
                         lastAttackTime = characterStats.attackData.coolDown;
-
+                        
                         //爆擊判斷(我想使用的招式，變成輪子之類的)
                         characterStats.isCritical = Random.value < characterStats.attackData.criticalChance;
                         //執行攻擊
                         Attack();
                     }
-                }
-                
+                }                
                 break;
             case EnemyStates.DEAD:
+                _collider.enabled = false;
+                agent.enabled = false;
+                Destroy(gameObject, 5f);
                 break;
         }
     }
@@ -187,7 +197,7 @@ public class EnemyController : MonoBehaviour
     {
         if (attackTarget != null)
         {
-            return Vector3.Distance(attackTarget.transform.position, transform.position) <= characterStats.attackData.skillRange;
+            return Vector3.Distance(attackTarget.transform.position, transform.position) <= characterStats.attackData.attackRange;
         }
         else
             return false;

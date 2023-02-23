@@ -10,7 +10,6 @@ public class CharacterStats : MonoBehaviour
 
     public AttackData_SO attackData;
 
-    [HideInInspector]
     public bool isCritical;
     /*
     private void Awake()
@@ -88,8 +87,13 @@ public class CharacterStats : MonoBehaviour
         int damage = Mathf.Max(attacker.CurrentDamage() - defener.CurrentDefence,0);
         CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
 
-        //TODO Update UI
-        
+        if (isCritical)
+        {
+            defener.GetComponent<Animator>().SetTrigger("Hit");
+            Debug.Log("test");
+        }
+
+        //TODO Update UI        
         //TODO ∏g≈Áupdata
     }
 

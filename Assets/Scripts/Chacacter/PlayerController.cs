@@ -106,7 +106,12 @@ public class PlayerController : MonoBehaviour
 
         OpenMyBag();
         SwitchAnimator();
-        lastAttackTime -= Time.deltaTime;       
+        lastAttackTime -= Time.deltaTime;
+
+       if( characterStats.CurrentHealth == 0)
+       {
+            animator.SetBool("Death", true);
+       }
     }
 
     private IEnumerator MoveToAttackTarget()
@@ -116,13 +121,11 @@ public class PlayerController : MonoBehaviour
             if (Vector3.Distance(transform.position, lockedEnemy.transform.position) < characterStats.attackData.attackRange)
             {
                 transform.LookAt(lockedEnemy.transform);
-
                 yield return null;
             }
         }
 
         if (lastAttackTime <= 0f)        //cool down
-
         {
             animator.SetTrigger("Attack");
             lastAttackTime = characterStats.attackData.coolDown;

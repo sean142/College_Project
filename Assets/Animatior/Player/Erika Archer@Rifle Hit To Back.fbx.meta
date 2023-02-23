@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 7263af86f0059294da1f36d5171ab971
+guid: dd26935754321704fbcfc3903b9b7e25
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Standing Torch Melee Attack 04
+    second: Rifle Hit To Back
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -42,11 +42,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Standing Torch Melee Attack 04
+      name: Rifle Hit To Back
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 115
+      lastFrame: 53
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -65,21 +65,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.5379576
-        functionName: Hit
-        data: 
-        objectReferenceParameter: {fileID: 8438643661667704058, guid: bddf021c5489d804c88250175f52663d, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.59098357
-        functionName: AbsorbAnimation
-        data: 
-        objectReferenceParameter: {fileID: 8438643661667704058, guid: bddf021c5489d804c88250175f52663d, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
