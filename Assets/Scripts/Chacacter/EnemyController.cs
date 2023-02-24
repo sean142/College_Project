@@ -66,7 +66,6 @@ public class EnemyController : MonoBehaviour
         SwitchStates();
         lastAttackTime -= Time.deltaTime;
 
-        animator.SetBool("Critical", characterStats.isCritical);
     }    
 
     void SwitchStates()
@@ -75,9 +74,8 @@ public class EnemyController : MonoBehaviour
             enemyStates = EnemyStates.DEAD;
 
         else if (FoundPlayer())
-        {
             enemyStates = EnemyStates.CHASE;            
-        }       
+             
         switch (enemyStates)
         {
             case EnemyStates.PATROL:
@@ -159,11 +157,13 @@ public class EnemyController : MonoBehaviour
         if (TargetInAttackRange())
         {
             animator.SetTrigger("Attack");
+            animator.SetBool("Critical", characterStats.isCritical==false);
         }
 
         if (TargetInSkillRange())
         {
             animator.SetTrigger("Skill");
+            animator.SetBool("Critical", characterStats.isCritical==true);
         }
     }
 

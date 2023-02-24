@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: dd26935754321704fbcfc3903b9b7e25
+guid: fdd435f461502cc4cb32d12a7594d43d
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Rifle Hit To Back
+    second: Getting Hit
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -42,11 +42,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Rifle Hit To Back
+      name: Getting Hit
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 53
+      lastFrame: 138
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -87,7 +87,7 @@ public class CharacterStats : MonoBehaviour
         int damage = Mathf.Max(attacker.CurrentDamage() - defener.CurrentDefence,0);
         CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
 
-        if (isCritical)
+        if (attacker.isCritical)
         {
             defener.GetComponent<Animator>().SetTrigger("Hit");
             Debug.Log("test");
@@ -99,7 +99,7 @@ public class CharacterStats : MonoBehaviour
 
     private int CurrentDamage()
     {
-        //隨機從最小跟最大之間選擇一個數值
+        //隨機從最小跟最大的攻擊傷害之間選擇一個數值
         float coreDamage = UnityEngine.Random.Range(attackData.minDamage, attackData.maxDamage);
 
         if (isCritical)

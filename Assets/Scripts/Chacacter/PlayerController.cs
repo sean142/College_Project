@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.RigisterPlayer(characterStats);
         camObj = GameObject.FindGameObjectWithTag("MainCamera");        
         cam = camObj.transform;
-        characterStats.CurrentHealth =50 ;
+        characterStats.CurrentHealth =100 ;
         
     }  
 
