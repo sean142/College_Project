@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CharacterStats : MonoBehaviour
 {
+    public event Action<int, int> UpdataHealthBarOnAttack;
+
     public CharacterData_SO templateData;
 
     public CharacterData_SO characterData;
@@ -90,10 +93,13 @@ public class CharacterStats : MonoBehaviour
         if (attacker.isCritical)
         {
             defener.GetComponent<Animator>().SetTrigger("Hit");
-            Debug.Log("test");
         }
 
-        //TODO Update UI        
+        //TODO Update UI
+        if (UpdataHealthBarOnAttack != null)
+        {
+            UpdataHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
+        }
         //TODO ∏g≈Áupdata
     }
 

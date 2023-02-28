@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         camObj = GameObject.FindGameObjectWithTag("MainCamera");        
         cam = camObj.transform;
 
-        characterStats.CurrentHealth =4;        
+        characterStats.CurrentHealth =50;        
     }  
 
     private void Update()

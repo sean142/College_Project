@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
             GetNewWayPoint();
         }
 
-        characterStats.CurrentHealth = 2;
+        characterStats.CurrentHealth = 5;
 
         //TODO ³õ´º¤Á´««á­×§ï±¼
         GameManager.Instance.AddObserver(this);
