@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool canJamp = true;
     public bool isGround;
     public bool isOpenBag;
+    public bool isDead;
 
     [Header("Player Speed")]
     public float speed;
@@ -67,22 +68,19 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         normalSpeed = speed;
+
         GameManager.Instance.RigisterPlayer(characterStats);
+
         camObj = GameObject.FindGameObjectWithTag("MainCamera");        
         cam = camObj.transform;
-        characterStats.CurrentHealth =100 ;
-        
+
+        characterStats.CurrentHealth =4;        
     }  
 
     private void Update()
     {
         isGround = Physics.Raycast(groundCheck.position, -transform.up,groundDistance,groundMask);
-        //isGround = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        
-        if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            StartCoroutine(MoveToAttackTarget());
-        }
+      
         /*
         if (Input.GetKeyDown(KeyCode.Mouse1))
             isLockedOn = !isLockedOn;
@@ -103,7 +101,7 @@ public class PlayerController : MonoBehaviour
             Movement();
             Jump();           
         }
-
+        Attack();
         OpenMyBag();
         SwitchAnimator();
         lastAttackTime -= Time.deltaTime;
@@ -111,7 +109,21 @@ public class PlayerController : MonoBehaviour
        if( characterStats.CurrentHealth == 0)
        {
             animator.SetBool("Death", true);
+            isDead = true;
+            canJamp = false;
+            canMove = false;
        }
+
+        if (isDead)
+            GameManager.Instance.NotifyObservers();
+    }
+
+    void Attack()
+    {
+        if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            StartCoroutine(MoveToAttackTarget());
+        }      
     }
 
     private IEnumerator MoveToAttackTarget()
@@ -200,6 +212,13 @@ public class PlayerController : MonoBehaviour
     
     bool FoundEnemy()
     {
+        // 當玩家死亡後 直接返回false 不會再搜尋敵人 
+        if (isDead)
+        {
+            lockedEnemy = null;
+            return false;
+        }
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, characterStats.attackData.attackRange, enemyLayer);
         if (colliders.Length > 0)
         {
@@ -217,12 +236,13 @@ public class PlayerController : MonoBehaviour
             }
             lockedEnemy = nearestEnemy;
             return true;
-        }
+        }       
+
         else
         {
             lockedEnemy = null;
             return false;
-        }
+        }      
     }     
 
     void SwitchAnimator()
@@ -261,6 +281,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Jump", false);
         canJamp = true;
     }
+    // 吸收敵人的靈魂 
     public void AbsorbAnimation()
     {       
         //Destroy(lockedEnemy.gameObject);

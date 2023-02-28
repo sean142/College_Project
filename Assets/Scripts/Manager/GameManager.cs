@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
 
     private CinemachineFreeLook followCinema;
 
-    //List<IEndGameObserver> endGameObserver = new List<IEndGameObserver>();
+    List<IEndGameObserver> endGameObserver = new List<IEndGameObserver>();
 
     protected override void Awake()
     {
@@ -30,7 +30,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
   
-    /*
+    
     public void AddObserver(IEndGameObserver observer)
     {
         endGameObserver.Add(observer);
@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
         foreach (var observer in endGameObserver)
             observer.EndNotify();
     }
-    */
+    
     public Transform GetEntrance()
     {
         foreach (var item in FindObjectsOfType<TransitionDestination>())

@@ -275,7 +275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: isPatrol
@@ -288,7 +288,7 @@ PrefabInstance:
     - target: {fileID: 8915070166609062172, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: characterData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 7b86405bdb2c4d3499ff5f268e5ae3fa, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
 --- !u!1 &107476262
@@ -475,7 +475,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134998477}
-  m_LocalRotation: {x: 0.14737348, y: 0.024339302, z: -0.0036276889, w: 0.9887748}
+  m_LocalRotation: {x: 0.14737348, y: 0.02433932, z: -0.0036276926, w: 0.9887748}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -644,7 +644,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259516007}
-  m_LocalRotation: {x: 0.11358832, y: -0.028558321, z: 0.0032663913, w: 0.993112}
+  m_LocalRotation: {x: 0.11358832, y: -0.028558321, z: 0.0032663906, w: 0.993112}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -718,8 +718,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290220134}
-  m_LocalRotation: {x: 0.24973598, y: 0.021031462, z: -0.0054255486, w: 0.9680704}
-  m_LocalPosition: {x: 0, y: 0.9753971, z: -0.5407901}
+  m_LocalRotation: {x: 0.18319342, y: 0.024191462, z: -0.0045094183, w: 0.9827689}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1348813139}
@@ -2418,6 +2418,7 @@ MonoBehaviour:
   potralRange: 8
   isPatrol: 1
   isDead: 0
+  playerDead: 0
 --- !u!195 &1188745381
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2790,10 +2791,6 @@ PrefabInstance:
       propertyPath: isPatrol
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8915070166609062172, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
-      propertyPath: templateData
-      value: 
-      objectReference: {fileID: 11400000, guid: 7b86405bdb2c4d3499ff5f268e5ae3fa, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
 --- !u!1 &1348813138
@@ -4601,6 +4598,7 @@ MonoBehaviour:
   canJamp: 1
   isGround: 0
   isOpenBag: 0
+  isDead: 0
   speed: 8
   runSpeed: 15
   crouchSpeed: 4
@@ -5005,6 +5003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0150a189142b0c4fb4f742c926db5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  templateData: {fileID: 0}
   characterData: {fileID: 11400000, guid: 7b86405bdb2c4d3499ff5f268e5ae3fa, type: 2}
   attackData: {fileID: 11400000, guid: 29b71c8087f6b7143a42a2b14ae00207, type: 2}
   isCritical: 0
@@ -5020,6 +5019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0150a189142b0c4fb4f742c926db5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  templateData: {fileID: 0}
   characterData: {fileID: 11400000, guid: 970d350f6cab8ae458acf412264ef0d3, type: 2}
   attackData: {fileID: 11400000, guid: 480e884f0eee94246867ad987638d262, type: 2}
   isCritical: 0
@@ -5179,6 +5179,7 @@ MonoBehaviour:
   potralRange: 8
   isPatrol: 1
   isDead: 0
+  playerDead: 0
 --- !u!1 &2167878978046986508
 GameObject:
   m_ObjectHideFlags: 0
@@ -5213,6 +5214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0150a189142b0c4fb4f742c926db5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  templateData: {fileID: 0}
   characterData: {fileID: 11400000, guid: 7b86405bdb2c4d3499ff5f268e5ae3fa, type: 2}
   attackData: {fileID: 11400000, guid: 29b71c8087f6b7143a42a2b14ae00207, type: 2}
   isCritical: 0

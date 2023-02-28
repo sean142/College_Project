@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public enum EnemyStates { PATROL, CHASE, DEAD }
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IEndGameObserver
 {
     private EnemyStates enemyStates;
 
@@ -32,7 +33,8 @@ public class EnemyController : MonoBehaviour
 
     public bool isPatrol;
     public bool isDead;
-     
+    public bool playerDead;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -53,8 +55,23 @@ public class EnemyController : MonoBehaviour
         }
 
         characterStats.CurrentHealth = 2;
+
+        //TODO 場景切換後修改掉
+        GameManager.Instance.AddObserver(this);
     }
-    
+    /*
+    //TODO 切換場景時啟用
+    private void OnEnable()
+    {
+        GameManager.Instance.AddObserver(this);
+    }
+    */
+    void OnDisable()
+    {
+        if (!GameManager.IsInitalized) return;
+        GameManager.Instance.RemoveObserver(this);
+    }
+
     void Update()
     {
         if (characterStats.CurrentHealth == 0)
@@ -62,10 +79,11 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("Death", true);
             isDead = true;
         }
-
-        SwitchStates();
-        lastAttackTime -= Time.deltaTime;
-
+        if (!playerDead)
+        {
+            SwitchStates();
+            lastAttackTime -= Time.deltaTime;
+        }
     }    
 
     void SwitchStates()
@@ -232,5 +250,18 @@ public class EnemyController : MonoBehaviour
 
             targetStats.TakeDamage(characterStats, targetStats);
         }
+    }
+
+    public void EndNotify()
+    {
+        playerDead = true;
+        //TODO 血量歸零後回到重生點 寫延遲
+       // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //停止移動
+        animator.SetBool("Walk", false);
+        animator.SetBool("Chase", false);
+
+        //停止Agent
+        attackTarget = null;        
     }
 }
