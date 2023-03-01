@@ -2145,6 +2145,7 @@ MonoBehaviour:
   canJamp: 1
   isGround: 0
   isOpenBag: 0
+  isDead: 0
   speed: 8
   runSpeed: 15
   crouchSpeed: 4
@@ -2173,7 +2174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0150a189142b0c4fb4f742c926db5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 11400000, guid: 970d350f6cab8ae458acf412264ef0d3, type: 2}
+  templateData: {fileID: 11400000, guid: 970d350f6cab8ae458acf412264ef0d3, type: 2}
+  characterData: {fileID: 0}
   attackData: {fileID: 11400000, guid: 480e884f0eee94246867ad987638d262, type: 2}
   isCritical: 0
 --- !u!1 &8563732122138836897

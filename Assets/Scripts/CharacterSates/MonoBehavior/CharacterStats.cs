@@ -13,6 +13,7 @@ public class CharacterStats : MonoBehaviour
 
     public AttackData_SO attackData;
 
+    [HideInInspector]
     public bool isCritical;
     
     private void Awake()
