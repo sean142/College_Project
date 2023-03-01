@@ -9,8 +9,8 @@ public class SaveManager : Singleton<SaveManager>
         base.Awake();
         DontDestroyOnLoad(this);
     }
-   
-    void Update()
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
@@ -33,20 +33,18 @@ public class SaveManager : Singleton<SaveManager>
         Load(GameManager.Instance.playerStats.characterData, GameManager.Instance.playerStats.characterData.name);
     }
 
-    public void Save(Object data, string key)
+    public void Save(Object data,string key)
     {
-        var jsonData = JsonUtility.ToJson(data, true);
+        var jsonData = JsonUtility.ToJson(data,true);
         PlayerPrefs.SetString(key, jsonData);
         PlayerPrefs.Save();
     }
 
-    public void Load(Object data, string key)
+    public void Load(Object data,string key)
     {
         if (PlayerPrefs.HasKey(key))
         {
             JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(key), data);
         }
-
     }
-
 }
