@@ -31,7 +31,7 @@ public class SceneController :Singleton<SceneController>
 
     IEnumerator Transiton(string sceneName, TransitionDestination.DestinationTag destinationTag)
     {
-        //TODO : 保存數據
+        //保存數據
         SaveManager.Instance.SavePlayerData();
 
         if(SceneManager.GetActiveScene().name != sceneName)

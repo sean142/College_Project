@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59fd6f07d2d4cd4c8d925af41d9202a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthUIPrefab: {fileID: 3039851453043371358, guid: 68fbde2b25fa0af43863b33539ddedb6, type: 3}
+  healthUIPrefab: {fileID: 0}
   barPoint: {fileID: 1191317394791717511}
   alwaysVisible: 0
   visibleTime: 5

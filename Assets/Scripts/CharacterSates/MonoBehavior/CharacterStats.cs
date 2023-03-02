@@ -96,7 +96,7 @@ public class CharacterStats : MonoBehaviour
             defener.GetComponent<Animator>().SetTrigger("Hit");
         }
 
-        //TODO Update UI
+        // Update UI
         if (UpdataHealthBarOnAttack != null)
         {
             UpdataHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
