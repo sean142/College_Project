@@ -2,19 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-
+    
     [Header("Player Bool")]
     public bool canMove = true;
     public bool canTalk = false;
     public bool canAnimator = true;
     public bool canJamp = true;
     public bool isGround;
-    public bool isOpenBag;
     public bool isDead;
 
     [Header("Player Speed")]
@@ -75,7 +73,31 @@ public class PlayerController : MonoBehaviour
         cam = camObj.transform;
 
         characterStats.CurrentHealth =50;        
-    }  
+    }
+
+    private void OnEnable()
+    {       
+        InvertoryManager.OnInventoryChanged += HandleBagOpen;
+    }
+
+    private void OnDisable()
+    {
+        InvertoryManager.OnInventoryChanged -= HandleBagOpen;
+    }
+
+    private void HandleBagOpen(bool isOpen)
+    {
+        if (isOpen)
+        {
+            canMove = false;
+            canJamp = false;
+        }
+        else
+        {
+            canMove = true;
+            canJamp = true;
+        }
+    }
 
     private void Update()
     {
@@ -102,7 +124,6 @@ public class PlayerController : MonoBehaviour
             Jump();           
         }
         Attack();
-        OpenMyBag();
         SwitchAnimator();
         lastAttackTime -= Time.deltaTime;
 
@@ -183,16 +204,7 @@ public class PlayerController : MonoBehaviour
             speed = normalSpeed;
         }
     }
-
-    void OpenMyBag()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            isOpenBag = !isOpenBag;
-            InvertoryManager.instance.bag.SetActive(isOpenBag);
-        }
-    }
-
+   
     void Jump()
     {
         if (canJamp)
