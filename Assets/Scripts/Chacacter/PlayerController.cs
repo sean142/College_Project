@@ -138,6 +138,24 @@ public class PlayerController : MonoBehaviour
         if (isDead)
             GameManager.Instance.NotifyObservers();
     }
+    /*
+    private void LateUpdate()
+    {
+        if (!isLocked)
+        {
+            //自由視角
+            Vector3 targetPos = target.position + (target.forward * distance);
+            transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
+            transform.LookAt(target.position);
+        }
+        else
+        {
+            //鎖定視角
+            transform.position = target.position;
+            transform.rotation = target.rotation;
+        }
+    }*/
+
 
     void Attack()
     {
