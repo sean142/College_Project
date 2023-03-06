@@ -336,6 +336,7 @@ MonoBehaviour:
   slotPrefab: {fileID: 8475961235772655802, guid: 30cf1c4c9b97cbc48ad9f37e39de63eb, type: 3}
   itemInformation: {fileID: 711455912}
   bag: {fileID: 1244991234}
+  isOpenBag: 0
 --- !u!1 &134998477
 GameObject:
   m_ObjectHideFlags: 3
@@ -576,7 +577,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259516007}
-  m_LocalRotation: {x: 0.113590255, y: -0.027964905, z: 0.003198518, w: 0.9931289}
+  m_LocalRotation: {x: 0.11358213, y: -0.03038609, z: 0.003475444, w: 0.9930578}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2896,7 +2897,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416935240}
-  m_LocalRotation: {x: 0.11359028, y: -0.027964897, z: 0.0031984234, w: 0.99312896}
+  m_LocalRotation: {x: 0.11358215, y: -0.030386057, z: 0.003475101, w: 0.9930578}
   m_LocalPosition: {x: 0, y: 2.02, z: -4.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

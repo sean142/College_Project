@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class InvertoryManager : MonoBehaviour
 {
     public static InvertoryManager instance;
+    public static event Action<bool> OnInventoryChanged;
 
     public Inventory myBag;
     public GameObject slotGrid;
     public Slot slotPrefab;
     public Text itemInformation;
+    [Space(10)]
     public GameObject bag;
+    public bool isOpenBag;
 
     private void Awake()
     {
@@ -29,6 +33,14 @@ public class InvertoryManager : MonoBehaviour
     {
         RefreshItem();
         instance.itemInformation.text = "";
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ToggleInventory();
+        }
     }
 
     public static void UpdateItemInfo(string intemDescription)
@@ -59,13 +71,11 @@ public class InvertoryManager : MonoBehaviour
             CreatNewItem(instance.myBag.itemList[i]);           
         }
     }
-    /*
+
     private void ToggleInventory()
     {
-        instance.isOpenBag = !instance.isOpenBag;
-        OnInventoryChanged?.Invoke(instance.isOpenBag);
-        instance.bag.SetActive(isOpenBag);
+        isOpenBag = !isOpenBag;
+        OnInventoryChanged?.Invoke(isOpenBag);
+        bag.SetActive(isOpenBag);
     }
-=======
->>>>>>> parent of d6dbb4c (優化代碼)*/
 }
