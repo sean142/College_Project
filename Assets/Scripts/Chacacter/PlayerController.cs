@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     private CharacterStats characterStats;
 
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
-
+    
     private void Awake()
     {
         if (instance != null)
@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
 
         camObj = GameObject.FindGameObjectWithTag("MainCamera");        
         cam = camObj.transform;
-
         characterStats.CurrentHealth =50;        
     }
 

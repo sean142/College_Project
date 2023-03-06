@@ -74,8 +74,8 @@ public class InvertoryManager : MonoBehaviour
 
     private void ToggleInventory()
     {
-        isOpenBag = !isOpenBag;
-        OnInventoryChanged?.Invoke(isOpenBag);
-        bag.SetActive(isOpenBag);
+        instance.isOpenBag = !instance.isOpenBag;
+        OnInventoryChanged?.Invoke(instance.isOpenBag);
+        instance.bag.SetActive(isOpenBag);
     }
 }
