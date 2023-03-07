@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-    
+
     [Header("Player Bool")]
     public bool canMove = true;
     public bool canTalk = false;
@@ -25,8 +26,6 @@ public class PlayerController : MonoBehaviour
     private GameObject lockedEnemy;
     private float lastAttackTime;
     public LayerMask enemyLayer;
-    private bool isLockedOn = false;  // 是否鎖定視角
-    private bool isAttacking = false;  // 
 
     [Header("Player Jump")]
     public float jumpfarce;
@@ -36,7 +35,13 @@ public class PlayerController : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     public Transform cam;
-    public GameObject camObj;      
+    public GameObject camObj;
+    public bool isLockedCamera;
+
+    public KeyCode lockOnKey = KeyCode.Mouse2;
+    public LayerMask lockOnLayerMask;
+    public float attackRangeAngle = 45f;
+    public float lockOnRange = 10f;
 
     Vector3 velocity;
 
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour
         coll = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
+
     }
 
     void Start()
@@ -69,14 +75,14 @@ public class PlayerController : MonoBehaviour
 
         GameManager.Instance.RigisterPlayer(characterStats);
 
-        camObj = GameObject.FindGameObjectWithTag("MainCamera");        
+        camObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = camObj.transform;
 
-        characterStats.CurrentHealth =50;        
+        characterStats.CurrentHealth = 50;
     }
 
     private void OnEnable()
-    {       
+    {
         InvertoryManager.OnInventoryChanged += HandleBagOpen;
     }
 
@@ -101,62 +107,83 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        isGround = Physics.Raycast(groundCheck.position, -transform.up,groundDistance,groundMask);
-      
-        /*
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-            isLockedOn = !isLockedOn;
+        isGround = Physics.Raycast(groundCheck.position, -transform.up, groundDistance, groundMask);
 
-        if (isLockedOn && lockedEnemy != null)
+        if (Input.GetKeyDown(lockOnKey))
         {
-            // 锁定状态下，朝向敌人
-            transform.LookAt(lockedEnemy.transform.position);
+            if (isLockedCamera)
+            {
+                UnlockEnemy();
+            }
+            else if (isLockedCamera && lockedEnemy != null)
+            {
+                // 锁定状态下，朝向敌人
+                transform.LookAt(lockedEnemy.transform.position);
+            }
+            else
+            {
+                LockEnemy();
+            }
         }
-        */
+
         if (isGround && velocity.y < 0)
         {
             velocity.y = -2f;
-        }       
+        }
 
         if (canMove)
         {
             Movement();
-            Jump();           
+            Jump();
         }
         Attack();
         SwitchAnimator();
         lastAttackTime -= Time.deltaTime;
 
-       if( characterStats.CurrentHealth == 0)
-       {
+        if (characterStats.CurrentHealth == 0)
+        {
             animator.SetBool("Death", true);
             isDead = true;
             canJamp = false;
             canMove = false;
-       }
+        }
 
         if (isDead)
             GameManager.Instance.NotifyObservers();
     }
-    /*
-    private void LateUpdate()
+    private void LockEnemy()
     {
-        if (!isLocked)
-        {
-            //自由視角
-            Vector3 targetPos = target.position + (target.forward * distance);
-            transform.position = Vector3.Lerp(transform.position, targetPos, speed * Time.deltaTime);
-            transform.LookAt(target.position);
-        }
-        else
-        {
-            //鎖定視角
-            transform.position = target.position;
-            transform.rotation = target.rotation;
-        }
-    }*/
+        Collider[] colliders = Physics.OverlapSphere(lockedEnemy.transform.position, lockOnRange, lockOnLayerMask);
 
+        foreach (Collider col in colliders)
+        {
+            Vector3 direction = col.transform.position - transform.position;
+            float angle = Vector3.Angle(direction, transform.forward);
 
+            if (angle <= attackRangeAngle)
+            {
+                lockedEnemy = col.gameObject;
+                isLockedCamera = true;
+                break;
+            }
+        }
+    }
+
+    private void UnlockEnemy()
+    {
+        isLockedCamera = false;
+        lockedEnemy = null;
+    }
+
+    public GameObject GetLockedEnemy()
+    {
+        return lockedEnemy;
+    }
+
+    public bool IsLockedOn()
+    {
+        return isLockedCamera;
+    }
     void Attack()
     {
         if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0))

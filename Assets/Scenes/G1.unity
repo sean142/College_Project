@@ -577,7 +577,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259516007}
-  m_LocalRotation: {x: 0.11359106, y: -0.027709939, z: 0.0031693554, w: 0.99313605}
+  m_LocalRotation: {x: 0.1135912, y: -0.027669363, z: 0.003164715, w: 0.9931372}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1757,7 +1757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: isPatrol
@@ -2897,7 +2897,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416935240}
-  m_LocalRotation: {x: 0.11359107, y: -0.027709942, z: 0.0031693606, w: 0.9931361}
+  m_LocalRotation: {x: 0.11359124, y: -0.027669337, z: 0.0031644646, w: 0.99313724}
   m_LocalPosition: {x: 0, y: 2.02, z: -4.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5034,6 +5034,10 @@ PrefabInstance:
       propertyPath: camObj
       value: 
       objectReference: {fileID: 1416935240}
+    - target: {fileID: 8781311612524737235, guid: bddf021c5489d804c88250175f52663d, type: 3}
+      propertyPath: lockOnLayerMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 9103961912269227584, guid: bddf021c5489d804c88250175f52663d, type: 3}
       propertyPath: m_RootOrder
       value: 17
