@@ -15,7 +15,7 @@ public class TalkButton : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && PlayerController.instance.canTalk == true)
+        if (Input.GetKeyDown(KeyCode.R) && PlayerController.instance.canTalk == true)
         {
             firstUI.SetActive(false);
             talkUI.SetActive(true);  

@@ -403,7 +403,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134998477}
-  m_LocalRotation: {x: 0.14737348, y: 0.02433932, z: -0.0036276926, w: 0.9887748}
+  m_LocalRotation: {x: 0.14737348, y: 0.024339283, z: -0.0036276863, w: 0.9887748}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -577,7 +577,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259516007}
-  m_LocalRotation: {x: 0.113591194, y: -0.027669363, z: 0.0031647147, w: 0.9931372}
+  m_LocalRotation: {x: 0.1135704, y: -0.033569455, z: 0.0038395452, w: 0.99295527}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -651,7 +651,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290220134}
-  m_LocalRotation: {x: 0.18319342, y: 0.024191462, z: -0.0045094183, w: 0.9827689}
+  m_LocalRotation: {x: 0.18319342, y: 0.024191463, z: -0.004509419, w: 0.9827689}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1709,7 +1709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879677217316733675, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.254
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 2879677217316733675, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1717,7 +1717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879677217316733675, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.51
+      value: 16.73
       objectReference: {fileID: 0}
     - target: {fileID: 2879677217316733675, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1757,7 +1757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: isPatrol
@@ -1835,7 +1835,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8ACB\u6309 F\u9032\u5165\u5C0D\u8A71"
+  m_Text: "\u8ACB\u6309 R \u9032\u5165\u5C0D\u8A71 "
 --- !u!222 &884517035
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2897,7 +2897,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416935240}
-  m_LocalRotation: {x: 0.11359123, y: -0.027669335, z: 0.0031644606, w: 0.99313724}
+  m_LocalRotation: {x: 0.11357042, y: -0.033569425, z: 0.0038391997, w: 0.99295527}
   m_LocalPosition: {x: 0, y: 2.02, z: -4.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4963,7 +4963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879677217316733675, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.49
+      value: -14.7439995
       objectReference: {fileID: 0}
     - target: {fileID: 2879677217316733675, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4971,7 +4971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2879677217316733675, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.51
+      value: 16.73
       objectReference: {fileID: 0}
     - target: {fileID: 2879677217316733675, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5034,10 +5034,6 @@ PrefabInstance:
       propertyPath: camObj
       value: 
       objectReference: {fileID: 1416935240}
-    - target: {fileID: 8781311612524737235, guid: bddf021c5489d804c88250175f52663d, type: 3}
-      propertyPath: lockOnLayerMask.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 9103961912269227584, guid: bddf021c5489d804c88250175f52663d, type: 3}
       propertyPath: m_RootOrder
       value: 17

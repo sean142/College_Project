@@ -2144,7 +2144,6 @@ MonoBehaviour:
   canAnimator: 1
   canJamp: 1
   isGround: 0
-  isOpenBag: 0
   isDead: 0
   speed: 8
   runSpeed: 15
@@ -2157,6 +2156,13 @@ MonoBehaviour:
   turnSmoothTime: 0.2
   cam: {fileID: 0}
   camObj: {fileID: 0}
+  isLockedCamera: 0
+  lockOnKey: 325
+  lockOnLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  attackRangeAngle: 45
+  lockOnRange: 10
   groundCheck: {fileID: 1926218212}
   groundDistance: 0.1
   groundMask:

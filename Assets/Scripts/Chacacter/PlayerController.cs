@@ -213,7 +213,12 @@ public class PlayerController : MonoBehaviour
     }   
 
     void Movement()
-    {             
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            animator.SetTrigger("Roll");
+        }
+
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         float verticalMove = Input.GetAxisRaw("Vertical");
 
@@ -241,11 +246,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = runSpeed;
-        }
-        else if (Input.GetKey(KeyCode.LeftControl))
-        {
-            speed = crouchSpeed;
-        }        
+        }          
         else
         {
             speed = normalSpeed;
