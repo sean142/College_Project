@@ -15,7 +15,9 @@ public class InvertoryManager : MonoBehaviour
     public Text itemInformation;
     [Space(10)]
     public GameObject bag;
+    public GameObject[] bagButton;
     public bool isOpenBag;
+    public Button currentButton;
 
     private void Awake()
     {
@@ -27,6 +29,8 @@ public class InvertoryManager : MonoBehaviour
 
         if (bag == null)
             bag = GameObject.Find("BagCanvas/Bag");
+
+      
     }
 
     private void OnEnable()
@@ -41,6 +45,7 @@ public class InvertoryManager : MonoBehaviour
         {
             ToggleInventory();
         }
+     
     }
 
     public static void UpdateItemInfo(string intemDescription)
@@ -77,5 +82,40 @@ public class InvertoryManager : MonoBehaviour
         instance.isOpenBag = !instance.isOpenBag;
         OnInventoryChanged?.Invoke(instance.isOpenBag);
         instance.bag.SetActive(isOpenBag);
+
+        for (int i = 0; i < instance.bagButton.Length; i++)
+        {
+            instance.bagButton[i].SetActive(instance.isOpenBag);            
+        }
+
+        // 切換背包時，如果有選中的核心按鈕，取消選中
+        if (instance.currentButton != null)
+        {
+            instance.currentButton.GetComponent<Image>().color = Color.white;
+            instance.currentButton = null;
+        }
     }
+    
+    public void OnSelectButton(Button button)
+    {
+        // 切換選中狀態
+        if (button == instance.currentButton)
+        {
+            button.GetComponent<Image>().color = Color.white;
+            instance.currentButton = null;
+        }
+        else
+        {
+            // 取消原本選中的按鈕
+            if (instance.currentButton != null)
+            {
+                instance.currentButton.GetComponent<Image>().color = Color.white;
+            }
+
+            // 更新選中按鈕為當前按鈕
+            button.GetComponent<Image>().color = Color.green;
+            instance.currentButton = button;
+        }
+    }
+  
 }

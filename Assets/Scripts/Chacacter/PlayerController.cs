@@ -93,39 +93,13 @@ public class PlayerController : MonoBehaviour
 
     private void HandleBagOpen(bool isOpen)
     {
-        if (isOpen)
-        {
-            canMove = false;
-            canJamp = false;
-        }
-        else
-        {
-            canMove = true;
-            canJamp = true;
-        }
+      
     }
 
     private void Update()
     {
         isGround = Physics.Raycast(groundCheck.position, -transform.up, groundDistance, groundMask);
-        /*
-        if (Input.GetKeyDown(lockOnKey))
-        {
-            if (isLockedCamera)
-            {
-                UnlockEnemy();
-            }
-            else if (isLockedCamera && lockedEnemy != null)
-            {
-                // 锁定状态下，朝向敌人
-                transform.LookAt(lockedEnemy.transform.position);
-            }
-            else
-            {
-                LockEnemy();
-            }
-        }
-        */
+       
         if (isGround && velocity.y < 0)
         {
             velocity.y = -2f;
@@ -151,41 +125,7 @@ public class PlayerController : MonoBehaviour
         if (isDead)
             GameManager.Instance.NotifyObservers();
     }
-    /*
-    private void LockEnemy()
-    {
-        Collider[] colliders = Physics.OverlapSphere(lockedEnemy.transform.position, lockOnRange, lockOnLayerMask);
-
-        foreach (Collider col in colliders)
-        {
-            Vector3 direction = col.transform.position - transform.position;
-            float angle = Vector3.Angle(direction, transform.forward);
-
-            if (angle <= attackRangeAngle)
-            {
-                lockedEnemy = col.gameObject;
-                isLockedCamera = true;
-                break;
-            }
-        }
-    }
-
-    private void UnlockEnemy()
-    {
-        isLockedCamera = false;
-        lockedEnemy = null;
-    }
-
-    public GameObject GetLockedEnemy()
-    {
-        return lockedEnemy;
-    }
-
-    public bool IsLockedOn()
-    {
-        return isLockedCamera;
-    }
-    */
+    
     void Attack()
     {
         if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0))
