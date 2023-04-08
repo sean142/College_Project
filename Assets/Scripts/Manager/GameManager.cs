@@ -7,7 +7,6 @@ public class GameManager : Singleton<GameManager>
 {
     public CharacterStats playerStats;
 
-
     private CinemachineFreeLook followCinema;
 
     List<IEndGameObserver> endGameObserver = new List<IEndGameObserver>();
@@ -28,8 +27,7 @@ public class GameManager : Singleton<GameManager>
             followCinema.Follow = playerStats.transform;
             followCinema.LookAt = playerStats.transform;
         }
-    }
-  
+    }  
     
     public void AddObserver(IEndGameObserver observer)
     {
@@ -53,7 +51,6 @@ public class GameManager : Singleton<GameManager>
         {
             if (item.destinationTag == TransitionDestination.DestinationTag.ENTER)
                 return item.transform;
-
         }
         return null;
     }

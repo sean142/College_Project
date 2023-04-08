@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CoreManager :Singleton<CoreManager>
-{
+public class CoreManager :Singleton<CoreManager> 
+{   
     protected override void Awake()
     {
         base.Awake();
@@ -13,16 +13,28 @@ public class CoreManager :Singleton<CoreManager>
 
     private void Update()
     {  
-        if (Input.GetKeyDown(KeyCode.F) && InvertoryManager.instance.currentButton != null)
+        if (Input.GetKeyDown(KeyCode.F) && InvertoryManager.instance.currentInt != 0)
         {
-            UseCoreAbility(InvertoryManager.instance.currentButton);
+            UseCoreAbility(InvertoryManager.instance.currentInt);
         }
-    }
-   
+    }   
 
-    public static void UseCoreAbility(Button button)
-    {
-        // TODO: 根據按鈕對應的核心執行能力
-        Debug.Log("使用核心能力: " + button.name);
+    public void UseCoreAbility(int Int)
+    {       
+        if (Int==1)
+        {
+            CoreAbuility.SpeedActivateAndNightVision();
+            Debug.Log("使用核心能力: "+1);
+        }
+        else if (Int == 2)
+        {
+            CoreAbuility.StrengthBoost();
+            Debug.Log("使用核心能力: "+2);
+        }
+        else if (Int == 3)
+        {
+            CoreAbuility.ImproveDefense();
+            Debug.Log("使用核心能力: "+3);
+        }
     }
 }

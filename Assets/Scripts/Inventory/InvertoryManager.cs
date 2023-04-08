@@ -15,9 +15,10 @@ public class InvertoryManager : MonoBehaviour
     public Text itemInformation;
     [Space(10)]
     public GameObject bag;
-    public GameObject[] bagButton;
+    public Button[] bagButton;
     public bool isOpenBag;
     public Button currentButton;
+    public int currentInt;
 
     private void Awake()
     {
@@ -28,9 +29,7 @@ public class InvertoryManager : MonoBehaviour
         instance = this;
 
         if (bag == null)
-            bag = GameObject.Find("BagCanvas/Bag");
-
-      
+            bag = GameObject.Find("BagCanvas/Bag");      
     }
 
     private void OnEnable()
@@ -44,8 +43,7 @@ public class InvertoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             ToggleInventory();
-        }
-     
+        }     
     }
 
     public static void UpdateItemInfo(string intemDescription)
@@ -79,43 +77,58 @@ public class InvertoryManager : MonoBehaviour
 
     private void ToggleInventory()
     {
-        instance.isOpenBag = !instance.isOpenBag;
-        OnInventoryChanged?.Invoke(instance.isOpenBag);
-        instance.bag.SetActive(isOpenBag);
-
-        for (int i = 0; i < instance.bagButton.Length; i++)
+        isOpenBag = !isOpenBag;
+        OnInventoryChanged?.Invoke(isOpenBag);
+        bag.SetActive(isOpenBag);
+        
+        for (int i = 0; i < bagButton.Length; i++)
         {
-            instance.bagButton[i].SetActive(instance.isOpenBag);            
+            bagButton[i].gameObject.SetActive(isOpenBag);            
         }
-
+        
         // 切換背包時，如果有選中的核心按鈕，取消選中
-        if (instance.currentButton != null)
+        if (currentButton != null)
         {
-            instance.currentButton.GetComponent<Image>().color = Color.white;
-            instance.currentButton = null;
+            currentButton.GetComponent<Image>().color = Color.white;
+            currentButton = null;
         }
     }
     
     public void OnSelectButton(Button button)
     {
         // 切換選中狀態
-        if (button == instance.currentButton)
+        if (button == currentButton)
         {
             button.GetComponent<Image>().color = Color.white;
-            instance.currentButton = null;
+            currentButton = null;
         }
         else
         {
             // 取消原本選中的按鈕
-            if (instance.currentButton != null)
+            if (currentButton != null)
             {
-                instance.currentButton.GetComponent<Image>().color = Color.white;
+                currentButton.GetComponent<Image>().color = Color.white;
             }
 
             // 更新選中按鈕為當前按鈕
             button.GetComponent<Image>().color = Color.green;
-            instance.currentButton = button;
+            currentButton = button;
         }
     }
-  
+
+    public void OnSelectCurrentCore(int Int)
+    {
+        if (Int==1)
+        {
+            currentInt = 1;
+        }
+        else if (Int == 2)
+        {
+            currentInt = 2;
+        }
+        else if (Int == 3)
+        {
+            currentInt = 3;
+        }
+    }  
 }
