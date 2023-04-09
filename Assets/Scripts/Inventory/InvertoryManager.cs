@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class InvertoryManager : MonoBehaviour
+public class InvertoryManager :Singleton<InvertoryManager>
 {
-    public static InvertoryManager instance;
     public static event Action<bool> OnInventoryChanged;
 
     public Inventory myBag;
@@ -18,19 +17,13 @@ public class InvertoryManager : MonoBehaviour
     public Button[] bagButton;
     public bool isOpenBag;
     public Button currentButton;
-    public int currentInt;
-
-    private void Awake()
+    public int currentInt;       
+    
+    protected override void Awake()
     {
-        if(instance != null)
-        {
-            Destroy(this);
-        }
-        instance = this;
-
-        if (bag == null)
-            bag = GameObject.Find("BagCanvas/Bag");      
-    }
+        base.Awake();
+        DontDestroyOnLoad(this);
+    }    
 
     private void OnEnable()
     {
@@ -81,9 +74,9 @@ public class InvertoryManager : MonoBehaviour
         OnInventoryChanged?.Invoke(isOpenBag);
         bag.SetActive(isOpenBag);
         
-        for (int i = 0; i < bagButton.Length; i++)
+        for (int i = 0; i < instance.bagButton.Length; i++)
         {
-            bagButton[i].gameObject.SetActive(isOpenBag);            
+            instance.bagButton[i].gameObject.SetActive(isOpenBag);            
         }
         
         // 切換背包時，如果有選中的核心按鈕，取消選中
