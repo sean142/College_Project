@@ -17,10 +17,10 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
 
     [Header("Player Speed")]
-    public float speed;
+    public float currentSpeed;
     public float runSpeed;
-    public float crouchSpeed;
-    private float normalSpeed;
+    //public float crouchSpeed;
+    public float normalSpeed;
 
     [Header("Player Attack")]
     private GameObject lockedEnemy;
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        normalSpeed = speed;
+        normalSpeed = currentSpeed;
 
         GameManager.Instance.RigisterPlayer(characterStats);
 
@@ -175,14 +175,14 @@ public class PlayerController : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            coll.Move(moveDir.normalized * speed * Time.deltaTime);
+            coll.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
             animator.SetBool("Move", true);
         }
         else
         {
             animator.SetBool("Move", false);
         }
-
+        /*
         if (Input.GetKey(KeyCode.LeftShift))
         {
             speed = runSpeed;
@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             speed = normalSpeed;
-        }
+        }*/
     }
    
     void Jump()

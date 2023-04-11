@@ -2145,9 +2145,9 @@ MonoBehaviour:
   canJamp: 1
   isGround: 0
   isDead: 0
-  speed: 8
+  currentSpeed: 4
   runSpeed: 15
-  crouchSpeed: 4
+  normalSpeed: 4
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512

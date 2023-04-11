@@ -564,7 +564,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134998477}
-  m_LocalRotation: {x: 0.14737348, y: 0.024339283, z: -0.0036276863, w: 0.9887748}
+  m_LocalRotation: {x: 0.14737348, y: 0.02433932, z: -0.0036276926, w: 0.9887748}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3549,7 +3549,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416935240}
-  m_LocalRotation: {x: 0.1135956, y: -0.02625066, z: 0.0030022124, w: 0.9931757}
+  m_LocalRotation: {x: 0.1135956, y: -0.026250662, z: 0.003002211, w: 0.9931757}
   m_LocalPosition: {x: 0, y: 2.02, z: -4.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6021,7 +6021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8438643661667704058, guid: bddf021c5489d804c88250175f52663d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8781311612524737235, guid: bddf021c5489d804c88250175f52663d, type: 3}
       propertyPath: bag
@@ -6031,6 +6031,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1416935243}
+    - target: {fileID: 8781311612524737235, guid: bddf021c5489d804c88250175f52663d, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8781311612524737235, guid: bddf021c5489d804c88250175f52663d, type: 3}
       propertyPath: camObj
       value: 
