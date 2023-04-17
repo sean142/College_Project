@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CoreManager :Singleton<CoreManager> 
-{   
+{
+    public float useTime;
+    private float useTimer;
+    public float coolTime;
+    private float coolTimer;
+
     protected override void Awake()
     {
         base.Awake();

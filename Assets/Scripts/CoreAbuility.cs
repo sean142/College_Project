@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +6,10 @@ public class CoreAbuility : MonoBehaviour
 {
     public static void SpeedActivateAndNightVision()
     {
-        // ¥H¬YºØ¤è¦¡¹ê²{³t«×´£¤É¯à¤O
+        // ä»¥æŸç¨®æ–¹å¼å¯¦ç¾é€Ÿåº¦æå‡èƒ½åŠ›
         PlayerController.instance.currentSpeed = PlayerController.instance.runSpeed;
-        //¨Ï¥Î®É¶¡12¬í¡A§N«o®É¶¡8¬í
-        // ¨Ï¥ÎShader Graph¦b¶Â·t¤¤¹ê²{©]µø¯à¤O
+        //ä½¿ç”¨æ™‚é–“12ç§’ï¼Œå†·å»æ™‚é–“8ç§’
+        // ä½¿ç”¨Shader Graphåœ¨é»‘æš—ä¸­å¯¦ç¾å¤œè¦–èƒ½åŠ›
         Debug.Log("speed");
     }  
     
@@ -17,7 +17,7 @@ public class CoreAbuility : MonoBehaviour
     {
         PlayerController.instance.currentSpeed = PlayerController.instance.normalSpeed;
 
-        // ¤O¶q´£¤É¡A¯à¥Î¤âÀ»­¸¼Ä¤H»P¯}ÃaÀğ¾À¡C
+        // åŠ›é‡æå‡ï¼Œèƒ½ç”¨æ‰‹æ“Šé£›æ•µäººèˆ‡ç ´å£ç‰†å£ã€‚
         Debug.Log("power");
     }
 
@@ -25,7 +25,7 @@ public class CoreAbuility : MonoBehaviour
     {
         PlayerController.instance.currentSpeed = PlayerController.instance.normalSpeed;
 
-        // ´£¤É¨¾¿m¡A¨ü¨ìªº¶Ë®`¤j´T´î»´¡C
+        // æå‡é˜²ç¦¦ï¼Œå—åˆ°çš„å‚·å®³å¤§å¹…æ¸›è¼•ã€‚
         Debug.Log("defense");
     }
 }
