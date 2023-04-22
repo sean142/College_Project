@@ -45,4 +45,14 @@ public class CoreAbuility : MonoBehaviour
         // 提升防禦，受到的傷害大幅減輕。
         Debug.Log("defense");
     }
+
+    public static void InitialState()
+    {
+        PlayerController.instance.currentSpeed = PlayerController.instance.normalSpeed;
+        Debug.Log("normalspeed");
+
+        float fogEndDistance = 15f; // 宣告一個float變數
+        RenderSettings.fogEndDistance = fogEndDistance; // 將變數值設定給Fog的結束距離
+        Debug.Log("當前Fog結束距離為: " + RenderSettings.fogEndDistance);
+    }
 }

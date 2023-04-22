@@ -28,6 +28,8 @@ public class CoreManager :Singleton<CoreManager>
             }
         }       
 
+
+        
         if (isUseTime)
         {
             useTimer += Time.deltaTime;
@@ -44,6 +46,7 @@ public class CoreManager :Singleton<CoreManager>
         else if (coolTimer > 0)
         {
             coolTimer -= Time.deltaTime;
+            CoreAbuility.InitialState();
 
             if (coolTimer <= 0) // cooldown ends
             {
