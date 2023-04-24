@@ -181,16 +181,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("Move", false);
-        }
-        /*
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = runSpeed;
-        }          
-        else
-        {
-            speed = normalSpeed;
-        }*/
+        }    
     }
    
     void Jump()

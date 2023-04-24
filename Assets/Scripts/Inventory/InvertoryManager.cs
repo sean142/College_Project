@@ -23,7 +23,16 @@ public class InvertoryManager :Singleton<InvertoryManager>
     {
         base.Awake();
         DontDestroyOnLoad(this);
-    }    
+    }
+
+    //void Start()
+    //{
+    //    // 初始時不顯示背包按鈕
+    //    for (int i = 0; i < instance.bagButton.Length; i++)
+    //    {
+    //        instance.bagButton[i].gameObject.SetActive(false);
+    //    }
+    //}
 
     private void OnEnable()
     {
@@ -73,12 +82,33 @@ public class InvertoryManager :Singleton<InvertoryManager>
         isOpenBag = !isOpenBag;
         OnInventoryChanged?.Invoke(isOpenBag);
         bag.SetActive(isOpenBag);
-        
-        for (int i = 0; i < instance.bagButton.Length; i++)
-        {
-            instance.bagButton[i].gameObject.SetActive(isOpenBag);            
+
+        if (CoreManager.instance.isCoreAbsorbed)
+        {            
+            // 如果已經吸收了核心，顯示背包按鈕
+            for (int i = 0; i < instance.bagButton.Length; i++)
+            {
+                instance.bagButton[i].gameObject.SetActive(isOpenBag);
+            }
         }
-        
+        else if (!CoreManager.instance.isBeingAbsorbed && CoreManager.instance.absorptionTimer <= CoreManager.instance.absorptionTime)
+        {
+            // 如果正在吸收，不顯示背包按鈕
+            for (int i = 0; i < instance.bagButton.Length; i++)
+            {
+                instance.bagButton[i].gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            // 如果沒有在吸收，也沒有吸收完，不顯示背包按鈕
+            for (int i = 0; i < instance.bagButton.Length; i++)
+            {
+                instance.bagButton[i].gameObject.SetActive(false);
+            }
+        }
+
+
         // 切換背包時，如果有選中的核心按鈕，取消選中
         if (currentButton != null)
         {
