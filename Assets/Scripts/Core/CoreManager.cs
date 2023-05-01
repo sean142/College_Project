@@ -103,14 +103,14 @@ public class CoreManager :Singleton<CoreManager>
         }
         if (Int==1)
         {         
-            useTimer = 0; // 重置 useTimer 以便启动冷却计时器
+            useTimer = 0; // 重置 useTimer 
             CoreAbuility.SpeedActivateAndNightVision();
             Debug.Log("使用核心能力: " + 1);
             coolTimer = coolTime;
         }
         else if (Int == 2)
         {
-            useTimer = 0; // 重置 useTimer 以便启动冷却计时器
+            useTimer = 0; 
             CoreAbuility.StrengthBoost();
             Debug.Log("使用核心能力: "+2);
             coolTimer = coolTime;
@@ -118,7 +118,7 @@ public class CoreManager :Singleton<CoreManager>
         }
         else if (Int == 3)
         {
-            useTimer = 0; // 重置 useTimer 以便启动冷却计时器
+            useTimer = 0; 
             CoreAbuility.ImproveDefense();
             Debug.Log("使用核心能力: "+3);
             coolTimer = coolTime;
