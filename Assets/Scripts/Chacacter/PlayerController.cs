@@ -257,6 +257,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Grounded", false);
             animator.SetBool("Fall", true);
+            canJamp = false;
         }
     }
     

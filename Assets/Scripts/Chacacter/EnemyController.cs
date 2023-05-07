@@ -35,6 +35,9 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     public bool isDead;
     public bool playerDead;
 
+    [Header("CoreObjects")]
+    public GameObject coreObject; 
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -74,10 +77,9 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
     void Update()
     {
-        if (characterStats.CurrentHealth == 0)
+        if (characterStats.CurrentHealth == 0&&!isDead)
         {
-            animator.SetBool("Death", true);
-            isDead = true;
+            EnemtDeath();
         }
         if (!playerDead)
         {
@@ -85,6 +87,13 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
             lastAttackTime -= Time.deltaTime;
         }
     }    
+
+    void EnemtDeath()
+    {
+        animator.SetBool("Death", true);
+        isDead = true;
+        Instantiate(coreObject, transform.position, Quaternion.identity);
+    }
 
     void SwitchStates()
     {

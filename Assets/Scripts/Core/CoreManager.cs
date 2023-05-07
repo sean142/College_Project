@@ -31,7 +31,7 @@ public class CoreManager :Singleton<CoreManager>
 
     private void Update()
     {
-
+        
         if (!isUseTime)
         {
             if (Input.GetKeyDown(KeyCode.F) && InvertoryManager.instance.currentInt != 0)
@@ -124,6 +124,5 @@ public class CoreManager :Singleton<CoreManager>
             coolTimer = coolTime;
         }
         isUseTime = true;
-        isCoolTime = true;
     }
 }
