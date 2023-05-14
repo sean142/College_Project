@@ -508,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
@@ -2551,7 +2551,7 @@ MonoBehaviour:
   slotPrefab: {fileID: 8475961235772655802, guid: 30cf1c4c9b97cbc48ad9f37e39de63eb, type: 3}
   itemInformation: {fileID: 1124818910}
   bag: {fileID: 273994512}
-  bagButton: []
+  coreButton: []
   isOpenBag: 0
   currentButton: {fileID: 0}
   currentInt: 0

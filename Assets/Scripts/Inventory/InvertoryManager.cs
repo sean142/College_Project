@@ -14,7 +14,7 @@ public class InvertoryManager :Singleton<InvertoryManager>
     public Text itemInformation;
     [Space(10)]
     public GameObject bag;
-    public Button[] bagButton;
+    public Button[] coreButton;
     public bool isOpenBag;
     public Button currentButton;
     public int currentInt;       
@@ -86,25 +86,25 @@ public class InvertoryManager :Singleton<InvertoryManager>
         if (CoreManager.instance.isCoreAbsorbed)
         {            
             // 如果已經吸收了核心，顯示背包按鈕
-            for (int i = 0; i < instance.bagButton.Length; i++)
+            for (int i = 0; i < instance.coreButton.Length; i++)
             {
-                instance.bagButton[i].gameObject.SetActive(isOpenBag);
+                instance.coreButton[i].gameObject.SetActive(isOpenBag);
             }
         }
         else if (!CoreManager.instance.isBeingAbsorbed && CoreManager.instance.absorptionTimer <= CoreManager.instance.absorptionTime)
         {
             // 如果正在吸收，不顯示背包按鈕
-            for (int i = 0; i < instance.bagButton.Length; i++)
+            for (int i = 0; i < instance.coreButton.Length; i++)
             {
-                instance.bagButton[i].gameObject.SetActive(false);
+                instance.coreButton[i].gameObject.SetActive(false);
             }
         }
         else
         {
             // 如果沒有在吸收，也沒有吸收完，不顯示背包按鈕
-            for (int i = 0; i < instance.bagButton.Length; i++)
+            for (int i = 0; i < instance.coreButton.Length; i++)
             {
-                instance.bagButton[i].gameObject.SetActive(false);
+                instance.coreButton[i].gameObject.SetActive(false);
             }
         }
 

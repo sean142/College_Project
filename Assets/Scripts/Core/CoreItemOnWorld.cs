@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoreItemOnWorld : MonoBehaviour
+public class CoreItemOnWorld : BacePoolObject
 {
-    public static CoreItemOnWorld instance;
-
     public GameObject core1;
 
      void Awake()
      {
-        instance = this;    
+        TurnOff();
      }
 
     private void OnTriggerEnter(Collider other)
@@ -49,4 +47,16 @@ public class CoreItemOnWorld : MonoBehaviour
             }
         }
     }
+
+    public override void TurnOn()
+    {
+        base.TurnOn();
+        this.gameObject.SetActive(true);
+    }
+
+    public override void TurnOff()
+    {
+        base.TurnOff();
+        this.gameObject.SetActive(false);
+    } 
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     CharacterStats characterStats;
     Collider _collider;
 
-    private GameObject attackTarget; //playerªº¦ì¸m
+    private GameObject attackTarget; //playerçš„ä½ç½®
 
     private float speed;
 
@@ -26,17 +26,15 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     [Header("Basic Settings")]
     public float sighRadius;//FoundPlayer
 
-    [Header("Patrol State¡]¨µÅŞª¬ºA³]¸m¡^")]
-    public float potralRange;//¨µÅŞ°éªº¥b®|¤j¤p
+    [Header("Patrol Stateï¼ˆå·¡é‚ç‹€æ…‹è¨­ç½®ï¼‰")]
+    public float potralRange;//å·¡é‚åœˆçš„åŠå¾‘å¤§å°
     Vector3 wayPoint;
     Vector3 guardPos;
 
     public bool isPatrol;
     public bool isDead;
     public bool playerDead;
-
-    [Header("CoreObjects")]
-    public GameObject coreObject; 
+    public CoreManager coreManager;
 
     void Awake()
     {
@@ -44,6 +42,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
         _collider = GetComponent<Collider>();
+        coreManager = GameObject.Find("CoreManager").GetComponent<CoreManager>();
         speed = agent.speed;
         guardPos = transform.position;
         remainLookAtTime = LookAtTime;
@@ -59,11 +58,11 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
         characterStats.CurrentHealth = 5;
 
-        //TODO ³õ´º¤Á´««á­×§ï±¼
+        //TODO å ´æ™¯åˆ‡æ›å¾Œä¿®æ”¹æ‰
         GameManager.Instance.AddObserver(this);
     }
     /*
-    //TODO ¤Á´«³õ´º®É±Ò¥Î
+    //TODO åˆ‡æ›å ´æ™¯æ™‚å•Ÿç”¨
     private void OnEnable()
     {
         GameManager.Instance.AddObserver(this);
@@ -79,7 +78,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     {
         if (characterStats.CurrentHealth == 0&&!isDead)
         {
-            EnemtDeath();
+            EnemyDeath();
         }
         if (!playerDead)
         {
@@ -88,11 +87,15 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         }
     }    
 
-    void EnemtDeath()
+    void EnemyDeath()
     {
         animator.SetBool("Death", true);
         isDead = true;
-        Instantiate(coreObject, transform.position, Quaternion.identity);
+        //CoreManager.instance.TureOnCore();
+        coreManager.TureOnCore();
+
+
+        //Instantiate(CoreManager.instance.coreObject, transform.position, Quaternion.identity);      
     }
 
     void SwitchStates()
@@ -136,7 +139,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
                     if (remainLookAtTime > 0)
                     {                        
-                        agent.destination = transform.position; //©Ô¦«¦^¨ì¤@­Óª¬ºA
+                        agent.destination = transform.position; //æ‹‰æ‰˜å›åˆ°ä¸€å€‹ç‹€æ…‹
                         remainLookAtTime -= Time.deltaTime;
                     }
 
@@ -162,9 +165,9 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
                     {
                         lastAttackTime = characterStats.attackData.coolDown;
                         
-                        //ÃzÀ»§PÂ_(§Ú·Q¨Ï¥Îªº©Û¦¡¡AÅÜ¦¨½ü¤l¤§Ãşªº)
+                        //çˆ†æ“Šåˆ¤æ–·(æˆ‘æƒ³ä½¿ç”¨çš„æ‹›å¼ï¼Œè®Šæˆè¼ªå­ä¹‹é¡çš„)
                         characterStats.isCritical = Random.value < characterStats.attackData.criticalChance;
-                        //°õ¦æ§ğÀ»
+                        //åŸ·è¡Œæ”»æ“Š
                         Attack();
                     }
                 }                
@@ -232,12 +235,12 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     void GetNewWayPoint()
     {
         remainLookAtTime = LookAtTime;
-        //Àò¨ú¤U¤@­Ó¨µÅŞ±oÀH¾÷¥Ø¼ĞÂI        
-        //Àò¨úªºªº½d³ò[-potralRange,potralRange]
+        //ç²å–ä¸‹ä¸€å€‹å·¡é‚å¾—éš¨æ©Ÿç›®æ¨™é»        
+        //ç²å–çš„çš„ç¯„åœ[-potralRange,potralRange]
         float randomX = Random.Range(-potralRange, potralRange);
         float randomZ = Random.Range(-potralRange, potralRange);
 
-        //¦b¼Ä¤H¦Û¤v¥»¨­ªº®y¼ĞÂI¤W¶i¦æ¨úÀH¾÷ÂI
+        //åœ¨æ•µäººè‡ªå·±æœ¬èº«çš„åº§æ¨™é»ä¸Šé€²è¡Œå–éš¨æ©Ÿé»
         Vector3 randomPoint = new Vector3(guardPos.x + randomX, transform.position.y, guardPos.z + randomZ);
 
         NavMeshHit hit;
@@ -250,7 +253,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         Gizmos.DrawWireSphere(transform.position, sighRadius);
     }
 
-    //§ğÀ»¨Æ¥ó
+    //æ”»æ“Šäº‹ä»¶
     public void Hit()
     {
         if (attackTarget !=null)
@@ -264,13 +267,13 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     public void EndNotify()
     {
         playerDead = true;
-        //TODO ¦å¶qÂk¹s«á¦^¨ì­«¥ÍÂI ¼g©µ¿ğ
+        //TODO è¡€é‡æ­¸é›¶å¾Œå›åˆ°é‡ç”Ÿé» å¯«å»¶é²
        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //°±¤î²¾°Ê
+        //åœæ­¢ç§»å‹•
         animator.SetBool("Walk", false);
         animator.SetBool("Chase", false);
 
-        //°±¤îAgent
+        //åœæ­¢Agent
         attackTarget = null;        
-    }
+    }   
 }

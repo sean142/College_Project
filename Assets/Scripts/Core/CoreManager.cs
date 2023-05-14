@@ -20,6 +20,13 @@ public class CoreManager :Singleton<CoreManager>
     public bool isBeingAbsorbed; // 是否正在被吸收中
     public bool isTrigger; //是否碰撞到核心
 
+    [Header("CoreObjects")]
+    public GameObject coreObject; //儲存核心物件
+    public int coreQuantity; //物件池中核心物件的總數量是多少
+    public CoreItemOnWorld[] corePool; //物件池 
+    public int corePoolCount; //當前的核心編號 
+    public Transform corePoint; //儲存生成核心物件的位置
+
     protected override void Awake()
     {
        // Application.targetFrameRate = 60;
@@ -28,10 +35,18 @@ public class CoreManager :Singleton<CoreManager>
         base.Awake();
         DontDestroyOnLoad(this);
     }
-
-    private void Update()
+    public void Start()
     {
-        
+        // 建立物件池並從中獲取 BasicPoolObject 的 CoreItemOnWorld 腳本
+        corePool =  new CoreItemOnWorld[coreQuantity];
+
+        for (int i = 0; i < corePool.Length; i++)
+        {
+            corePool[i] = Instantiate(coreObject).GetComponent<CoreItemOnWorld>(); 
+        }
+    }
+    private void Update()
+    {       
         if (!isUseTime)
         {
             if (Input.GetKeyDown(KeyCode.F) && InvertoryManager.instance.currentInt != 0)
@@ -60,11 +75,24 @@ public class CoreManager :Singleton<CoreManager>
         // 檢測吸收是否完成
         if (absorptionTimer >= absorptionTime)
         {
-            // 吸收完成，核心消失
+            // 吸收完成，隱藏該核心物件
             absorptionTimer = 0.0f;
             isBeingAbsorbed = false;
             isCoreAbsorbed = true;
-            Destroy(CoreItemOnWorld.instance.core1); // 或者設置為非活動狀態等待重生
+
+            // 如果 corePoolCount 大於等於 corePool 長度，則重新從頭開始計算編號
+            //  if (corePoolCount >= corePool.Length)
+            //  corePoolCount = 0;
+            //執行下面程式
+
+            // 隱藏物件池中的最後一個核心物件 取得最後一個核心物件，要扣1是因為array是從0開始編號
+            int i = corePoolCount - 1;
+            // 如果索引是負數，表示所有核心都已經使用，因此使用物件池中最後一個核心物件
+            if (i == -1)  
+            {
+                i = corePool.Length - 1; //這裡的 i 就是物件池的最後一個 //要同等於array 所以池子的長度要扣1 因為array是0開始數   
+            }
+            corePool[i].TurnOff();
         }
 
         if (isUseTime)
@@ -124,5 +152,16 @@ public class CoreManager :Singleton<CoreManager>
             coolTimer = coolTime;
         }
         isUseTime = true;
+    }
+
+    //抓取corePoint位置 與當前數量從新計算
+    public void TureOnCore()
+    {
+        corePool[corePoolCount].transform.position = corePoint.position;
+        corePool[corePoolCount].transform.rotation = corePoint.rotation;
+        corePool[corePoolCount].TurnOn();
+        corePoolCount += 1;
+        if (corePoolCount >= corePool.Length)
+            corePoolCount = 0;      
     }
 }
