@@ -37,6 +37,8 @@ public class CoreManager :Singleton<CoreManager>
     }
     public void Start()
     {
+        Application.targetFrameRate = 60;
+
         // 建立物件池並從中獲取 BasicPoolObject 的 CoreItemOnWorld 腳本
         corePool =  new CoreItemOnWorld[coreQuantity];
 
@@ -154,7 +156,7 @@ public class CoreManager :Singleton<CoreManager>
         isUseTime = true;
     }
 
-    //抓取corePoint位置 與當前數量從新計算
+    //抓取corePoint位置 與從新計算當前編號
     public void TureOnCore()
     {
         corePool[corePoolCount].transform.position = corePoint.position;

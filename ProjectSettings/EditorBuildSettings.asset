@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Deep_Tunnel_set.unity
     guid: 43287e45f2e40984da907fcfa18f5871
+  - enabled: 1
+    path: Assets/Scenes/Laboratory.unity
+    guid: fa1ce3fcfeb5cd646904b751fe23030e
   m_configObjects: {}

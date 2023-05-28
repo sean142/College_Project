@@ -91,11 +91,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     {
         animator.SetBool("Death", true);
         isDead = true;
-        //CoreManager.instance.TureOnCore();
         coreManager.TureOnCore();
-
-
-        //Instantiate(CoreManager.instance.coreObject, transform.position, Quaternion.identity);      
     }
 
     void SwitchStates()
