@@ -21,34 +21,29 @@ public class CoreManager :Singleton<CoreManager>
     public bool isTrigger; //是否碰撞到核心
 
     [Header("CoreObjects")]
-    public GameObject coreObject; //儲存核心物件
-    public int coreQuantity; //物件池中核心物件的總數量是多少
+    public GameObject[] coreObject; //儲存核心物件
     public CoreItemOnWorld[] corePool; //物件池 
-    public int corePoolCount; //當前的核心編號 
-    public Transform corePoint; //儲存生成核心物件的位置
+    public int currentAbsorbCore;   // 當前核心編號
 
     protected override void Awake()
     {
-       // Application.targetFrameRate = 60;
-      //  Time.timeScale = 1f;
-
         base.Awake();
         DontDestroyOnLoad(this);
     }
+
     public void Start()
     {
-        Application.targetFrameRate = 60;
-
         // 建立物件池並從中獲取 BasicPoolObject 的 CoreItemOnWorld 腳本
-        corePool =  new CoreItemOnWorld[coreQuantity];
+        corePool = new CoreItemOnWorld[coreObject.Length]; ;
 
         for (int i = 0; i < corePool.Length; i++)
         {
-            corePool[i] = Instantiate(coreObject).GetComponent<CoreItemOnWorld>(); 
+            corePool[i] = Instantiate(coreObject[i]).GetComponent<CoreItemOnWorld>(); 
         }
     }
+
     private void Update()
-    {       
+    {
         if (!isUseTime)
         {
             if (Input.GetKeyDown(KeyCode.F) && InvertoryManager.instance.currentInt != 0)
@@ -67,7 +62,7 @@ public class CoreManager :Singleton<CoreManager>
                 absorptionTimer = 0.0f;
             }
         }
-       
+
         // 檢測是否正在被吸收中
         if (isBeingAbsorbed)
         {
@@ -87,14 +82,23 @@ public class CoreManager :Singleton<CoreManager>
             //  corePoolCount = 0;
             //執行下面程式
 
+            /*
+            //TODO FIX IT
             // 隱藏物件池中的最後一個核心物件 取得最後一個核心物件，要扣1是因為array是從0開始編號
             int i = corePoolCount - 1;
             // 如果索引是負數，表示所有核心都已經使用，因此使用物件池中最後一個核心物件
-            if (i == -1)  
+            if (i == -1)
             {
                 i = corePool.Length - 1; //這裡的 i 就是物件池的最後一個 //要同等於array 所以池子的長度要扣1 因為array是0開始數   
             }
-            corePool[i].TurnOff();
+            corePool[i].TurnOff();      */
+
+            //for (int i = 0; i < corePool.Length; i++)
+            //{
+            //    corePool[i].TurnOff();
+            //}
+
+            corePool[currentAbsorbCore].TurnOff();
         }
 
         if (isUseTime)
@@ -119,7 +123,7 @@ public class CoreManager :Singleton<CoreManager>
                 isUseTime = false;
                 coolTimer = 0;
                 useTimer = useTime;
-                isCoolTime = false;
+                isCoolTime = false;               
             }
         }
     }
@@ -155,15 +159,12 @@ public class CoreManager :Singleton<CoreManager>
         }
         isUseTime = true;
     }
-
+    
     //抓取corePoint位置 與從新計算當前編號
-    public void TureOnCore()
+    public void TureOnCore(Transform enemypoint, int enemyType)
     {
-        corePool[corePoolCount].transform.position = corePoint.position;
-        corePool[corePoolCount].transform.rotation = corePoint.rotation;
-        corePool[corePoolCount].TurnOn();
-        corePoolCount += 1;
-        if (corePoolCount >= corePool.Length)
-            corePoolCount = 0;      
-    }
+        corePool[enemyType].transform.position = enemypoint.position;
+        corePool[enemyType].transform.rotation = enemypoint.rotation;
+        corePool[enemyType].TurnOn();
+    } 
 }

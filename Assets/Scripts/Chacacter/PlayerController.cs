@@ -261,6 +261,8 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+  
+
     //Animation Event
     public void Hit()
     {

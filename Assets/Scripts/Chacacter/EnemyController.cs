@@ -36,6 +36,9 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     public bool playerDead;
     public CoreManager coreManager;
 
+    public int currentInt;  //用來判斷當前敵人編號
+    public Transform point; //用來生成核心位置
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -56,7 +59,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
             GetNewWayPoint();
         }
 
-        characterStats.CurrentHealth = 5;
+        characterStats.CurrentHealth = 1;
 
         //TODO 場景切換後修改掉
         GameManager.Instance.AddObserver(this);
@@ -76,24 +79,28 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
     void Update()
     {
-        if (characterStats.CurrentHealth == 0&&!isDead)
+        if (characterStats.CurrentHealth == 0 && !isDead)
         {
             EnemyDeath();
+
         }
         if (!playerDead)
         {
             SwitchStates();
             lastAttackTime -= Time.deltaTime;
         }
-    }    
+    }
 
     void EnemyDeath()
     {
         animator.SetBool("Death", true);
         isDead = true;
-        coreManager.TureOnCore();
-    }
 
+        //TODO 有多位敵人後 如何正確生成核心  
+        //coreManager.TureOnCore(coreManager.corePoolCount);
+        coreManager.TureOnCore(point,currentInt);
+    }   
+    
     void SwitchStates()
     {
         if (isDead)
