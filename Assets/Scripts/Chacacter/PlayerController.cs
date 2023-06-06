@@ -83,12 +83,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        InvertoryManager.OnInventoryChanged += HandleBagOpen;
+        CoreInventory.OnInventoryChanged += HandleBagOpen;
+        MaterialInventory.OnInventoryChanged += HandleBagOpen;
     }
 
     private void OnDisable()
     {
-        InvertoryManager.OnInventoryChanged -= HandleBagOpen;
+        CoreInventory.OnInventoryChanged -= HandleBagOpen;
+        MaterialInventory.OnInventoryChanged -= HandleBagOpen;
     }
 
     private void HandleBagOpen(bool isOpen)

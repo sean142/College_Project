@@ -30,7 +30,7 @@ public class ItemOnWorld : MonoBehaviour
             thisItem.itemHeld++;
         }
 
-        InvertoryManager.RefreshItem();
+        MaterialInventory.RefreshItem();
     }
 
     

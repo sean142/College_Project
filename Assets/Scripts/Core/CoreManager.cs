@@ -46,9 +46,9 @@ public class CoreManager :Singleton<CoreManager>
     {
         if (!isUseTime)
         {
-            if (Input.GetKeyDown(KeyCode.F) && InvertoryManager.instance.currentInt != 0)
+            if (Input.GetKeyDown(KeyCode.F) && CoreInventory.instance.currentInt != 0)
             {
-                UseCoreAbility(InvertoryManager.instance.currentInt);
+                UseCoreAbility(CoreInventory.instance.currentInt);
             }
         }
 
