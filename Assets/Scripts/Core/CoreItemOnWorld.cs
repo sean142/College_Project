@@ -21,6 +21,8 @@ public class CoreItemOnWorld : BacePoolObject
             CoreManager.instance.currentAbsorbCore = CoreIndex; 
 
             Debug.Log("開始吸收");
+
+            CoreManager.instance.isCoreAbsorbed = false;
         }
     }
     private void OnTriggerExit(Collider other)

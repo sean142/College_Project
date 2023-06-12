@@ -79,24 +79,7 @@ public class PlayerController : MonoBehaviour
         cam = camObj.transform;
 
         characterStats.CurrentHealth = 50;
-    }
-
-    private void OnEnable()
-    {
-        CoreInventory.OnInventoryChanged += HandleBagOpen;
-        MaterialInventory.OnInventoryChanged += HandleBagOpen;
-    }
-
-    private void OnDisable()
-    {
-        CoreInventory.OnInventoryChanged -= HandleBagOpen;
-        MaterialInventory.OnInventoryChanged -= HandleBagOpen;
-    }
-
-    private void HandleBagOpen(bool isOpen)
-    {
-      
-    }
+    }   
 
     private void Update()
     {
@@ -114,6 +97,7 @@ public class PlayerController : MonoBehaviour
         }
         Attack();
         SwitchAnimator();
+        OpenBag();
         lastAttackTime -= Time.deltaTime;
 
         if (characterStats.CurrentHealth == 0)
@@ -203,6 +187,15 @@ public class PlayerController : MonoBehaviour
         coll.Move(velocity * Time.deltaTime);
     }   
     
+    void OpenBag()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            CoreInventory.instance.ToggleInventory();
+            InvertoryManager.instance.OnControlBagButtonClick();
+        }
+    }
+
     bool FoundEnemy()
     {
         // 當玩家死亡後 直接返回false 不會再搜尋敵人 

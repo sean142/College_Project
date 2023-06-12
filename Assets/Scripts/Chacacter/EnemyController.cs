@@ -96,8 +96,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         animator.SetBool("Death", true);
         isDead = true;
 
-        //TODO 有多位敵人後 如何正確生成核心  
-        //coreManager.TureOnCore(coreManager.corePoolCount);
+        // 有多位敵人後 如何正確生成核心  
         coreManager.TureOnCore(point,currentInt);
     }   
     

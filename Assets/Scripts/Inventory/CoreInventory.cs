@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class CoreInventory : Singleton<CoreInventory>
 {
-    public static event Action<bool> OnInventoryChanged;
     public Inventory myBag;
 
     [Space(10)]
@@ -22,26 +20,25 @@ public class CoreInventory : Singleton<CoreInventory>
         DontDestroyOnLoad(this);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            ToggleInventory();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Tab))
+    //    {
+    //        ToggleInventory();
+    //    }
+    //}
 
-    private void ToggleInventory()
+    public void ToggleInventory()
     {
-        isOpenBag = !isOpenBag;
-        OnInventoryChanged?.Invoke(isOpenBag);
-        bag.SetActive(isOpenBag);
+        //isOpenBag = !isOpenBag;
+        //bag.SetActive(isOpenBag);
 
         if (CoreManager.instance.isCoreAbsorbed)
         {
-            // 如果已經吸收了核心，顯示背包按鈕
+            //TODO 如果已經吸收了核心，顯示當前吸收的核心按鈕，以吸收至背包的核心就不會消失
             for (int i = 0; i < instance.coreButton.Length; i++)
             {
-                instance.coreButton[i].gameObject.SetActive(isOpenBag);
+                coreButton[CoreManager.instance.currentAbsorbCore].gameObject.SetActive(true);
             }
         }
         else if (!CoreManager.instance.isBeingAbsorbed && CoreManager.instance.absorptionTimer <= CoreManager.instance.absorptionTime)
@@ -49,7 +46,7 @@ public class CoreInventory : Singleton<CoreInventory>
             // 如果正在吸收，不顯示背包按鈕
             for (int i = 0; i < instance.coreButton.Length; i++)
             {
-                instance.coreButton[i].gameObject.SetActive(false);
+                instance.coreButton[CoreManager.instance.currentAbsorbCore].gameObject.SetActive(false);
             }
         }
         else
@@ -57,10 +54,9 @@ public class CoreInventory : Singleton<CoreInventory>
             // 如果沒有在吸收，也沒有吸收完，不顯示背包按鈕
             for (int i = 0; i < instance.coreButton.Length; i++)
             {
-                instance.coreButton[i].gameObject.SetActive(false);
+                instance.coreButton[CoreManager.instance.currentAbsorbCore].gameObject.SetActive(false);
             }
         }
-
 
         // 切換背包時，如果有選中的核心按鈕，取消選中
         if (currentButton != null)

@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class MaterialInventory : Singleton<MaterialInventory>
 {
-    public static event Action<bool> OnInventoryChanged;
-
     public Inventory myBag;
     public GameObject slotGrid;
     public Slot slotPrefab;
@@ -27,13 +24,13 @@ public class MaterialInventory : Singleton<MaterialInventory>
         instance.itemInformation.text = "";
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            ToggleInventory();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Tab))
+    //    {
+    //        ToggleInventory();
+    //    }
+    //}
 
     public static void UpdateItemInfo(string intemDescription)
     {
@@ -67,7 +64,6 @@ public class MaterialInventory : Singleton<MaterialInventory>
     private void ToggleInventory()
     {
         isOpenBag = !isOpenBag;
-        OnInventoryChanged?.Invoke(isOpenBag);
         bag.SetActive(isOpenBag);
     }
 }

@@ -44,6 +44,7 @@ public class CoreManager :Singleton<CoreManager>
 
     private void Update()
     {
+
         if (!isUseTime)
         {
             if (Input.GetKeyDown(KeyCode.F) && CoreInventory.instance.currentInt != 0)
@@ -75,28 +76,7 @@ public class CoreManager :Singleton<CoreManager>
             // 吸收完成，隱藏該核心物件
             absorptionTimer = 0.0f;
             isBeingAbsorbed = false;
-            isCoreAbsorbed = true;
-
-            // 如果 corePoolCount 大於等於 corePool 長度，則重新從頭開始計算編號
-            //  if (corePoolCount >= corePool.Length)
-            //  corePoolCount = 0;
-            //執行下面程式
-
-            /*
-            //TODO FIX IT
-            // 隱藏物件池中的最後一個核心物件 取得最後一個核心物件，要扣1是因為array是從0開始編號
-            int i = corePoolCount - 1;
-            // 如果索引是負數，表示所有核心都已經使用，因此使用物件池中最後一個核心物件
-            if (i == -1)
-            {
-                i = corePool.Length - 1; //這裡的 i 就是物件池的最後一個 //要同等於array 所以池子的長度要扣1 因為array是0開始數   
-            }
-            corePool[i].TurnOff();      */
-
-            //for (int i = 0; i < corePool.Length; i++)
-            //{
-            //    corePool[i].TurnOff();
-            //}
+            isCoreAbsorbed = true;           
 
             corePool[currentAbsorbCore].TurnOff();
         }
@@ -158,6 +138,7 @@ public class CoreManager :Singleton<CoreManager>
             coolTimer = coolTime;
         }
         isUseTime = true;
+
     }
     
     //抓取corePoint位置 與從新計算當前編號

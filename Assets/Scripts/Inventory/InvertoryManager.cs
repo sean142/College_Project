@@ -1,31 +1,56 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class InvertoryManager :MonoBehaviour
+public class InvertoryManager :Singleton<InvertoryManager>
 {
-    public GameObject coreUI;     // ®Ö¤ß­I¥]UI
-    public GameObject materialUI; // ¯À§÷­I¥]UI
-   
+    [Header("Core")]
+    public GameObject coreUI;     // æ ¸å¿ƒèƒŒåŒ…UI
+    public GameObject coreButton;
+    public GameObject coreBag;
 
-    //ºŞ²z­I¥]UI
+    [Header("Material")]
+    public GameObject materialUI; // ç´ æèƒŒåŒ…UI
+    public GameObject materialButton;
+    public GameObject materialBag;
+
+    public bool isBagOpen;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        DontDestroyOnLoad(this);
+    } 
+
+    public void OnControlBagButtonClick()
+    {
+        isBagOpen = !isBagOpen;
+        materialButton.SetActive(isBagOpen);
+        coreButton.SetActive(isBagOpen);
+        coreBag.SetActive(isBagOpen);
+        materialBag.SetActive(isBagOpen);
+    }
+
+    //ç®¡ç†èƒŒåŒ…UI
     public void OnBagUIClick(int index)
     {
-        if(index==0)
+        if (index == 0)
         {
             coreUI.SetActive(true);
+            coreBag.SetActive(true);
             materialUI.SetActive(false);
-            coreUI.transform.SetParent(null);
+            materialBag.SetActive(false);
         }
 
         if (index == 1)
         {
-            coreUI.SetActive(false);
             materialUI.SetActive(true);
-            materialUI.transform.SetParent(null);
+            materialBag.SetActive(true);
 
+            coreUI.SetActive(false);
+            coreBag.SetActive(false); 
         }
     }
 }
