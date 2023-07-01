@@ -17,13 +17,75 @@ public class InvertoryManager :Singleton<InvertoryManager>
     public GameObject materialBag;
 
     public bool isBagOpen;
+    public int openBagIndex = -1;     //紀錄當前打開背包
 
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
-    } 
+    }
 
+    public void OnControlBagButtonClick()
+    {
+        isBagOpen = !isBagOpen;
+        materialButton.SetActive(isBagOpen);
+        coreButton.SetActive(isBagOpen);
+
+        if (openBagIndex != -1)
+        {
+            CloseBag(openBagIndex);
+            openBagIndex = -1;
+        }
+        else
+        {
+            openBagIndex = 0; // 打開第一個背包(核心背包)
+            OpenBag(openBagIndex);
+        }
+    }
+
+    // 管理背包UI
+    public void OnBagUIClick(int index)
+    {
+        // 關閉當前打開的背包(如果有)，然後打開新背包
+        if (openBagIndex != -1)
+        {
+            CloseBag(openBagIndex);
+        }
+
+        openBagIndex = index;
+        OpenBag(openBagIndex);
+    }
+
+    private void OpenBag(int index)
+    {
+        if (index == 0)
+        {
+            coreUI.SetActive(true);
+            coreBag.SetActive(true);
+        }
+        else if (index == 1)
+        {
+            materialUI.SetActive(true);
+            materialBag.SetActive(true);
+        }
+    }
+
+    private void CloseBag(int index)
+    {
+        if (index == 0)
+        {
+            coreUI.SetActive(false);
+            coreBag.SetActive(false);
+        }
+        else if (index == 1)
+        {
+            materialUI.SetActive(false);
+            materialBag.SetActive(false);
+        }
+    }
+
+
+    /*
     public void OnControlBagButtonClick()
     {
         isBagOpen = !isBagOpen;
@@ -52,5 +114,5 @@ public class InvertoryManager :Singleton<InvertoryManager>
             coreUI.SetActive(false);
             coreBag.SetActive(false); 
         }
-    }
+    }*/
 }

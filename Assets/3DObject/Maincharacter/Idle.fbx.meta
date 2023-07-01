@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: 37ef55498ed8eb44c95983927341a76d
+ModelImporter:
+  serializedVersion: 20300
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  - first:
+      74: -203655887218126122
+    second: mixamo.com
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: fianl(Clone)
+      parentName: 
+      position: {x: 0.00016200687, y: 0.97524405, z: 0.0002808571}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.07942773, y: 0.07942773, z: 0.07942773}
+    - name: curve1
+      parentName: fianl(Clone)
+      position: {x: -0, y: 7.5513487, z: -0.24264434}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pCube1
+      parentName: fianl(Clone)
+      position: {x: -1.1326492, y: -12.170332, z: 2.1788278}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.4374882, y: 0.31111112, z: 0.34444445}
+    - name: face
+      parentName: fianl(Clone)
+      position: {x: -0, y: 9.117696, z: -0.23809624}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 2.0517404, y: 2.963625, z: 2.0517404}
+    - name: cloak
+      parentName: fianl(Clone)
+      position: {x: -0, y: 7.510556, z: -0.20681095}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 4.934918, y: 2.6982615, z: 2.6982615}
+    - name: pPlane1
+      parentName: fianl(Clone)
+      position: {x: 0.011284166, y: 7.147439, z: 0.7716074}
+      rotation: {x: 0.39135632, y: -0, z: -0, w: 0.9202392}
+      scale: {x: 1.512232, y: 1.512232, z: 1.512232}
+    - name: Body
+      parentName: fianl(Clone)
+      position: {x: -0, y: 4.8753405, z: -0.2664094}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 2.778889, y: 4.772144, z: 1.9066666}
+    - name: hat
+      parentName: fianl(Clone)
+      position: {x: -0.023164872, y: 9.460559, z: -0.24181223}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.2606976, y: 1.3800454, z: 1.1618445}
+    - name: eyes
+      parentName: fianl(Clone)
+      position: {x: -0.45550096, y: 9.181472, z: 0.5621853}
+      rotation: {x: 0.6482092, y: -0.11842911, z: 0.13518997, w: 0.739948}
+      scale: {x: 0.295305, y: 0.295305, z: 0.295305}
+    - name: pPlane2
+      parentName: fianl(Clone)
+      position: {x: 0.011284166, y: 6.505803, z: 1.0192575}
+      rotation: {x: 0.39135632, y: -0, z: -0, w: 0.9202392}
+      scale: {x: 1.3463562, y: 1.3463562, z: 1.3463562}
+    - name: pCylinder1
+      parentName: fianl(Clone)
+      position: {x: -0.47839552, y: 9.183946, z: 0.64606714}
+      rotation: {x: 0.6441768, y: -0.14714164, z: 0.12816307, w: 0.73956734}
+      scale: {x: 0.2565462, y: 0.2565462, z: 0.2565462}
+    - name: feet_hands:hand_man:polySurface1
+      parentName: fianl(Clone)
+      position: {x: -8.925809, y: 3.9025803, z: 0.05969286}
+      rotation: {x: 0.7071068, y: -0.7071068, z: -4.3297806e-17, w: 4.3297806e-17}
+      scale: {x: 0.5602531, y: 0.5602531, z: 0.5602531}
+    - name: pCylinder2
+      parentName: fianl(Clone)
+      position: {x: -0, y: -4.505124, z: 0.011755466}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 3.1792593, y: 5.366667, z: 1.3333334}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: db757c4e5faac094b84208ac52daf181, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
