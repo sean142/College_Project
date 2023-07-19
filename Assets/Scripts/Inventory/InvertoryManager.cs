@@ -24,7 +24,7 @@ public class InvertoryManager :Singleton<InvertoryManager>
         base.Awake();
         DontDestroyOnLoad(this);
     }
-
+    
     public void OnControlBagButtonClick()
     {
         isBagOpen = !isBagOpen;
@@ -41,6 +41,8 @@ public class InvertoryManager :Singleton<InvertoryManager>
             openBagIndex = 0; // 打開第一個背包(核心背包)
             OpenBag(openBagIndex);
         }
+
+        CoreInventory.instance.ToggleInventory();
     }
 
     // 管理背包UI

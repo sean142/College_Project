@@ -191,7 +191,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            CoreInventory.instance.ToggleInventory();
+            //CoreInventory.instance.ToggleInventory();
             InvertoryManager.instance.OnControlBagButtonClick();
         }
     }
