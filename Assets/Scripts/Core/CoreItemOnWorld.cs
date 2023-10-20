@@ -7,16 +7,20 @@ public class CoreItemOnWorld : BacePoolObject
     public GameObject core1;
     public int CoreIndex; //核心編號
 
-     void Awake()
-     {
-        TurnOff();
-     }
 
+    void Awake()
+     {
+        if (isActive)
+            TurnOn();
+        else
+            TurnOff();
+     }
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            CoreManager.instance.isTrigger = true;
+            //CoreManager.instance.isTrigger = true;
 
             CoreManager.instance.currentAbsorbCore = CoreIndex; 
 
@@ -29,12 +33,14 @@ public class CoreItemOnWorld : BacePoolObject
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            CoreManager.instance.isTrigger = false;
+            //CoreManager.instance.isTrigger = false;
 
             Debug.Log("離開核心");
 
         }
-    }
+    }*/
+
+    /*
     void OnTriggerStay(Collider other)
     {     
         // 檢測是否正在被吸收中
@@ -48,25 +54,26 @@ public class CoreItemOnWorld : BacePoolObject
                 CoreManager.instance.isBeingAbsorbed = false;
                 CoreManager.instance.absorptionTimer = 0.0f;
             }
-            //else
-            //{
-            //    // TODO 更新吸收計時器
-            //    float absorptionTimer = CoreManager.instance.absorptionTimer;
-            //    absorptionTimer += Time.deltaTime;
-            //    CoreManager.instance.absorptionTimer += absorptionTimer;
+            else
+            {
+                // TODO 更新吸收計時器
+                float absorptionTimer = CoreManager.instance.absorptionTimer;
+                absorptionTimer += Time.deltaTime;
+                CoreManager.instance.absorptionTimer += absorptionTimer;
 
-            //    // 更新吸收進度條
+                // 更新吸收進度條
 
-            //    // 如果吸收完成，將核心加入背包，並且隱藏提示和進度條
-            //    if (CoreManager.instance.absorptionTimer >= CoreManager.instance.absorptionTime)
-            //    {
-            //        CoreManager.instance.isBeingAbsorbed = false;
-            //        gameObject.SetActive(false);
-            //    }
-            //}
+                // 如果吸收完成，將核心加入背包，並且隱藏提示和進度條
+                if (CoreManager.instance.absorptionTimer >= CoreManager.instance.absorptionTime)
+                {
+                    CoreManager.instance.isBeingAbsorbed = false;
+                    gameObject.SetActive(false);
+                }
+            }
         }
     }
-    
+    */
+
     public override void TurnOn()
     {
         base.TurnOn();

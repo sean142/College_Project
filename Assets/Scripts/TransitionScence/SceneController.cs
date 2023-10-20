@@ -8,6 +8,7 @@ public class SceneController :Singleton<SceneController>
     public GameObject playerPrefab;
 
     GameObject player;
+    public CharacterController coll;
 
     protected override void Awake()
     {
@@ -34,23 +35,25 @@ public class SceneController :Singleton<SceneController>
         //保存數據
         SaveManager.Instance.SavePlayerData();
 
-        if(SceneManager.GetActiveScene().name != sceneName)
+        if (SceneManager.GetActiveScene().name != sceneName)
         {
             yield return SceneManager.LoadSceneAsync(sceneName);
-            yield return Instantiate(playerPrefab,GetDestination(destinationTag).transform.position, GetDestination(destinationTag).transform.rotation);
+            yield return Instantiate(playerPrefab, GetDestination(destinationTag).transform.position, GetDestination(destinationTag).transform.rotation);
             //讀取數據
             SaveManager.Instance.LoadPlayerData();
+            Debug.Log("test1");
             yield break;
         }
         else
         {
             player = GameManager.Instance.playerStats.gameObject;
-            CharacterController coll = player.GetComponent<CharacterController>();
+            coll = player.GetComponent<CharacterController>();
             coll.enabled = false;
             player.transform.SetPositionAndRotation(GetDestination(destinationTag).transform.position, GetDestination(destinationTag).transform.rotation);
             coll.enabled = true;
+            Debug.Log("test");
             yield return null;
-        }        
+        }
     }
 
     private TransitionDestination GetDestination(TransitionDestination.DestinationTag destinationTag)
@@ -65,4 +68,38 @@ public class SceneController :Singleton<SceneController>
 
         return null;
     }
+    /*
+    public void TransitionToMain()
+    {
+        StartCoroutine(LoadMain());
+    }
+
+    public void TransitionToLoadGame()
+    {
+        StartCoroutine(LoadLevel(SaveManager.instance.SceneName));
+    }
+
+    public void TransitionToFirstLevel()
+    {
+        StartCoroutine(LoadLevel("G1"));
+    }
+
+    IEnumerator LoadLevel(string scene)
+    {
+        if (scene != "")
+        {
+            yield return SceneManager.LoadSceneAsync(scene);
+            yield return player = Instantiate(playerPrefab, GameManager.instance.GetEntrance().position, GameManager.instance.GetEntrance().rotation);
+
+            //
+            SaveManager.instance.SavePlayerData();
+            yield break;
+        }
+    }
+
+    IEnumerator LoadMain()
+    {
+        yield return SceneManager.LoadSceneAsync("MainMenu");
+        yield break;
+    }*/
 }

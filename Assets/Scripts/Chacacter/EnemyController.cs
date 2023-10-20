@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
-public enum EnemyStates { PATROL, CHASE, DEAD }
+public enum EnemyStates { PATROL, CHASE, DEAD,GUARD }
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour, IEndGameObserver
 {
@@ -24,13 +25,26 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     private float lastAttackTime;
 
     [Header("Basic Settings")]
-    public float sighRadius;//FoundPlayer
+    public float sighRadius;   //FoundPlayer
+    private Quaternion guardRotation;
 
     [Header("Patrol State（巡邏狀態設置）")]
-    public float potralRange;//巡邏圈的半徑大小
-    Vector3 wayPoint;
-    Vector3 guardPos;
+    public float potralRange;   //巡邏圈的半徑大小
+    Vector3 wayPoint;           //用於存儲巡邏的下一個目標位置點
+    Vector3 guardPos;           //Enemy的當前位置
 
+    [Header("Disintegrate&&Dissolve")]
+    public SkinnedMeshRenderer skinnedMesh;
+    public Material skinnedMaterial;
+    public VisualEffect VFXGraph;
+    public float dissolveRate = 0.0125f;
+    public float refreshRate = 0.025f;
+
+    [Space(10)]
+    public float delayTurnOnCoreTime;
+
+    [Space(10)]
+    public bool isGuard;
     public bool isPatrol;
     public bool isDead;
     public bool playerDead;
@@ -49,10 +63,21 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         speed = agent.speed;
         guardPos = transform.position;
         remainLookAtTime = LookAtTime;
+        guardRotation = transform.rotation;
     }
 
     private void Start()
     {
+        //if (isGuard)
+        //{
+        //    enemyStates = EnemyStates.GUARD;
+        //}
+        //else
+        //{
+        //    enemyStates = EnemyStates.PATROL;
+        //    GetNewWayPoint();
+        //}
+
         if (isPatrol)
         {
             enemyStates = EnemyStates.PATROL;
@@ -63,6 +88,8 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
         //TODO 場景切換後修改掉
         GameManager.Instance.AddObserver(this);
+
+        skinnedMaterial.SetFloat("_DissolveAmount", 0);
     }
     /*
     //TODO 切換場景時啟用
@@ -95,11 +122,13 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     {
         animator.SetBool("Death", true);
         isDead = true;
+       
+        // 有多位敵人後 如何正確生成核心  傳遞兩個參數point和currentInt給這個方法       延遲生成核心
+        StartCoroutine(Static.DelayToInvokeDo(() => {coreManager.TureOnCore(point, currentInt);}, delayTurnOnCoreTime));
 
-        // 有多位敵人後 如何正確生成核心  
-        coreManager.TureOnCore(point,currentInt);
-    }   
-    
+        StartCoroutine(Dissolve());
+    }
+
     void SwitchStates()
     {
         if (isDead)
@@ -110,10 +139,28 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
              
         switch (enemyStates)
         {
+            case EnemyStates.GUARD:
+                animator.SetBool("Chase", false);
+                
+                if (transform.position != guardPos)
+                {
+                    animator.SetBool("Walk", true);
+                    agent.isStopped = false;
+                    agent.destination = guardPos;
+
+                    if (Vector3.SqrMagnitude(guardPos - transform.position) <= agent.stoppingDistance)
+                    {
+                        animator.SetBool("Walk", false);
+                        transform.rotation = Quaternion.Lerp(transform.rotation, guardRotation, 0.01f);
+                        Debug.LogError("test");
+                    }
+                }
+                break;
             case EnemyStates.PATROL:
                 animator.SetBool("Chase", false);
                 agent.speed = speed * 0.5f;
 
+                //判斷是否到了隨機巡邏點
                 if (Vector3.Distance(wayPoint, transform.position) <= agent.stoppingDistance)
                 {
                     animator.SetBool("Walk", false);
@@ -129,6 +176,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
                     agent.destination = wayPoint;
                 }
                 break;
+
             case EnemyStates.CHASE:
                 animator.SetBool("Walk", false);
                 animator.SetBool("Chase", true);
@@ -229,22 +277,26 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     {
         if (attackTarget != null)
         {
-            return Vector3.Distance(attackTarget.transform.position, transform.position) <= characterStats.attackData.attackRange;
+            return Vector3.Distance(attackTarget.transform.position, transform.position) <= characterStats.attackData.skillRange;
         }
         else
             return false;
     }
+
+    //獲取一個新的巡邏目標位置，避免卡點。  
     void GetNewWayPoint()
     {
         remainLookAtTime = LookAtTime;
-        //獲取下一個巡邏得隨機目標點        
-        //獲取的的範圍[-potralRange,potralRange]
+
+        //獲取的範圍[-potralRange,potralRange]
         float randomX = Random.Range(-potralRange, potralRange);
         float randomZ = Random.Range(-potralRange, potralRange);
 
         //在敵人自己本身的座標點上進行取隨機點
         Vector3 randomPoint = new Vector3(guardPos.x + randomX, transform.position.y, guardPos.z + randomZ);
 
+        // 使用 NavMesh.SamplePosition 來確保巡邏目標位置不會位於障礙物或不可通行區域，
+        // 以確保遊戲角色的移動路徑順暢且不會卡住。
         NavMeshHit hit;
         wayPoint = NavMesh.SamplePosition(randomPoint, out hit, potralRange, 1) ? hit.position : transform.position;
     }
@@ -277,5 +329,22 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
         //停止Agent
         attackTarget = null;        
-    }   
+    }
+
+    IEnumerator Dissolve()
+    {
+        if (VFXGraph != null)
+        {
+            VFXGraph.gameObject.SetActive(true);
+            VFXGraph.Play();
+        }
+
+        float counter = 0;
+        while (skinnedMaterial.GetFloat("_DissolveAmount") < 1)
+        {
+            counter += dissolveRate;
+            skinnedMaterial.SetFloat("_DissolveAmount", counter);
+            yield return new WaitForSeconds(refreshRate);
+        }
+    }
 }

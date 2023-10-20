@@ -13,6 +13,7 @@ public class CoreInventory : Singleton<CoreInventory>
     public bool isOpenBag;
     public Button currentButton;
     public int currentInt;
+    public bool[] coreBool; 
 
     protected override void Awake()
     {
@@ -33,30 +34,35 @@ public class CoreInventory : Singleton<CoreInventory>
         //isOpenBag = !isOpenBag;
         //bag.SetActive(isOpenBag);
 
-        if (CoreManager.instance.isCoreAbsorbed)
+        for (int i = 0; i < coreBool.Length; i++)
         {
-            //TODO 如果已經吸收了核心，顯示當前吸收的核心按鈕，以吸收至背包的核心就不會消失
-            for (int i = 0; i < instance.coreButton.Length; i++)
-            {
-                coreButton[CoreManager.instance.currentAbsorbCore].gameObject.SetActive(true);
-            }
+            coreButton[i].gameObject.SetActive(coreBool[i]);
         }
-        else if (!CoreManager.instance.isBeingAbsorbed && CoreManager.instance.absorptionTimer <= CoreManager.instance.absorptionTime)
-        {
-            // 如果正在吸收，不顯示背包按鈕
-            for (int i = 0; i < instance.coreButton.Length; i++)
-            {
-                instance.coreButton[CoreManager.instance.currentAbsorbCore].gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            // 如果沒有在吸收，也沒有吸收完，不顯示背包按鈕
-            for (int i = 0; i < instance.coreButton.Length; i++)
-            {
-                instance.coreButton[CoreManager.instance.currentAbsorbCore].gameObject.SetActive(false);
-            }
-        }
+
+        //if (CoreManager.instance.isCoreAbsorbed)
+        //{
+        //    //TODO 如果已經吸收了核心，顯示當前吸收的核心按鈕，以吸收至背包的核心就不會消失
+        //    for (int i = 0; i < instance.coreButton.Length; i++)
+        //    {
+        //        coreButton[CoreManager.instance.currentAbsorbCore].gameObject.SetActive(true);
+        //    }
+        //}
+        //else if (!CoreManager.instance.isBeingAbsorbed && CoreManager.instance.absorptionTimer <= CoreManager.instance.absorptionTime)
+        //{
+        //    // 如果正在吸收，不顯示背包按鈕
+        //    for (int i = 0; i < instance.coreButton.Length; i++)
+        //    {
+        //        instance.coreButton[CoreManager.instance.currentAbsorbCore].gameObject.SetActive(false);
+        //    }
+        //}
+        //else
+        //{
+        //    // 如果沒有在吸收，也沒有吸收完，不顯示背包按鈕
+        //    for (int i = 0; i < instance.coreButton.Length; i++)
+        //    {
+        //        instance.coreButton[CoreManager.instance.currentAbsorbCore].gameObject.SetActive(false);
+        //    }
+        //}
 
         // 切換背包時，如果有選中的核心按鈕，取消選中
         if (currentButton != null)

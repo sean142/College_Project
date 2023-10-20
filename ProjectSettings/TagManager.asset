@@ -6,17 +6,22 @@ TagManager:
   tags:
   - PlayerControl
   - Enemy
+  - A
+  - B
+  - C
+  - TrailTarget
+  - PoolParent
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - Ground
   - Water
   - UI
-  - Map
-  - Ground
-  - PlayerControl
   - Enemy
+  - OutRoom
+  - InRoom
+  - Obstacle
   - 
   - 
   - 

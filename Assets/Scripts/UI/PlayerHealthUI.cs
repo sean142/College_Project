@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerHealthUI : MonoBehaviour
 {
-    Image healthSlider;
+    Image frountHealthBar;
+    Image backHealthBar;
+    public float chipSpeed = 20f;
+    public float lerpTimer = 1f;
 
     private void Awake()
     {
-        healthSlider = transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        backHealthBar = transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        frountHealthBar = transform.GetChild(0).GetChild(1).GetComponent<Image>();
     }
 
     private void Update()
@@ -19,7 +23,14 @@ public class PlayerHealthUI : MonoBehaviour
 
     void UpdateHealth()
     {
+        float fillB = backHealthBar.fillAmount;       
         float sliderPercent = (float)GameManager.Instance.playerStats.CurrentHealth / GameManager.Instance.playerStats.MaxHealth;
-        healthSlider.fillAmount = sliderPercent;
+        if (fillB > sliderPercent)
+        {
+            frountHealthBar.fillAmount = sliderPercent;
+            backHealthBar.color = Color.red;
+            float percentComplete = lerpTimer / chipSpeed;
+            backHealthBar.fillAmount = Mathf.Lerp(fillB, sliderPercent, percentComplete);
+        }
     }
 }

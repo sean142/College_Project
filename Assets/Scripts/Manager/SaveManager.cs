@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : Singleton<SaveManager>
 {
+    string sceneName = "level";
+
+    public string SceneName { get { return PlayerPrefs.GetString(sceneName); } }
+
     protected override void Awake()
     {
         base.Awake();
