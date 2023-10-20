@@ -14205,7 +14205,6 @@ MonoBehaviour:
   isCoolTime: 0
   absorptionTime: 1
   absorptionTimer: 0
-  isCoreAbsorbed: 0
   isBeingAbsorbed: 0
   coreObject:
   - {fileID: 1194707836207472128, guid: 2684e756615265943a78691528301abd, type: 3}
@@ -14215,8 +14214,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  currentAbsorbCore: 0
-  vfxAbsorb: {fileID: 533842350}
+  currentAbsorbCore: 
+  trailsObject: []
+  trailsPool: []
+  trailTarget: {fileID: 0}
+  poolParent: {fileID: 0}
+  Duration: 5
+  P0: {fileID: 0}
+  P1: {fileID: 0}
 --- !u!4 &1265700730
 Transform:
   m_ObjectHideFlags: 0
