@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CoreManager : Singleton<CoreManager>
 {
+    public bool isBool;
+
     [Header("UseTime&CoolTime")]
     public float useTime;
     public float useTimer;
@@ -38,7 +40,8 @@ public class CoreManager : Singleton<CoreManager>
 
     [Header("BezierCalculator")]
     public int Duration = 5;
-    public Transform P0, P1;
+    public Transform[] P0;
+    public Transform[] P1;
     private float _duration;
 
     protected override void Awake()
@@ -66,61 +69,90 @@ public class CoreManager : Singleton<CoreManager>
             trailsPool[i] = Instantiate(trailsObject[i]).GetComponent<TrailsItemOnWorld>();
             trailsPool[i].transform.parent = poolParent.transform;
         }
-    }
 
+    }
+    private void FixedUpdate()
+    {
+        TrailMoveToTarget();
+    }
     private void Update()
     {
-        if (_duration > Duration)
-        {
-            _duration = 0;
-        }
-        var t = _duration / Duration;
-        int activeCount = 0;
-        for (int i = 0; i < corePool.Length; i++)
-        {
-            if (corePool[i].isActive && activeCount < trailsPool.Length)
-            {
-                trailsPool[activeCount].transform.position = Mathf.Pow(1 - t, 2) * P0.position + 2 * t * (1 - t) * P1.position + Mathf.Pow(t, 2) * trailTarget.position;
-                activeCount++;
-            }
-            _duration += Time.deltaTime;
-        }
-        HandleAbsorption();
+        //if (isBool)
+        //{
+        //    if (_duration > Duration)
+        //    {
+        //        _duration = 0;
+        //    }
+        //    var t = _duration / Duration;
+        //    int activeCount = 0;
+        //    for (int i = 0; i < corePool.Length; i++)
+        //    {
+        //        if (corePool[i].isActive && activeCount < trailsPool.Length)
+        //        {
+        //            // 檢查軌跡是否已經到達 trailTarget
+        //            if (Vector3.Distance(trailsPool[activeCount].transform.position, trailTarget.position) > 0.01f)
+        //            {
+        //                // 如果還沒有到達，則更新軌跡的位置
+        //                trailsPool[activeCount].transform.position = Mathf.Pow(1 - t, 2) * P0[i].position + 2 * t * (1 - t) * P1[i].position + Mathf.Pow(t, 2) * trailTarget.position;
+        //                activeCount++;
+        //            }
+        //        }
+        //    }
+        //    _duration += Time.deltaTime;
+        //}
+        //TrailMoveToTarget();
+
+
         HandleCooldown();
     }
 
     void HandleAbsorption()
     {
-        // 檢測是否正在被吸收中
-        if (isBeingAbsorbed)
+        for (int i = 0; i < corePool.Length; i++)
         {
-            // 更新吸收進度條
-            absorptionTimer += Time.deltaTime;
+            int currentCoreIndex = currentAbsorbCore[i];
+            corePool[currentAbsorbCore[currentCoreIndex]].TurnOff();
+            CoreInventory.instance.coreBool[currentCoreIndex] = true;
         }
+        // 檢測是否正在被吸收中
+        //if (isBeingAbsorbed)
+        //{
+        //    // 更新吸收進度條
+        //    absorptionTimer += Time.deltaTime;
+        //}
         // 檢測吸收是否完成
-        if (absorptionTimer >= absorptionTime)
-        {
+        //if (absorptionTimer >= absorptionTime)
+        //{
             // 吸收完成，隱藏該核心物件
-            absorptionTimer = 0.0f;
+            //absorptionTimer = 0.0f;
             //isBeingAbsorbed = false;
             //isCoreAbsorbed = true;
 
-            int activeCount = 0;
-            for (int i = 0; i < corePool.Length; i++)
-            {
-                if (corePool[i].isActive && activeCount < trailsPool.Length)
-                {
-                 
+            //int activeCount = 0;
+            //for (int i = 0; i < corePool.Length; i++)
+            //{
+            //    if (corePool[i].isActive && activeCount < trailsPool.Length)
+            //    {
+            //        //trailsPool[activeCount].transform.position = Vector3.Lerp(trailTarget.position, trailsPool[activeCount].transform.position, absorptionTimer * Time.deltaTime);
+            //        activeCount++;
 
-                    //trailsPool[activeCount].transform.position = Vector3.Lerp(trailTarget.position, trailsPool[activeCount].transform.position, absorptionTimer * Time.deltaTime);
-                    activeCount++;
-                    
-                    int currentCoreIndex = currentAbsorbCore[i];
-                    corePool[currentAbsorbCore[currentCoreIndex]].TurnOff();
-                    CoreInventory.instance.coreBool[currentCoreIndex] = true;
-                }
-            }
-        }
+            //        int currentCoreIndex = currentAbsorbCore[i];
+            //        corePool[currentAbsorbCore[currentCoreIndex]].TurnOff();
+            //        CoreInventory.instance.coreBool[currentCoreIndex] = true;
+            //    }
+            //}
+
+            //for (int i = 0; i < corePool.Length; i++)
+            //{
+            //    if (corePool[i].isActive)
+            //    {
+
+            //        int currentCoreIndex = currentAbsorbCore[i];
+            //        corePool[currentAbsorbCore[currentCoreIndex]].TurnOff();
+            //        CoreInventory.instance.coreBool[currentCoreIndex] = true;
+            //    }
+            //}
+        //}
     }
 
     void HandleCooldown()
@@ -195,15 +227,6 @@ public class CoreManager : Singleton<CoreManager>
 
     public void TurnOnTrail()
     {
-        //for (int i = 0; i < corePool.Length; i++)
-        //{
-        //    if (corePool[i].isActive)
-        //    {
-        //        trailsPool[i].transform.position = corePool[i].transform.position;
-        //        trailsPool[i].transform.rotation = corePool[i].transform.rotation;
-        //        trailsPool[i].TurnOn();
-        //    }
-        //}
         int activeCount = 0;
         for (int i = 0; i < corePool.Length; i++)
         {
@@ -213,6 +236,9 @@ public class CoreManager : Singleton<CoreManager>
                 trailsPool[activeCount].transform.rotation = corePool[i].transform.rotation;
                 trailsPool[activeCount].TurnOn();
                 activeCount++;
+
+                P0[i].transform.position = corePool[i].transform.position;
+                P1[i].transform.position = new Vector3(corePool[i].transform.position.x, corePool[i].transform.position.y + 5, corePool[i].transform.position.z);
             }
         }
     }
@@ -222,11 +248,43 @@ public class CoreManager : Singleton<CoreManager>
         for (int i = 0; i < trailsPool.Length; i++)
         {
             trailsPool[i].TurnOff();
-            //float distanceThreshold = 0.1f; // 可接受的最大距離誤差
-            //if (Vector3.Distance(trailsPool[i].transform.position, trailTarget.position) < distanceThreshold)
-            //{
-
-            //}
         }
+    }
+    void TrailMoveToTarget()
+    {
+        if (isBeingAbsorbed)
+        {
+            if (_duration > Duration)
+            {
+                _duration = 0;
+            }
+            var t = _duration / Duration;
+            int activeCount = 0;
+            float arrivalThreshold = 0.1f;
+            for (int i = 0; i < corePool.Length; i++)
+            {
+                if (corePool[i].isActive && activeCount < trailsPool.Length)
+                {
+                    float distanceToTarget = Vector3.Distance(trailsPool[activeCount].transform.position, trailTarget.position);
+
+                    // 檢查軌跡是否已經到達 trailTarget
+                    if (distanceToTarget <= arrivalThreshold)
+                    {
+                        HandleAbsorption();
+                        Debug.LogError("test");
+                    }
+                    else
+                    {
+                        // 如果還沒有到達，則更新軌跡的位置
+                        trailsPool[activeCount].transform.position = Mathf.Pow(1 - t, 2) * P0[i].position + 2 * t * (1 - t) * P1[i].position + Mathf.Pow(t, 2) * trailTarget.position;
+                        activeCount++;
+                        Debug.LogError("test_1");
+                    }
+                }
+            }
+            _duration += Time.deltaTime;
+        }
+
+       
     }
 }

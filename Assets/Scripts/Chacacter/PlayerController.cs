@@ -410,12 +410,12 @@ public class PlayerController : MonoBehaviour
             // 開始吸收計時
             animator.SetBool("Absorb",true);
             CoreManager.instance.isBeingAbsorbed = true;
+            CoreManager.instance.TurnOnTrail();
             CoreManager.instance.absorptionTimer = 0.0f;
             vfxAbsorb.SetActive(true);
-            CoreManager.instance.TurnOnTrail();
         }
 
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E) && CoreManager.instance.isBeingAbsorbed)
         {
             animator.SetBool("Absorb", false);
             CoreManager.instance.isBeingAbsorbed = false;
