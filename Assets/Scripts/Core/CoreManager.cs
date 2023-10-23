@@ -220,17 +220,13 @@ public class CoreManager : Singleton<CoreManager>
 
     }
 
-
     //抓取corePoint位置 與從新計算當前編號
-    public IEnumerator  TureOnCore(Transform enemypoint, int enemyType)
+    public void TureOnCore(Transform enemypoint, int enemyType)
     {
-        isCoreGenerating = true;
-        yield return new WaitForSeconds(2f);
         corePool[enemyType].transform.position = enemypoint.position;
         corePool[enemyType].transform.rotation = enemypoint.rotation;
         corePool[enemyType].TurnOn();
         isCoreTurnOn = true;
-        isCoreGenerating = false;
     }
 
     public void TurnOnTrail()
@@ -258,6 +254,7 @@ public class CoreManager : Singleton<CoreManager>
             trailsPool[i].TurnOff();
         }
     }
+
     void TrailMoveToTarget()
     {
         if (isBeingAbsorbed)

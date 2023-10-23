@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
         SwitchAnimator();
         OpenBag();
         Push();
-        Absorption();
+        AbsorptionAndUseCore();
         lastAttackTime -= Time.deltaTime;
         attackCooldown -= Time.deltaTime;
 
@@ -394,7 +394,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Absorption()
+    private void AbsorptionAndUseCore()
     {
         if (!CoreManager.instance.isUseTime)
         {
