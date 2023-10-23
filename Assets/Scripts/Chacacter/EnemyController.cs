@@ -117,15 +117,15 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
             lastAttackTime -= Time.deltaTime;
         }
     }
-
+  
     void EnemyDeath()
     {
         animator.SetBool("Death", true);
         isDead = true;
-       
-        // 有多位敵人後 如何正確生成核心  傳遞兩個參數point和currentInt給這個方法       延遲生成核心
-        StartCoroutine(Static.DelayToInvokeDo(() => {coreManager.TureOnCore(point, currentInt);}, delayTurnOnCoreTime));
 
+        //// 有多位敵人後 如何正確生成核心  傳遞兩個參數point和currentInt給這個方法       延遲生成核心
+        //StartCoroutine(Static.DelayToInvokeDo(() => {coreManager.TureOnCore(point, currentInt);}, delayTurnOnCoreTime));
+        StartCoroutine(CoreManager.instance.TureOnCore(point, currentInt));
         StartCoroutine(Dissolve());
     }
 

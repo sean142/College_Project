@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool canMoveObstacle;
     public static bool canPush;
 
+
     [Header("Player Speed")]
     public float currentSpeed;
     public float runSpeed;
@@ -99,8 +100,6 @@ public class PlayerController : MonoBehaviour
         cam = camObj.transform;
 
         characterStats.CurrentHealth = 50;
-
-        skinnedMaterial.SetFloat("_DissolveAmount", 0);
     }
 
     private void Update()
@@ -404,18 +403,23 @@ public class PlayerController : MonoBehaviour
                 CoreManager.instance.UseCoreAbility(CoreInventory.instance.currentInt);
             }
         }
+        if(Input.GetKeyDown(KeyCode.E))
+            vfxAbsorb.SetActive(true);
+        if(Input.GetKeyUp(KeyCode.E))
+            vfxAbsorb.SetActive(false);
 
-        if (Input.GetKeyDown(KeyCode.E) && CoreManager.instance.isBeingAbsorbed == false)
+        if (Input.GetKeyDown(KeyCode.E) && !CoreManager.instance.isBeingAbsorbed && CoreManager.instance.isCoreTurnOn && !CoreManager.instance.isCoreGenerating)
         {
             // 開始吸收計時
-            animator.SetBool("Absorb",true);
-            CoreManager.instance.isBeingAbsorbed = true;
+            animator.SetBool("Absorb", true);
             CoreManager.instance.TurnOnTrail();
             CoreManager.instance.absorptionTimer = 0.0f;
+
+            CoreManager.instance.isBeingAbsorbed = true;
             vfxAbsorb.SetActive(true);
         }
 
-        if (Input.GetKeyUp(KeyCode.E) && CoreManager.instance.isBeingAbsorbed)
+        if (Input.GetKeyUp(KeyCode.E) && CoreManager.instance.isBeingAbsorbed && !CoreManager.instance.isCoreGenerating)
         {
             animator.SetBool("Absorb", false);
             CoreManager.instance.isBeingAbsorbed = false;

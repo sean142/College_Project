@@ -1338,7 +1338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68158dbee0028874ba43423b4c4d0f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBool: 0
+  isCoreTurnOn: 0
+  isBeingAbsorbed: 0
+  isCoreGenerating: 0
   useTime: 4
   useTimer: 0
   coolTime: 2
@@ -1347,7 +1349,6 @@ MonoBehaviour:
   isCoolTime: 0
   absorptionTime: 3
   absorptionTimer: 0
-  isBeingAbsorbed: 0
   coreObject:
   - {fileID: 6427889550395782462, guid: 335b8eacc9875c74886dca9ec2838d92, type: 3}
   - {fileID: 1194707836207472128, guid: 42ecb99f137ce2d48b93e9004e59e513, type: 3}
@@ -38101,6 +38102,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orb
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427889550395782462, guid: 335b8eacc9875c74886dca9ec2838d92,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427889550395782463, guid: 335b8eacc9875c74886dca9ec2838d92,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 335b8eacc9875c74886dca9ec2838d92, type: 3}

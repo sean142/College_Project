@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class CoreManager : Singleton<CoreManager>
 {
-    public bool isBool;
+    public bool isCoreTurnOn;
+    public bool isBeingAbsorbed; // 是否正在被吸收中
+    public bool isCoreGenerating; //判斷核心是否正在生成
 
     [Header("UseTime&CoolTime")]
     public float useTime;
@@ -19,7 +20,6 @@ public class CoreManager : Singleton<CoreManager>
     public float absorptionTime; // 吸收所需時間
     public float absorptionTimer; // 吸收計時器    
     //public bool isCoreAbsorbed; // 是否吸收完了
-    public bool isBeingAbsorbed; // 是否正在被吸收中
     //public bool isTrigger; //是否碰撞到核心
 
     [Header("CoreObjects")]
@@ -220,12 +220,17 @@ public class CoreManager : Singleton<CoreManager>
 
     }
 
+
     //抓取corePoint位置 與從新計算當前編號
-    public void TureOnCore(Transform enemypoint, int enemyType)
+    public IEnumerator  TureOnCore(Transform enemypoint, int enemyType)
     {
+        isCoreGenerating = true;
+        yield return new WaitForSeconds(2f);
         corePool[enemyType].transform.position = enemypoint.position;
         corePool[enemyType].transform.rotation = enemypoint.rotation;
         corePool[enemyType].TurnOn();
+        isCoreTurnOn = true;
+        isCoreGenerating = false;
     }
 
     public void TurnOnTrail()
@@ -274,14 +279,13 @@ public class CoreManager : Singleton<CoreManager>
                     if (distanceToTarget <= arrivalThreshold)
                     {
                         HandleAbsorption();
-                        Debug.LogError("test");
+                        isCoreTurnOn = false;
                     }
                     else
                     {
                         // 如果還沒有到達，則更新軌跡的位置
                         trailsPool[activeCount].transform.position = Mathf.Pow(1 - t, 2) * P0[i].position + 2 * t * (1 - t) * P1[i].position + Mathf.Pow(t, 2) * trailTarget.position;
                         activeCount++;
-                        Debug.LogError("test_1");
                     }
                 }
             }
