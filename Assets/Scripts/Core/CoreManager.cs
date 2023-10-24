@@ -40,8 +40,9 @@ public class CoreManager : Singleton<CoreManager>
 
     [Header("BezierCalculator")]
     public int Duration = 5;
-    public Transform[] P0;
-    public Transform[] P1;
+    //public Transform[] P0;
+    public Transform[] bezierHandle;
+    public GameObject bezierHandleParent;
     private float _duration;
 
     protected override void Awake()
@@ -54,20 +55,25 @@ public class CoreManager : Singleton<CoreManager>
     {
         // 建立物件池並從中獲取 BasicPoolObject 的 CoreItemOnWorld 腳本
         corePool = new CoreItemOnWorld[coreObject.Length];
-        trailsPool = new TrailsItemOnWorld[trailsObject.Length];
+        trailsPool = new TrailsItemOnWorld[trailsObject.Length];   
         trailTarget = GameObject.FindGameObjectWithTag("TrailTarget").transform;
         poolParent = GameObject.FindGameObjectWithTag("PoolParent");
-
+        bezierHandleParent = GameObject.FindGameObjectWithTag("BezierHandleParent");
 
         for (int i = 0; i < corePool.Length; i++)
         {
             corePool[i] = Instantiate(coreObject[i]).GetComponent<CoreItemOnWorld>();
-            corePool[i].transform.parent = poolParent.transform;
+            corePool[i].transform.parent = poolParent.transform;            
         }
         for (int i = 0; i < trailsPool.Length; i++)
         {
             trailsPool[i] = Instantiate(trailsObject[i]).GetComponent<TrailsItemOnWorld>();
             trailsPool[i].transform.parent = poolParent.transform;
+        }
+       
+        for (int i = 0; i < bezierHandle.Length; i++)
+        {
+            bezierHandle[i] = bezierHandleParent.gameObject.transform.GetChild(i);
         }
 
     }
@@ -241,8 +247,8 @@ public class CoreManager : Singleton<CoreManager>
                 trailsPool[activeCount].TurnOn();
                 activeCount++;
 
-                P0[i].transform.position = corePool[i].transform.position;
-                P1[i].transform.position = new Vector3(corePool[i].transform.position.x, corePool[i].transform.position.y + 5, corePool[i].transform.position.z);
+                //P0[i].transform.position = corePool[i].transform.position;
+                bezierHandle[i].transform.position = new Vector3(corePool[i].transform.position.x, corePool[i].transform.position.y + 5, corePool[i].transform.position.z);
             }
         }
     }
@@ -281,7 +287,7 @@ public class CoreManager : Singleton<CoreManager>
                     else
                     {
                         // 如果還沒有到達，則更新軌跡的位置
-                        trailsPool[activeCount].transform.position = Mathf.Pow(1 - t, 2) * P0[i].position + 2 * t * (1 - t) * P1[i].position + Mathf.Pow(t, 2) * trailTarget.position;
+                        trailsPool[activeCount].transform.position = Mathf.Pow(1 - t, 2) * corePool[i].transform.position + 2 * t * (1 - t) * bezierHandle[i].position + Mathf.Pow(t, 2) * trailTarget.position;
                         activeCount++;
                     }
                 }

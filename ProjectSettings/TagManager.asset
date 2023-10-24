@@ -11,6 +11,7 @@ TagManager:
   - C
   - TrailTarget
   - PoolParent
+  - BezierHandleParent
   layers:
   - Default
   - TransparentFX
