@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController coll;
     private Animator animator;
     private CharacterStats characterStats;
-
+    public Animator caneAnimator;
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
     private void Awake()
@@ -87,7 +87,6 @@ public class PlayerController : MonoBehaviour
         coll = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
-
     }
 
     void Start()
@@ -135,8 +134,8 @@ public class PlayerController : MonoBehaviour
         if (isDead)
             GameManager.Instance.NotifyObservers();
 
-        if(Input.GetKeyDown(KeyCode.Space))
-             StartCoroutine(Dissolve());
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //     StartCoroutine(Dissolve());
 
     }
 
@@ -412,6 +411,7 @@ public class PlayerController : MonoBehaviour
         {
             // 開始吸收計時
             animator.SetBool("Absorb", true);
+            caneAnimator.SetBool("openCaneHead", true);
             CoreManager.instance.TurnOnTrail();
             CoreManager.instance.absorptionTimer = 0.0f;
 
@@ -422,6 +422,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.E) && CoreManager.instance.isBeingAbsorbed && !CoreManager.instance.isCoreGenerating)
         {
             animator.SetBool("Absorb", false);
+            caneAnimator.SetBool("openCaneHead", false);
+
             CoreManager.instance.isBeingAbsorbed = false;
             vfxAbsorb.SetActive(false);
             CoreManager.instance.TurnOffTrail();

@@ -271,7 +271,7 @@ public class CoreManager : Singleton<CoreManager>
             }
             var t = _duration / Duration;
             int activeCount = 0;
-            float arrivalThreshold = 0.1f;
+            float arrivalThreshold = 0.01f;
             for (int i = 0; i < corePool.Length; i++)
             {
                 if (corePool[i].isActive && activeCount < trailsPool.Length)
