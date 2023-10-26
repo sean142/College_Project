@@ -1098,8 +1098,6 @@ MonoBehaviour:
   coolTimer: 0
   isUseTime: 0
   isCoolTime: 0
-  absorptionTime: 3
-  absorptionTimer: 0
   coreObject:
   - {fileID: 6427889550395782462, guid: 335b8eacc9875c74886dca9ec2838d92, type: 3}
   - {fileID: 1194707836207472128, guid: 42ecb99f137ce2d48b93e9004e59e513, type: 3}
@@ -11204,7 +11202,7 @@ PrefabInstance:
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}
@@ -12169,7 +12167,7 @@ GameObject:
   - component: {fileID: 1724802913}
   - component: {fileID: 1724802912}
   m_Layer: 0
-  m_Name: Point Light (3)
+  m_Name: 'Point Light '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

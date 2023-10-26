@@ -17,18 +17,15 @@ public class CoreManager : Singleton<CoreManager>
     public bool isCoolTime;
 
     [Header("Absorp")]
-    public float absorptionTime; // 吸收所需時間
-    public float absorptionTimer; // 吸收計時器    
+    //public float absorptionTime; // 吸收所需時間
+    //public float absorptionTimer; // 吸收計時器    
     //public bool isCoreAbsorbed; // 是否吸收完了
     //public bool isTrigger; //是否碰撞到核心
 
     [Header("CoreObjects")]
     public GameObject[] coreObject; //儲存核心物件
     public CoreItemOnWorld[] corePool; //物件池 
-    public int[] currentAbsorbCore;   // 當前核心編號
-
-    [Header("VFX")]
-    //public GameObject vfxAbsorb;
+    public int[] currentAbsorbCore;   // 當前核心編號  
 
     [Header("TrailPool")]
     public GameObject[] trailsObject;
@@ -40,7 +37,6 @@ public class CoreManager : Singleton<CoreManager>
 
     [Header("BezierCalculator")]
     public int Duration = 5;
-    //public Transform[] P0;
     public Transform[] bezierHandle;
     public GameObject bezierHandleParent;
     private float _duration;

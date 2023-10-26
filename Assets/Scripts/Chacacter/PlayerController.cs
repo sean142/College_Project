@@ -57,13 +57,7 @@ public class PlayerController : MonoBehaviour
     public GameObject vfxAbsorb;
 
     [Space(10)]
-    public float forceMagnitude;//做用力的大小
-
-    [Space(10)]
-    public KeyCode lockOnKey = KeyCode.Mouse2;
-    public LayerMask lockOnLayerMask;
-    public float attackRangeAngle = 45f;
-    public float lockOnRange = 10f;
+    public float forceMagnitude;//做用力的大小  
 
     [Space(10)]
     public Transform groundCheck;
@@ -74,7 +68,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private CharacterStats characterStats;
     public Animator caneAnimator;
-    public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
     private void Awake()
     {
@@ -413,7 +406,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Absorb", true);
             caneAnimator.SetBool("openCaneHead", true);
             CoreManager.instance.TurnOnTrail();
-            CoreManager.instance.absorptionTimer = 0.0f;
+            //CoreManager.instance.absorptionTimer = 0.0f;
 
             CoreManager.instance.isBeingAbsorbed = true;
             vfxAbsorb.SetActive(true);
