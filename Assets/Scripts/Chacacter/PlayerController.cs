@@ -107,12 +107,12 @@ public class PlayerController : MonoBehaviour
         {
             Movement();
             Jump();
+            AbsorptionAndUseCore();
         }
         Attack();
         SwitchAnimator();
         OpenBag();
         Push();
-        AbsorptionAndUseCore();
         lastAttackTime -= Time.deltaTime;
         attackCooldown -= Time.deltaTime;
 

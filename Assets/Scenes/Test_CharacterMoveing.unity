@@ -1285,8 +1285,6 @@ MonoBehaviour:
   coolTimer: 0
   isUseTime: 0
   isCoolTime: 0
-  absorptionTime: 3
-  absorptionTimer: 0
   coreObject:
   - {fileID: 6427889550395782462, guid: 335b8eacc9875c74886dca9ec2838d92, type: 3}
   - {fileID: 1194707836207472128, guid: 42ecb99f137ce2d48b93e9004e59e513, type: 3}
@@ -13541,6 +13539,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NewMainCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026540993568364886, guid: 3332ecf2dc26509478378fb942226f87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3332ecf2dc26509478378fb942226f87, type: 3}
