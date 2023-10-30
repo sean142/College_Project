@@ -12,6 +12,7 @@ TagManager:
   - TrailTarget
   - PoolParent
   - BezierHandleParent
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

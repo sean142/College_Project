@@ -15,7 +15,12 @@ public class FadeOut : MonoBehaviour
         fadeCanvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public IEnumerator InstallFadeOutScene()
+    public void TurnOnFadeOut()
+    {
+        StartCoroutine(InstallFadeOutScene());
+    }
+
+    IEnumerator InstallFadeOutScene()
     {
         float currentTime = 0f;
         while (currentTime < restartTimer)

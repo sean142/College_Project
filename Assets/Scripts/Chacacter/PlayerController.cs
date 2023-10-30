@@ -81,12 +81,13 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
     }
-
+  
     void Start()
     {
         normalSpeed = currentSpeed;
 
         GameManager.Instance.RigisterPlayer(characterStats);
+        SaveManager.Instance.LoadPlayerData();
 
         camObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = camObj.transform;

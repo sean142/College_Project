@@ -68,7 +68,7 @@ public class SceneController :Singleton<SceneController>
 
         return null;
     }
-    /*
+    
     public void TransitionToMain()
     {
         StartCoroutine(LoadMain());
@@ -76,23 +76,26 @@ public class SceneController :Singleton<SceneController>
 
     public void TransitionToLoadGame()
     {
-        StartCoroutine(LoadLevel(SaveManager.instance.SceneName));
+        StartCoroutine(LoadLevel(SaveManager.Instance.SceneName));
+        Debug.Log("" + SaveManager.Instance.SceneName);
     }
 
     public void TransitionToFirstLevel()
     {
-        StartCoroutine(LoadLevel("G1"));
+        StartCoroutine(LoadLevel("Office"));
     }
 
-    IEnumerator LoadLevel(string scene)
+    public IEnumerator LoadLevel(string scene)
     {
         if (scene != "")
         {
             yield return SceneManager.LoadSceneAsync(scene);
             yield return player = Instantiate(playerPrefab, GameManager.instance.GetEntrance().position, GameManager.instance.GetEntrance().rotation);
 
-            //
-            SaveManager.instance.SavePlayerData();
+            // 數據保存
+            SaveManager.Instance.SavePlayerData();
+
+            Debug.Log("" + scene);
             yield break;
         }
     }
@@ -101,5 +104,5 @@ public class SceneController :Singleton<SceneController>
     {
         yield return SceneManager.LoadSceneAsync("MainMenu");
         yield break;
-    }*/
+    }
 }

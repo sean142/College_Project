@@ -19,7 +19,7 @@ public class TransitionPoint : MonoBehaviour
     {
         if (isOnTrigger)
         {
-            StartCoroutine(FadeOut.instance.InstallFadeOutScene());
+            FadeOut.instance.TurnOnFadeOut();
         }
         if (FadeOut.instance.canTran)
             StartCoroutine(Static.DelayToInvokeDo(() => { SceneController.Instance.TransitionToDestination(this); }, 3f));

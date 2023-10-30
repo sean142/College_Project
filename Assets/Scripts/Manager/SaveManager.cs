@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class SaveManager : Singleton<SaveManager>
 {
     string sceneName = "level";
@@ -17,6 +16,10 @@ public class SaveManager : Singleton<SaveManager>
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneController.instance.TransitionToMain();
+        }
         if (Input.GetKeyDown(KeyCode.N))
         {
             SavePlayerData();
@@ -30,26 +33,29 @@ public class SaveManager : Singleton<SaveManager>
 
     public void SavePlayerData()
     {
-        Save(GameManager.Instance.playerStats.characterData, GameManager.Instance.playerStats.characterData.name);
+        Save(GameManager.Instance.playerStats.characterData, GameManager.instance.playerStats.characterData.name);
     }
 
     public void LoadPlayerData()
     {
-        Load(GameManager.Instance.playerStats.characterData, GameManager.Instance.playerStats.characterData.name);
+        Load(GameManager.Instance.playerStats.characterData, GameManager.instance.playerStats.characterData.name);
     }
 
-    public void Save(Object data,string key)
+    public void Save(Object data, string key)
     {
-        var jsonData = JsonUtility.ToJson(data,true);
-        PlayerPrefs.SetString(key, jsonData);
+        var jsonDate = JsonUtility.ToJson(data, true);
+        PlayerPrefs.SetString(key, jsonDate);
+        PlayerPrefs.SetString(sceneName, SceneManager.GetActiveScene().name);
         PlayerPrefs.Save();
     }
 
-    public void Load(Object data,string key)
+    public void Load(Object data, string key)
     {
         if (PlayerPrefs.HasKey(key))
         {
             JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(key), data);
         }
     }
+
+
 }
