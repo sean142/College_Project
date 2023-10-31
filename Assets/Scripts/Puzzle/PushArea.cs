@@ -8,7 +8,7 @@ public class PushArea : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerController.canPush = true;
+            PlayerController.instance.canPush = true;
         }
     }
 
@@ -16,7 +16,7 @@ public class PushArea : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerController.canPush = false;
+            PlayerController.instance.canPush = false;
         }
     }
 }

@@ -402,7 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 6536
+    m_Bits: 392
   m_IgnoreTag: Player
   m_TransparentLayers:
     serializedVersion: 2
@@ -3400,6 +3400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4423045620967985251, guid: 45285b9bbce941944ae5388364854f3f,
         type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423045620967985251, guid: 45285b9bbce941944ae5388364854f3f,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -3542,6 +3547,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8715528380888108859, guid: 45285b9bbce941944ae5388364854f3f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8715528380888108859, guid: 45285b9bbce941944ae5388364854f3f,
         type: 3}
@@ -11823,7 +11833,7 @@ PrefabInstance:
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}

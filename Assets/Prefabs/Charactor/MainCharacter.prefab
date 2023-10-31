@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
-  size: {x: 0.12, y: 0.15, z: 0.85}
+  size: {x: 0.12, y: 0.182, z: 0.85}
   direction: 1
   radiusSeparation: 1
   alignedOnCenter: 1
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {x: 0, y: 0, z: 0}
-  size: {x: 0.12, y: 0.15, z: 0.85}
+  size: {x: 0.12, y: 0.182, z: 0.85}
   direction: 1
   radiusSeparation: 1
   alignedOnCenter: 1
@@ -2546,8 +2546,6 @@ MonoBehaviour:
       - Value: 0
       - Value: 0
       - Value: 0
-      - Value: 2
-      - Value: 2
       - Value: 0
       - Value: 0
       - Value: 0
@@ -2781,7 +2779,6 @@ MonoBehaviour:
       - Value: 0
       - Value: 0
       - Value: 0
-      - Value: 2
       - Value: 0
       - Value: 0
       - Value: 0
@@ -2795,7 +2792,6 @@ MonoBehaviour:
       - Value: 0
       - Value: 0
       - Value: 0
-      - Value: 2
       - Value: 0
       - Value: 0
       - Value: 0
@@ -3020,12 +3016,10 @@ MonoBehaviour:
       - Value: 0
       - Value: 0
       - Value: 0
-      - Value: 2
-      - Value: 2
-      - Value: 2
-      - Value: 2
-      - Value: 2
-      - Value: 2
+      - Value: 0
+      - Value: 0
+      - Value: 0
+      - Value: 0
       - Value: 2
       - Value: 2
       - Value: 2
@@ -3096,7 +3090,6 @@ MonoBehaviour:
       - Value: 2
       - Value: 2
       - Value: 2
-      - Value: 0
       - Value: 2
       - Value: 2
       - Value: 2
@@ -3176,7 +3169,6 @@ MonoBehaviour:
       - Value: 2
       - Value: 2
       - Value: 2
-      - Value: 0
       - Value: 2
       - Value: 2
       - Value: 2
@@ -3193,9 +3185,12 @@ MonoBehaviour:
       - Value: 2
       - Value: 2
       - Value: 2
+      - Value: 1
       - Value: 2
       - Value: 2
+      - Value: 1
       - Value: 2
+      - Value: 1
       - Value: 2
       - Value: 2
       - Value: 2
@@ -3216,11 +3211,16 @@ MonoBehaviour:
       - Value: 2
       - Value: 2
       - Value: 2
+      - Value: 1
       - Value: 2
+      - Value: 1
       - Value: 2
+      - Value: 1
       - Value: 2
+      - Value: 1
       - Value: 2
       - Value: 2
+      - Value: 1
       - Value: 2
       - Value: 2
       - Value: 2
@@ -3566,10 +3566,10 @@ MonoBehaviour:
   isGround: 0
   isDead: 0
   canMoveObstacle: 0
+  canPush: 0
   currentSpeed: 2
   runSpeed: 8
   normalSpeed: 4
-  attackCooldown: 0
   isAttacking: 0
   enemyLayer:
     serializedVersion: 2

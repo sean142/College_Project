@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isGround;
     public bool isDead;
     public bool canMoveObstacle;
-    public static bool canPush;
+    public bool canPush;
 
 
     [Header("Player Speed")]
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public float normalSpeed;
 
     [Header("Player Attack")]
-    public float attackCooldown;
+    //public float attackCooldown;
     public bool isAttacking = false;
 
     private GameObject lockedEnemy;
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
         OpenBag();
         Push();
         lastAttackTime -= Time.deltaTime;
-        attackCooldown -= Time.deltaTime;
+        //attackCooldown -= Time.deltaTime;
 
         if (characterStats.CurrentHealth == 0)
         {
@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        if (FoundEnemy()&&Input.GetKeyDown(KeyCode.Mouse0))
+        if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (!isAttacking)
                 StartCoroutine(Attacking());
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // 判斷當前播放的動畫長度是否超過70%
-        AnimatorStateInfo currentAnimState = animator.GetCurrentAnimatorStateInfo(2);
+        AnimatorStateInfo currentAnimState = animator.GetCurrentAnimatorStateInfo(1);
         if (currentAnimState.normalizedTime > 0.7f && (currentAnimState.IsName("hit1") || currentAnimState.IsName("hit2") || currentAnimState.IsName("hit3")))
         {
             animator.SetTrigger("idle");
@@ -163,13 +163,18 @@ public class PlayerController : MonoBehaviour
                 yield return null;
             }
         }
-        if (attackCooldown <= 0f)
+        //if (attackCooldown <= 0f)
+        //{
+        //    animator.SetTrigger("hit1");
+        //    isAttacking = true;
+        //    attackCooldown = characterStats.attackData.coolDown;
+        //}
+        if (lastAttackTime <= 0f)
         {
             animator.SetTrigger("hit1");
             isAttacking = true;
-            attackCooldown = characterStats.attackData.coolDown;
+            lastAttackTime = characterStats.attackData.coolDown;
         }
-
     }
 
     private IEnumerator MoveToAttackTarget()
@@ -182,6 +187,7 @@ public class PlayerController : MonoBehaviour
                 yield return null;
             }
         }
+        animator.SetTrigger("attack");
 
         if (lastAttackTime <= 0f)        //cool down
         {
@@ -189,7 +195,6 @@ public class PlayerController : MonoBehaviour
             //lastAttackTime = characterStats.attackData.coolDown;
 
             //canMove = false;
-            animator.SetTrigger("attack");
         }
     }
 
@@ -256,12 +261,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.R) &&canPush)
         {
             animator.SetBool("canPush", true);
-            canMoveObstacle = true;
+            canMoveObstacle = true;          
         }
         else
         {
             animator.SetBool("canPush", false);
-            canMoveObstacle = false;
+            canMoveObstacle = false;          
         }
     }
 
