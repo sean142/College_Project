@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
 
         // 判斷當前播放的動畫長度是否超過70%
         AnimatorStateInfo currentAnimState = animator.GetCurrentAnimatorStateInfo(1);
-        if (currentAnimState.normalizedTime > 0.7f && (currentAnimState.IsName("hit1") || currentAnimState.IsName("hit2") || currentAnimState.IsName("hit3")))
+        if (currentAnimState.normalizedTime >= 0.7f && (currentAnimState.IsName("hit1") || currentAnimState.IsName("hit2") || currentAnimState.IsName("hit3")))
         {
             animator.SetTrigger("idle");
             isAttacking = false;
