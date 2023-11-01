@@ -13,6 +13,7 @@ TagManager:
   - PoolParent
   - BezierHandleParent
   - SpawnPoint
+  - VfxCaneTrail
   layers:
   - Default
   - TransparentFX
@@ -24,9 +25,9 @@ TagManager:
   - OutRoom
   - InRoom
   - Obstacle
-  - 
-  - 
-  - 
+  - Player
+  - InteriorGround
+  - Roof
   - 
   - 
   - 

@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("VFX")]
     public GameObject vfxAbsorb;
+    public GameObject vfxCaneTrail;
 
     [Space(10)]
     public float forceMagnitude;//做用力的大小  
@@ -89,10 +90,12 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.RigisterPlayer(characterStats);
         SaveManager.Instance.LoadPlayerData();
 
+        vfxCaneTrail = GameObject.FindGameObjectWithTag("VfxCaneTrail");
         camObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = camObj.transform;
 
         characterStats.CurrentHealth = 50;
+        vfxCaneTrail.SetActive(false);
     }
 
     private void Update()
@@ -135,8 +138,9 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0))
+        if ( Input.GetKeyDown(KeyCode.Mouse0))
         {
+            vfxCaneTrail.SetActive(true);
             if (!isAttacking)
                 StartCoroutine(Attacking());
             else
@@ -150,6 +154,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("idle");
             isAttacking = false;
+            vfxCaneTrail.SetActive(false);
         }    
     }
 
