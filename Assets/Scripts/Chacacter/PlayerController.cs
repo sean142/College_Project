@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         camObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = camObj.transform;
 
-        characterStats.CurrentHealth = 50;
+        //characterStats.CurrentHealth = 50;
         vfxCaneTrail.SetActive(false);
     }
 

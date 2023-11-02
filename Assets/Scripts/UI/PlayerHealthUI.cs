@@ -23,18 +23,18 @@ public class PlayerHealthUI : MonoBehaviour
 
     void UpdateHealth()
     {
-        //如果要做存讀檔 要使用下面代碼
-        float fillB = backHealthBar.fillAmount;
-        float sliderPercent = (float)GameManager.Instance.playerStats.CurrentHealth / GameManager.Instance.playerStats.MaxHealth;
-        if (fillB > sliderPercent)
-        {
-            frountHealthBar.fillAmount = sliderPercent;
-            backHealthBar.color = Color.red;
-            float percentComplete = lerpTimer / chipSpeed;
-            backHealthBar.fillAmount = Mathf.Lerp(fillB, sliderPercent, percentComplete);
-        }
-
+        ////如果要做存讀檔 要使用下面代碼
+        //float fillB = backHealthBar.fillAmount;
         //float sliderPercent = (float)GameManager.Instance.playerStats.CurrentHealth / GameManager.Instance.playerStats.MaxHealth;
-        //frountHealthBar.fillAmount = sliderPercent;
+        //if (fillB > sliderPercent)
+        //{
+        //    frountHealthBar.fillAmount = sliderPercent;
+        //    backHealthBar.color = Color.red;
+        //    float percentComplete = lerpTimer / chipSpeed;
+        //    backHealthBar.fillAmount = Mathf.Lerp(fillB, sliderPercent, percentComplete);
+        //}
+
+        float sliderPercent = (float)GameManager.Instance.playerStats.CurrentHealth / GameManager.Instance.playerStats.MaxHealth;
+        frountHealthBar.fillAmount = sliderPercent;
     }
 }
