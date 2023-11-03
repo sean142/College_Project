@@ -23,9 +23,10 @@ public class PlayerController : MonoBehaviour
     [Header("Player Speed")]
     public float currentSpeed;
     public float runSpeed;
-    //public float crouchSpeed;
     public float normalSpeed;
-
+    public float speedTransitionTime;  // 控制Animator Blend Trees參數的過渡時間
+    public float runSpeedTransitionTime = 0f;
+    public float normalSpeedTransitionTime = 1f;
     [Header("Player Attack")]
     //public float attackCooldown;
     public bool isAttacking = false;
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
     float turnSmoothVelocity;
     public Transform cam;
     public GameObject camObj;
-    public bool isLockedCamera;
+    //public bool isLockedCamera;
 
     [Header("Disintegrate&&Dissolve")]
     public SkinnedMeshRenderer skinnedMesh;
@@ -85,7 +86,8 @@ public class PlayerController : MonoBehaviour
   
     void Start()
     {
-        normalSpeed = currentSpeed;
+        currentSpeed = normalSpeed;
+        speedTransitionTime = normalSpeedTransitionTime;
 
         GameManager.Instance.RigisterPlayer(characterStats);
         SaveManager.Instance.LoadPlayerData();
@@ -138,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        if ( Input.GetKeyDown(KeyCode.Mouse0))
+        if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0))
         {
             vfxCaneTrail.SetActive(true);
             if (!isAttacking)
@@ -205,20 +207,15 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            animator.SetTrigger("Roll");
-        }
-
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         float verticalMove = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector3(horizontalMove, 0f, verticalMove).normalized;
 
         float inputMagnitude = Mathf.Clamp01(direction.magnitude);
-        animator.SetFloat("Speed", inputMagnitude, 0.6f, Time.deltaTime);
+        animator.SetFloat("Speed", inputMagnitude, speedTransitionTime, Time.deltaTime);      
 
-        if (direction.magnitude >= 0.1f)
+        if (direction.magnitude >= 0.1f && currentSpeed > 0f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);

@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 9697930e815e1904ea6574660c25fb6a
+guid: 86e7b44363ec8e24db8af71be8bfae99
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Unarmed Idle
-  - first:
-      74: -8646173188014940470
     second: Unarmed Idle 01
   externalObjects: {}
   materials:

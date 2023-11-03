@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.47, z: -5.37}
+  m_FollowOffset: {x: 0, y: 0.53, z: -2.7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.47, z: -5.37}
+  m_FollowOffset: {x: 0, y: 0.53, z: -2.7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2972,7 +2972,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473081429}
-  m_LocalRotation: {x: 0.06196695, y: 0, z: 0, w: 0.9980782}
+  m_LocalRotation: {x: 0.061966185, y: 0.0018585919, z: -0.00011539272, w: 0.99807656}
   m_LocalPosition: {x: 0, y: 2.47, z: -5.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3536,7 +3536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 2.47, z: -5.37}
+  m_FollowOffset: {x: 0, y: 0.53, z: -2.7}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3634,8 +3634,8 @@ MonoBehaviour:
   m_Strategy: 0
   m_MaximumEffort: 4
   m_SmoothingTime: 0
-  m_Damping: 7
-  m_DampingWhenOccluded: 0.2
+  m_Damping: 2
+  m_DampingWhenOccluded: 2
   m_OptimalTargetDistance: 0
 --- !u!114 &1691174433
 MonoBehaviour:
@@ -3676,7 +3676,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: 0.5
+    Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 2
     m_AccelTime: 0.2
@@ -3722,7 +3722,7 @@ MonoBehaviour:
     m_VelocityFilterStrength: 4
     m_Bias: 0
   m_RecenterToTargetHeading:
-    m_enabled: 0
+    m_enabled: 1
     m_WaitTime: 1
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
@@ -4364,5 +4364,20 @@ PrefabInstance:
       propertyPath: camObj
       value: 
       objectReference: {fileID: 1473081429}
+    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
+        type: 3}
+      propertyPath: runSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
+        type: 3}
+      propertyPath: normalSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
+        type: 3}
+      propertyPath: currentSpeed
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92badb36d6c70304ca17511656e671ef, type: 3}

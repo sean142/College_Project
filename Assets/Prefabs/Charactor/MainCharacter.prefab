@@ -3567,7 +3567,7 @@ MonoBehaviour:
   isDead: 0
   canMoveObstacle: 0
   canPush: 0
-  currentSpeed: 1
+  currentSpeed: 2
   runSpeed: 8
   normalSpeed: 4
   isAttacking: 0
@@ -3579,7 +3579,6 @@ MonoBehaviour:
   turnSmoothTime: 0.2
   cam: {fileID: 0}
   camObj: {fileID: 0}
-  isLockedCamera: 0
   skinnedMesh: {fileID: 0}
   skinnedMaterial: {fileID: 0}
   VFXGraph: {fileID: 0}

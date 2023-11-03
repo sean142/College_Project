@@ -8,6 +8,7 @@ public class CoreAbuility : MonoBehaviour
     {
         // 以某種方式實現速度提升能力
         PlayerController.instance.currentSpeed = PlayerController.instance.runSpeed;
+        PlayerController.instance.speedTransitionTime = PlayerController.instance.runSpeedTransitionTime;
         Debug.Log("speed");
 
         // 使用Shader Graph在黑暗中實現夜視能力
@@ -49,6 +50,7 @@ public class CoreAbuility : MonoBehaviour
     public static void InitialState()
     {
         PlayerController.instance.currentSpeed = PlayerController.instance.normalSpeed;
+        PlayerController.instance.speedTransitionTime = PlayerController.instance.normalSpeedTransitionTime;
         Debug.Log("normalspeed");
 
         float fogEndDistance = 15f; // 宣告一個float變數
