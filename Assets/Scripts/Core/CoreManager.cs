@@ -44,14 +44,14 @@ public class CoreManager : Singleton<CoreManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     public void Start()
     {
         // 建立物件池並從中獲取 BasicPoolObject 的 CoreItemOnWorld 腳本
         corePool = new CoreItemOnWorld[coreObject.Length];
-        trailsPool = new TrailsItemOnWorld[trailsObject.Length];   
+        trailsPool = new TrailsItemOnWorld[trailsObject.Length];
         trailTarget = GameObject.FindGameObjectWithTag("TrailTarget").transform;
         poolParent = GameObject.FindGameObjectWithTag("PoolParent");
         bezierHandleParent = GameObject.FindGameObjectWithTag("BezierHandleParent");

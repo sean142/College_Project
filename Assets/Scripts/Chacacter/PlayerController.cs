@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float speedTransitionTime;  // 控制Animator Blend Trees參數的過渡時間
     public float runSpeedTransitionTime = 0f;
     public float normalSpeedTransitionTime = 1f;
+
     [Header("Player Attack")]
     //public float attackCooldown;
     public bool isAttacking = false;
@@ -82,19 +83,19 @@ public class PlayerController : MonoBehaviour
         coll = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
+
+        vfxCaneTrail = GameObject.FindGameObjectWithTag("VfxCaneTrail");
+        camObj = GameObject.FindGameObjectWithTag("MainCamera");
+        cam = camObj.transform;
     }
-  
+
     void Start()
     {
         currentSpeed = normalSpeed;
         speedTransitionTime = normalSpeedTransitionTime;
 
         GameManager.Instance.RigisterPlayer(characterStats);
-        SaveManager.Instance.LoadPlayerData();
-
-        vfxCaneTrail = GameObject.FindGameObjectWithTag("VfxCaneTrail");
-        camObj = GameObject.FindGameObjectWithTag("MainCamera");
-        cam = camObj.transform;
+        SaveManager.Instance.LoadPlayerData();    
 
         //characterStats.CurrentHealth = 50;
         vfxCaneTrail.SetActive(false);
@@ -119,6 +120,8 @@ public class PlayerController : MonoBehaviour
         SwitchAnimator();
         OpenBag();
         Push();
+        StandUPControl();
+
         lastAttackTime -= Time.deltaTime;
         //attackCooldown -= Time.deltaTime;
 
@@ -213,7 +216,7 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = new Vector3(horizontalMove, 0f, verticalMove).normalized;
 
         float inputMagnitude = Mathf.Clamp01(direction.magnitude);
-        animator.SetFloat("Speed", inputMagnitude, speedTransitionTime, Time.deltaTime);      
+        animator.SetFloat("Speed", inputMagnitude, speedTransitionTime, Time.deltaTime);
 
         if (direction.magnitude >= 0.1f && currentSpeed > 0f)
         {
@@ -229,7 +232,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("Move", false);
-        }    
+        }
     }
    
     void Jump()
@@ -428,6 +431,18 @@ public class PlayerController : MonoBehaviour
             CoreManager.instance.isBeingAbsorbed = false;
             vfxAbsorb.SetActive(false);
             CoreManager.instance.TurnOffTrail();
+        }
+    }
+
+    void StandUPControl()
+    {
+        AnimatorStateInfo currentAnimState = animator.GetCurrentAnimatorStateInfo(0);
+
+        if (currentAnimState.IsName("Unarmed Idle"))
+        { 
+            canMove = true;
+            GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
+            GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;
         }
     }
 }

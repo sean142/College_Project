@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
 
-        SceneController.Instance.TransitionToFirstLevel();
+        SceneController.Instance.TransitionToFirstLevel();        
     }
 
     public void ContinueGame()

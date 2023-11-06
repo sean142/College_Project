@@ -1180,7 +1180,7 @@ MonoBehaviour:
   - {fileID: 4428379388955220393, guid: cb3c1bcbee077d94f91d06a611678be4, type: 3}
   - {fileID: 4428379388955220393, guid: cb3c1bcbee077d94f91d06a611678be4, type: 3}
   trailsPool: []
-  trailTarget: {fileID: 0}
+  trailTarget: {fileID: 9011884713389511427}
   poolParent: {fileID: 0}
   Duration: 1
   bezierHandle:
@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 0.53, z: -2.7}
+  m_FollowOffset: {x: 0, y: 2.47, z: -5.37}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1599,6 +1599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 1959652909}
+  followCinema: {fileID: 0}
 --- !u!4 &907456756
 Transform:
   m_ObjectHideFlags: 0
@@ -2449,7 +2450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 0.53, z: -2.7}
+  m_FollowOffset: {x: 0, y: 2.47, z: -5.37}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -2972,7 +2973,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473081429}
-  m_LocalRotation: {x: 0.061966185, y: 0.0018585919, z: -0.00011539272, w: 0.99807656}
+  m_LocalRotation: {x: 0.06196695, y: 0, z: 0, w: 0.9980782}
   m_LocalPosition: {x: 0, y: 2.47, z: -5.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3536,7 +3537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 0.53, z: -2.7}
+  m_FollowOffset: {x: 0, y: 2.47, z: -5.37}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3676,7 +3677,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: 0
+    Value: 0.5
     m_SpeedMode: 0
     m_MaxSpeed: 2
     m_AccelTime: 0.2
@@ -3722,7 +3723,7 @@ MonoBehaviour:
     m_VelocityFilterStrength: 4
     m_Bias: 0
   m_RecenterToTargetHeading:
-    m_enabled: 1
+    m_enabled: 0
     m_WaitTime: 1
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
@@ -4364,20 +4365,11 @@ PrefabInstance:
       propertyPath: camObj
       value: 
       objectReference: {fileID: 1473081429}
-    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
-        type: 3}
-      propertyPath: runSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
-        type: 3}
-      propertyPath: normalSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
-        type: 3}
-      propertyPath: currentSpeed
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92badb36d6c70304ca17511656e671ef, type: 3}
+--- !u!4 &9011884713389511427 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2457553663466509667, guid: 92badb36d6c70304ca17511656e671ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 9011884713389511426}
+  m_PrefabAsset: {fileID: 0}

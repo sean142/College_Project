@@ -3567,9 +3567,12 @@ MonoBehaviour:
   isDead: 0
   canMoveObstacle: 0
   canPush: 0
-  currentSpeed: 2
-  runSpeed: 8
-  normalSpeed: 4
+  currentSpeed: 0
+  runSpeed: 4
+  normalSpeed: 1
+  speedTransitionTime: 0
+  runSpeedTransitionTime: 0
+  normalSpeedTransitionTime: 1
   isAttacking: 0
   enemyLayer:
     serializedVersion: 2

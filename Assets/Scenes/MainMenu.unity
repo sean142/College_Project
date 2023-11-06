@@ -612,6 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
+  followCinema: {fileID: 0}
 --- !u!4 &913834300
 Transform:
   m_ObjectHideFlags: 0
