@@ -14,7 +14,7 @@ public class SceneController :Singleton<SceneController>
     {
         base.Awake();
         DontDestroyOnLoad(this);
-    }
+    }   
 
     public void TransitionToDestination(TransitionPoint transitionPoint)
     {

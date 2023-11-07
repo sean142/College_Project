@@ -13,7 +13,7 @@ public class SaveManager : Singleton<SaveManager>
         base.Awake();
         DontDestroyOnLoad(this);
     }
-
+   
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -30,7 +30,7 @@ public class SaveManager : Singleton<SaveManager>
             LoadPlayerData();
         }
     }
-
+  
     public void SavePlayerData()
     {
         Save(GameManager.Instance.playerStats.characterData, GameManager.instance.playerStats.characterData.name);
@@ -57,5 +57,5 @@ public class SaveManager : Singleton<SaveManager>
         }
     }
 
-
+   
 }

@@ -9109,7 +9109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1035064810
 Transform:
   m_ObjectHideFlags: 0
@@ -10722,7 +10722,6 @@ RectTransform:
   m_Children:
   - {fileID: 192549938}
   - {fileID: 1579097655}
-  - {fileID: 1575393736}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11650,7 +11649,7 @@ GameObject:
   - component: {fileID: 1257313091}
   - component: {fileID: 1257313090}
   m_Layer: 5
-  m_Name: ControlBagCanvas
+  m_Name: DontDestroyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11750,6 +11749,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6411542}
+  - {fileID: 1575393736}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12439,13 +12439,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 885838688}
-  m_Father: {fileID: 1130381669}
-  m_RootOrder: 2
+  m_Father: {fileID: 1257313094}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1174.7123, y: 441.29956}
-  m_SizeDelta: {x: 2349.4246, y: 882.5991}
+  m_AnchoredPosition: {x: 596, y: 625.3}
+  m_SizeDelta: {x: 1234, y: 466}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1575393737
 MonoBehaviour:
@@ -12459,8 +12459,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c3ba07bd11be94da9e50dfa4ed80b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frountHealthBar: {fileID: 0}
+  backHealthBar: {fileID: 0}
   chipSpeed: 25
   lerpTimer: 1
+  sliderPercent: 1
 --- !u!114 &1575393738
 MonoBehaviour:
   m_ObjectHideFlags: 0
