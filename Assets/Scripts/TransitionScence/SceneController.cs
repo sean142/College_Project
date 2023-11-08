@@ -72,6 +72,7 @@ public class SceneController :Singleton<SceneController>
     public void TransitionToMain()
     {
         StartCoroutine(LoadMain());
+        PlayerHealthUI.instance.isReturningFromMenu = true;
     }
 
     public void TransitionToLoadGame()

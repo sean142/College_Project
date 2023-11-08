@@ -12,6 +12,7 @@ public class PlayerHealthUI : MonoBehaviour
     public float chipSpeed = 20f;
     public float lerpTimer = 1f;
     public float sliderPercent;
+    public bool isReturningFromMenu;
 
     private void Awake()
     {
@@ -30,16 +31,20 @@ public class PlayerHealthUI : MonoBehaviour
 
     void UpdateHealth()
     {
-        //如果要做存讀檔 要使用下面代碼
-        //ConutnueButton按下去後 會觸發fillB > sliderPercent 但我不要跑延遲扣寫 讓血量條直接到當前血量 
-        //當前血量要存著，當移動至其他場景中，才不會再觸發延遲扣寫代碼
-        //寫一個sliderPercent的腳本來記錄
-        //使用 dontdestroyonload 做UI 但回到Menu時 我不想讓ui出現
+        //在玩家從主選單返回遊戲時，直接顯示當前的血量，而不需要透過延遲扣寫的方式逐漸減少到當前血量。
+        //同時，當玩家的血量變化時，前景血條和背景血條的填充量也能夠透過延遲扣寫的方式逐漸變化。
+
         float fillB = backHealthBar.fillAmount;
         sliderPercent = (float)GameManager.Instance.playerStats.CurrentHealth / GameManager.Instance.playerStats.MaxHealth;
 
         frountHealthBar.fillAmount = sliderPercent;
         backHealthBar.fillAmount = sliderPercent;
+
+        if (isReturningFromMenu)
+        {
+            fillB = sliderPercent;
+            isReturningFromMenu = false;
+        }
 
         if (fillB > sliderPercent)
         {
@@ -51,18 +56,21 @@ public class PlayerHealthUI : MonoBehaviour
         }
 
         //float fillB = backHealthBar.fillAmount;
+        //sliderPercent = (float)GameManager.Instance.playerStats.CurrentHealth / GameManager.Instance.playerStats.MaxHealth;
 
-        //frountHealthBar.fillAmount = RecordCurrentHPValue.instance.sliderPercent;
-        //backHealthBar.fillAmount = RecordCurrentHPValue.instance.sliderPercent;
+        //frountHealthBar.fillAmount = sliderPercent;
+        //backHealthBar.fillAmount = sliderPercent;
 
-        //if (fillB > RecordCurrentHPValue.instance.sliderPercent)
+        //if (fillB > sliderPercent)
         //{
-        //    frountHealthBar.fillAmount = RecordCurrentHPValue.instance.sliderPercent;
+        //    frountHealthBar.fillAmount = sliderPercent;
         //    backHealthBar.color = Color.red;
         //    float percentComplete = lerpTimer / chipSpeed;
-        //    backHealthBar.fillAmount = Mathf.Lerp(fillB, RecordCurrentHPValue.instance.sliderPercent, percentComplete);
+        //    backHealthBar.fillAmount = Mathf.Lerp(fillB, sliderPercent, percentComplete);
         //    Debug.LogError("ContinueTEST");
         //}
+
+
 
         //float sliderPercent = (float)GameManager.Instance.playerStats.CurrentHealth / GameManager.Instance.playerStats.MaxHealth;
         //frountHealthBar.fillAmount = sliderPercent;
