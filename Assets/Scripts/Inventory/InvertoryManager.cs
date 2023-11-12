@@ -7,12 +7,12 @@ using System;
 public class InvertoryManager :Singleton<InvertoryManager>
 {
     [Header("Core")]
-    public GameObject coreUI;     // 核心背包UI
+    //public GameObject coreUI;     // 核心背包UI
     public GameObject coreButton;
     public GameObject coreBag;
 
     [Header("Material")]
-    public GameObject materialUI; // 素材背包UI
+    //public GameObject materialUI; // 素材背包UI
     public GameObject materialButton;
     public GameObject materialBag;
 
@@ -22,7 +22,7 @@ public class InvertoryManager :Singleton<InvertoryManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
    
     public void OnControlBagButtonClick()
@@ -63,12 +63,12 @@ public class InvertoryManager :Singleton<InvertoryManager>
     {
         if (index == 0)
         {
-            coreUI.SetActive(true);
+            //coreUI.SetActive(true);
             coreBag.SetActive(true);
         }
         else if (index == 1)
         {
-            materialUI.SetActive(true);
+            //materialUI.SetActive(true);
             materialBag.SetActive(true);
         }
     }
@@ -77,12 +77,12 @@ public class InvertoryManager :Singleton<InvertoryManager>
     {
         if (index == 0)
         {
-            coreUI.SetActive(false);
+            //coreUI.SetActive(false);
             coreBag.SetActive(false);
         }
         else if (index == 1)
         {
-            materialUI.SetActive(false);
+            //materialUI.SetActive(false);
             materialBag.SetActive(false);
         }
     }

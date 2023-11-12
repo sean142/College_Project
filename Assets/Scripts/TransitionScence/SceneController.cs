@@ -77,7 +77,6 @@ public class SceneController :Singleton<SceneController>
     public void TransitionToLoadGame()
     {
         StartCoroutine(LoadLevel(SaveManager.Instance.SceneName));
-        Debug.Log("" + SaveManager.Instance.SceneName);
     }
 
     public void TransitionToFirstLevel()
@@ -95,7 +94,6 @@ public class SceneController :Singleton<SceneController>
             // 數據保存
             SaveManager.Instance.SavePlayerData();
 
-            Debug.Log("" + scene);
             yield break;
         }
     }

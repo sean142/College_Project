@@ -15,7 +15,7 @@ public class MaterialInventory : Singleton<MaterialInventory>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     private void OnEnable()
