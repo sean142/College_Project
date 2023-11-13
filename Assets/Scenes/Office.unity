@@ -1914,7 +1914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 1
   m_LightLayerMask: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
@@ -1939,7 +1939,7 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 128
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -2172,6 +2172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1270302571625289049, guid: 92badb36d6c70304ca17511656e671ef,
     type: 3}
+  player: {fileID: 0}
   coll: {fileID: 0}
 --- !u!4 &642227235
 Transform:
@@ -12101,6 +12102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e87186840ee1c5439c760f22f3c2c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1152029523
 Transform:
   m_ObjectHideFlags: 0
@@ -12163,7 +12165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 1
   m_LightLayerMask: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
@@ -14940,7 +14942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 1
   m_LightLayerMask: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
@@ -16651,6 +16653,7 @@ MonoBehaviour:
   sceneName: G1
   transitionType: 0
   destinationTag: 2
+  isOnTrigger: 0
 --- !u!4 &5064420016315009811
 Transform:
   m_ObjectHideFlags: 0
@@ -16763,6 +16766,7 @@ MonoBehaviour:
   sceneName: City
   transitionType: 1
   destinationTag: 1
+  isOnTrigger: 0
 --- !u!33 &5064420016373318683
 MeshFilter:
   m_ObjectHideFlags: 0

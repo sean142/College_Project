@@ -13,7 +13,7 @@ public class TransitionPoint : MonoBehaviour
     public string sceneName;
     public TransitionType transitionType;
     public TransitionDestination.DestinationTag destinationTag;
-    private bool isOnTrigger;
+    public bool isOnTrigger;
 
     private void Update()
     {
@@ -22,7 +22,7 @@ public class TransitionPoint : MonoBehaviour
             FadeOut.instance.TurnOnFadeOut();
         }
         if (FadeOut.instance.canTran)
-            StartCoroutine(Static.DelayToInvokeDo(() => { SceneController.Instance.TransitionToDestination(this); }, 3f));
+            StartCoroutine(Static.DelayToInvokeDo(() => { SceneController.Instance.TransitionToDestination(this); FadeOut.instance.canTran = false; }, 3f));
     }
 
     private void OnTriggerStay(Collider other)

@@ -1883,10 +1883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad61c08814122574f8cbc65d8dd7b5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coreUI: {fileID: 1911204386}
   coreButton: {fileID: 1934028563}
   coreBag: {fileID: 1983660372}
-  materialUI: {fileID: 107476262}
   materialButton: {fileID: 76318151}
   materialBag: {fileID: 1244991234}
   isBagOpen: 0
@@ -2622,6 +2620,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1270302571625289049, guid: 92badb36d6c70304ca17511656e671ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6174452576798368822, guid: 92badb36d6c70304ca17511656e671ef,
         type: 3}
       propertyPath: serializeData2.selectionData.maxConnectionDistance
@@ -12979,7 +12982,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &795419251
 MonoBehaviour:
@@ -15169,7 +15172,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1571162814
 GameObject:
@@ -16397,6 +16400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
+  followCinema: {fileID: 0}
 --- !u!4 &1856437553
 Transform:
   m_ObjectHideFlags: 0
@@ -17996,6 +18000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chipSpeed: 25
   lerpTimer: 1
+  isReturningFromMenu: 0
+  sliderPercent: 0
 --- !u!1001 &3039851451943521666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18652,7 +18658,7 @@ PrefabInstance:
     - target: {fileID: 8438643661667704058, guid: bddf021c5489d804c88250175f52663d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8781311612524737234, guid: bddf021c5489d804c88250175f52663d,
         type: 3}

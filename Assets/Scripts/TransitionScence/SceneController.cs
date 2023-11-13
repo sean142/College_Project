@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneController :Singleton<SceneController>
 {
     public GameObject playerPrefab;
-
-    GameObject player;
+    public GameObject player;
     public CharacterController coll;
 
     protected override void Awake()
@@ -33,14 +32,14 @@ public class SceneController :Singleton<SceneController>
     IEnumerator Transiton(string sceneName, TransitionDestination.DestinationTag destinationTag)
     {
         //保存數據
-        SaveManager.Instance.SavePlayerData();
+        //SaveManager.Instance.SavePlayerData();
 
         if (SceneManager.GetActiveScene().name != sceneName)
         {
             yield return SceneManager.LoadSceneAsync(sceneName);
             yield return Instantiate(playerPrefab, GetDestination(destinationTag).transform.position, GetDestination(destinationTag).transform.rotation);
             //讀取數據
-            SaveManager.Instance.LoadPlayerData();
+            //SaveManager.Instance.LoadPlayerData();
             Debug.Log("test1");
             yield break;
         }
@@ -93,6 +92,8 @@ public class SceneController :Singleton<SceneController>
 
             // 數據保存
             SaveManager.Instance.SavePlayerData();
+            SaveManager.Instance.SaveCoreData();
+            SaveManager.Instance.SavePlayerPositionData();
 
             yield break;
         }

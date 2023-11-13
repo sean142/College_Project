@@ -1644,8 +1644,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5064420016753337549, guid: 5ac1190a9960af64683781efdd303eb0,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064420016753337549, guid: 5ac1190a9960af64683781efdd303eb0,
+        type: 3}
       propertyPath: sceneName
-      value: Laboratory
+      value: Office
       objectReference: {fileID: 0}
     - target: {fileID: 5064420016753337549, guid: 5ac1190a9960af64683781efdd303eb0,
         type: 3}
@@ -2474,13 +2479,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5064420016753337549, guid: 5ac1190a9960af64683781efdd303eb0,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064420016753337549, guid: 5ac1190a9960af64683781efdd303eb0,
+        type: 3}
       propertyPath: sceneName
-      value: Laboratory
+      value: Office
       objectReference: {fileID: 0}
     - target: {fileID: 5064420016753337549, guid: 5ac1190a9960af64683781efdd303eb0,
         type: 3}
       propertyPath: destinationTag
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5064420016753337549, guid: 5ac1190a9960af64683781efdd303eb0,
         type: 3}

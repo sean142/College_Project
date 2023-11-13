@@ -95,9 +95,10 @@ public class PlayerController : MonoBehaviour
         speedTransitionTime = normalSpeedTransitionTime;
 
         GameManager.Instance.RigisterPlayer(characterStats);
+
         SaveManager.Instance.LoadPlayerData();
         SaveManager.Instance.LoadCoreData();
-
+        //SaveManager.Instance.LoadPlayerPositionData();
         //characterStats.CurrentHealth = 50;
         vfxCaneTrail.SetActive(false);
     }

@@ -9,6 +9,7 @@ public class SaveManager : Singleton<SaveManager>
     string coreBoolKey = "coreBoolKey";
     public string SceneName { get { return PlayerPrefs.GetString(sceneName); } }
     public string CoreBoolKey { get { return PlayerPrefs.GetString(coreBoolKey); } }
+    public Vector3 playerPosition;
 
     protected override void Awake()
     {
@@ -26,12 +27,14 @@ public class SaveManager : Singleton<SaveManager>
         {
             SavePlayerData();
             SaveCoreData();
+            SavePlayerPositionData();
         }
 
         if (Input.GetKeyDown(KeyCode.M))
         {
             LoadPlayerData();
             LoadCoreData();
+            LoadPlayerPositionData();
         }
     }
   
@@ -49,10 +52,50 @@ public class SaveManager : Singleton<SaveManager>
     {
         SaveCore(CoreInventory.Instance.coreBool, coreBoolKey);
     }
-
+   
     public void LoadCoreData()
     {
-        CoreInventory.Instance.coreBool = LoadCore(coreBoolKey, CoreInventory.Instance.coreBool.Length);
+        CoreInventory.Instance.coreBool = LoadCore(coreBoolKey, CoreInventory.Instance.coreBool.Length);       
+    }
+
+    public void SavePlayerPositionData()
+    {
+        SavePlayerPosition(SceneController.Instance.player.transform.position);
+    }
+
+    public void LoadPlayerPositionData()
+    {
+        Vector3 playerPosition = LoadPlayerPosition();
+        Debug.Log("Loaded Player Position: " + playerPosition);
+        //SceneController.Instance.player.transform.position = playerPosition;
+        
+        if (SceneController.Instance.player != null)
+        {
+            SceneController.Instance.player.transform.position = playerPosition;
+            Debug.Log("Player position set successfully.");
+        }
+        else
+        {
+            Debug.LogError("Player object is null. Make sure SceneController.Instance.player is correctly assigned.");
+        }
+    }
+
+    public void SavePlayerPosition(Vector3 position)
+    {
+        playerPosition = position;
+        PlayerPrefs.SetFloat("PlayerPosX", position.x);
+        PlayerPrefs.SetFloat("PlayerPosY", position.y);
+        PlayerPrefs.SetFloat("PlayerPosZ", position.z);
+
+        PlayerPrefs.Save();
+    }
+
+    public Vector3 LoadPlayerPosition()
+    {
+        float x = PlayerPrefs.GetFloat("PlayerPosX");
+        float y = PlayerPrefs.GetFloat("PlayerPosY");
+        float z = PlayerPrefs.GetFloat("PlayerPosZ");
+        return new Vector3(x, y, z);
     }
 
     public void SaveCore(bool[] BoolArray, string key)
@@ -97,5 +140,5 @@ public class SaveManager : Singleton<SaveManager>
         {
             JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(key), data);
         }
-    }
+    }  
 }
