@@ -605,7 +605,7 @@ MonoBehaviour:
   m_YAxis:
     Value: 0.5
     m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_MaxSpeed: 0
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 400
+    m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -2174,6 +2174,7 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 0}
   coll: {fileID: 0}
+  isFirstTimeInGame: 0
 --- !u!4 &642227235
 Transform:
   m_ObjectHideFlags: 0
@@ -13287,11 +13288,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1270302571625289049, guid: 92badb36d6c70304ca17511656e671ef,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 1939597721686888419, guid: 92badb36d6c70304ca17511656e671ef,
         type: 3}
       propertyPath: m_RootOrder
@@ -13345,31 +13341,6 @@ PrefabInstance:
     - target: {fileID: 1939597721686888419, guid: 92badb36d6c70304ca17511656e671ef,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
-        type: 3}
-      propertyPath: canMove
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
-        type: 3}
-      propertyPath: runSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
-        type: 3}
-      propertyPath: normalSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
-        type: 3}
-      propertyPath: currentSpeed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116811278861385052, guid: 92badb36d6c70304ca17511656e671ef,
-        type: 3}
-      propertyPath: speedTransitionTime
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

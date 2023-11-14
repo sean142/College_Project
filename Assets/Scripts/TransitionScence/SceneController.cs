@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +8,7 @@ public class SceneController :Singleton<SceneController>
     public GameObject playerPrefab;
     public GameObject player;
     public CharacterController coll;
+    public bool isFirstTimeInGame;
 
     protected override void Awake()
     {
@@ -31,14 +32,14 @@ public class SceneController :Singleton<SceneController>
 
     IEnumerator Transiton(string sceneName, TransitionDestination.DestinationTag destinationTag)
     {
-        //«O¦s¼Æ¾Ú
+        //ä¿å­˜æ•¸æ“š
         //SaveManager.Instance.SavePlayerData();
 
         if (SceneManager.GetActiveScene().name != sceneName)
         {
             yield return SceneManager.LoadSceneAsync(sceneName);
             yield return Instantiate(playerPrefab, GetDestination(destinationTag).transform.position, GetDestination(destinationTag).transform.rotation);
-            //Åª¨ú¼Æ¾Ú
+            //è®€å–æ•¸æ“š
             //SaveManager.Instance.LoadPlayerData();
             Debug.Log("test1");
             yield break;
@@ -90,10 +91,15 @@ public class SceneController :Singleton<SceneController>
             yield return SceneManager.LoadSceneAsync(scene);
             yield return player = Instantiate(playerPrefab, GameManager.instance.GetEntrance().position, GameManager.instance.GetEntrance().rotation);
 
-            // ¼Æ¾Ú«O¦s
+            // æ•¸æ“šä¿å­˜
             SaveManager.Instance.SavePlayerData();
             SaveManager.Instance.SaveCoreData();
-            SaveManager.Instance.SavePlayerPositionData();
+            
+            if(isFirstTimeInGame)
+            {
+                SaveManager.Instance.SavePlayerPositionData();
+                isFirstTimeInGame = false;
+            }
 
             yield break;
         }

@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
     public bool canMoveObstacle;
     public bool canPush;
-    public bool isReturningFromMenu;
 
     [Header("Player Speed")]
     public float currentSpeed;
@@ -99,11 +98,13 @@ public class PlayerController : MonoBehaviour
         SaveManager.Instance.LoadPlayerData();
         SaveManager.Instance.LoadCoreData();
 
-        //if (isReturningFromMenu)
-        //{
-        //    SaveManager.Instance.LoadPlayerPositionData();
-        //    isReturningFromMenu = false;
-        //}
+        if (!SceneController.instance.isFirstTimeInGame)
+        {
+            SaveManager.Instance.LoadPlayerPositionData();
+        }
+        else
+            animator.SetTrigger("StandUp");
+
 
         //characterStats.CurrentHealth = 50;
         vfxCaneTrail.SetActive(false);
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour
         SwitchAnimator();
         OpenBag();
         Push();
-        StandUPControl();
+        ContinueIdle();
 
         lastAttackTime -= Time.deltaTime;
         //attackCooldown -= Time.deltaTime;
@@ -442,15 +443,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void StandUPControl()
-    {
-        AnimatorStateInfo currentAnimState = animator.GetCurrentAnimatorStateInfo(0);
+    public void StandUPControl()
+    {       
+        canMove = true;
+        GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
+        GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;
+        GameManager.isStandingUp = true;
+    }
 
-        if (currentAnimState.IsName("Unarmed Idle"))
-        { 
-            canMove = true;
-            GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
-            GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;
+    void ContinueIdle()
+    {
+        if (GameManager.isStandingUp)
+        {
+            AnimatorStateInfo currentAnimState = animator.GetCurrentAnimatorStateInfo(0);
+
+            if (currentAnimState.IsName("Unarmed Idle"))
+            {
+                canMove = true;
+                GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
+                GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;
+            }
         }
+      
     }
 }

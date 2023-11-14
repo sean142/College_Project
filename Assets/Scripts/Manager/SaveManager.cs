@@ -60,7 +60,8 @@ public class SaveManager : Singleton<SaveManager>
 
     public void SavePlayerPositionData()
     {
-        SavePlayerPosition(SceneController.Instance.player.transform.position);
+        SavePlayerPosition(GameManager.instance.playerStats.transform.position);
+        //SavePlayerPosition(SceneController.Instance.player.transform.position);
     }
 
     public void LoadPlayerPositionData()

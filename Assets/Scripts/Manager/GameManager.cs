@@ -1,13 +1,15 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
 public class GameManager : Singleton<GameManager>
 {
+    public static bool isStandingUp; // 用來判斷玩家是否standUp 因為只會觸發一次  有跨場景需要所以一直保持true
     public CharacterStats playerStats;
 
     public CinemachineFreeLook followCinema;
+
 
     List<IEndGameObserver> endGameObserver = new List<IEndGameObserver>();
 

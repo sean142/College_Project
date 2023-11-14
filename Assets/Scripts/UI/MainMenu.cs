@@ -15,11 +15,14 @@ public class MainMenu : MonoBehaviour
         continueBtn = transform.GetChild(1).GetComponent<Button>();
         continueBtn.onClick.AddListener(ContinueGame);
     }
-    public  void NewGame()
+    public void NewGame()
     {
         PlayerPrefs.DeleteAll();
 
         SceneController.Instance.TransitionToFirstLevel();
+
+        SceneController.instance.isFirstTimeInGame = true;
+        GameManager.isStandingUp = false;
     }
 
     public void ContinueGame()

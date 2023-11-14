@@ -22,7 +22,11 @@ public class TransitionPoint : MonoBehaviour
             FadeOut.instance.TurnOnFadeOut();
         }
         if (FadeOut.instance.canTran)
-            StartCoroutine(Static.DelayToInvokeDo(() => { SceneController.Instance.TransitionToDestination(this); FadeOut.instance.canTran = false; }, 3f));
+            StartCoroutine(Static.DelayToInvokeDo(() =>
+            {
+                SceneController.Instance.TransitionToDestination(this);
+                FadeOut.instance.canTran = false;
+            }, 3f));
     }
 
     private void OnTriggerStay(Collider other)
