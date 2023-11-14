@@ -68,16 +68,30 @@ public class SaveManager : Singleton<SaveManager>
         Vector3 playerPosition = LoadPlayerPosition();
         Debug.Log("Loaded Player Position: " + playerPosition);
         //SceneController.Instance.player.transform.position = playerPosition;
-        
-        if (SceneController.Instance.player != null)
+        CharacterController characterController = SceneController.Instance.player.GetComponent<CharacterController>();
+        if (characterController != null)
         {
-            SceneController.Instance.player.transform.position = playerPosition;
-            Debug.Log("Player position set successfully.");
+            characterController.enabled = false;
+            characterController.transform.position = playerPosition;
+            characterController.enabled = true;
         }
-        else
-        {
-            Debug.LogError("Player object is null. Make sure SceneController.Instance.player is correctly assigned.");
-        }
+        //if (SceneController.Instance.player != null)
+        //{
+        //    SceneController.Instance.player.transform.position = playerPosition;
+        //    Debug.Log("Player position set successfully.");
+
+        //    CharacterController characterController = SceneController.Instance.player.GetComponent<CharacterController>();
+        //    if (characterController != null)
+        //    {
+        //        characterController.enabled = false;
+        //        characterController.transform.position = playerPosition;
+        //        characterController.enabled = true;
+        //    }
+        //}
+        //else
+        //{
+        //    Debug.LogError("Player object is null. Make sure SceneController.Instance.player is correctly assigned.");
+        //}
     }
 
     public void SavePlayerPosition(Vector3 position)

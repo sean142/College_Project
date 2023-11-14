@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
     public bool canMoveObstacle;
     public bool canPush;
-
+    public bool isReturningFromMenu;
 
     [Header("Player Speed")]
     public float currentSpeed;
@@ -98,7 +98,13 @@ public class PlayerController : MonoBehaviour
 
         SaveManager.Instance.LoadPlayerData();
         SaveManager.Instance.LoadCoreData();
-        //SaveManager.Instance.LoadPlayerPositionData();
+
+        //if (isReturningFromMenu)
+        //{
+        //    SaveManager.Instance.LoadPlayerPositionData();
+        //    isReturningFromMenu = false;
+        //}
+
         //characterStats.CurrentHealth = 50;
         vfxCaneTrail.SetActive(false);
     }
