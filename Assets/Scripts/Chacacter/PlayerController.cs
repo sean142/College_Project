@@ -442,12 +442,9 @@ public class PlayerController : MonoBehaviour
             CoreManager.instance.TurnOffTrail();
         }
     }
-
-    public void StandUPControl()
-    {       
-        canMove = true;
-        GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
-        GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;
+    
+    public void StandUPControlAnimationEvent()
+    {   
         GameManager.isStandingUp = true;
     }
 
@@ -455,15 +452,9 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.isStandingUp)
         {
-            AnimatorStateInfo currentAnimState = animator.GetCurrentAnimatorStateInfo(0);
-
-            if (currentAnimState.IsName("Unarmed Idle"))
-            {
-                canMove = true;
-                GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
-                GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;
-            }
-        }
-      
+            canMove = true;
+            GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
+            GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;        
+        }      
     }
 }
