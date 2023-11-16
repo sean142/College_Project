@@ -444,13 +444,13 @@ public class PlayerController : MonoBehaviour
     }
     
     public void StandUPControlAnimationEvent()
-    {   
-        GameManager.isStandingUp = true;
+    {
+        SceneController.instance.isStandingUp = true;
     }
 
     void ContinueIdle()
     {
-        if (GameManager.isStandingUp)
+        if (SceneController.instance.isStandingUp)
         {
             canMove = true;
             GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;

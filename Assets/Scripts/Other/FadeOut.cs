@@ -6,7 +6,6 @@ public class FadeOut : MonoBehaviour
 {
     public static FadeOut instance;
     public float restartTimer;
-    public bool canTran;
     private CanvasGroup fadeCanvasGroup;
     public GameObject[] UI;    //FadeOut 運行時 場景的UI關閉
 
@@ -36,7 +35,6 @@ public class FadeOut : MonoBehaviour
             UI[1].SetActive(false);
             yield return null;
         }
-        canTran = true;
         fadeCanvasGroup.alpha = 1;
     }
 }

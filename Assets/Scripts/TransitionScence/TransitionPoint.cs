@@ -13,33 +13,33 @@ public class TransitionPoint : MonoBehaviour
     public string sceneName;
     public TransitionType transitionType;
     public TransitionDestination.DestinationTag destinationTag;
-    public bool isOnTrigger;
+    public bool canTrans;
 
     private void Update()
     {
-        if (isOnTrigger)
+        if (canTrans)
         {
             FadeOut.instance.TurnOnFadeOut();
-        }
-        if (FadeOut.instance.canTran)
             StartCoroutine(Static.DelayToInvokeDo(() =>
             {
-                SceneController.Instance.TransitionToDestination(this);
-                FadeOut.instance.canTran = false;
-            }, 3f));
+                if (!SceneController.instance.isTransitioning)
+                    SceneController.Instance.TransitionToDestination(this);
+                SceneController.instance.isTransitioning = true;
+            }, 5f));
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            isOnTrigger = true;
+            canTrans = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-            isOnTrigger = false;
+            canTrans = false;
     }  
 }

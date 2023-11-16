@@ -287,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac42f87304f0db4680e52b2b55688d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStandingUp: 0
   playerStats: {fileID: 0}
   followCinema: {fileID: 0}
 --- !u!4 &9522395
@@ -11867,7 +11868,7 @@ PrefabInstance:
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}
@@ -12983,7 +12984,7 @@ PrefabInstance:
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}

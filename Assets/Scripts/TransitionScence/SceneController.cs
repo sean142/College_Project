@@ -8,7 +8,11 @@ public class SceneController :Singleton<SceneController>
     public GameObject playerPrefab;
     public GameObject player;
     public CharacterController coll;
+
+    [Header("Bool")]
     public bool isFirstTimeInGame;
+    public bool isTransitioning; 
+    public bool isStandingUp; // 用來判斷玩家是否standUp 因為只會觸發一次  有跨場景需要所以一直保持true
 
     protected override void Awake()
     {
@@ -29,19 +33,26 @@ public class SceneController :Singleton<SceneController>
                 break;
         }
     }
-
+    
     IEnumerator Transiton(string sceneName, TransitionDestination.DestinationTag destinationTag)
     {
         //保存數據
-        //SaveManager.Instance.SavePlayerData();
+        SaveManager.Instance.SavePlayerData();
+        SaveManager.Instance.SaveCoreData();
+        SaveManager.Instance.SavePlayerPositionData();
 
         if (SceneManager.GetActiveScene().name != sceneName)
         {
             yield return SceneManager.LoadSceneAsync(sceneName);
             yield return Instantiate(playerPrefab, GetDestination(destinationTag).transform.position, GetDestination(destinationTag).transform.rotation);
-            //讀取數據
-            //SaveManager.Instance.LoadPlayerData();
-            Debug.Log("test1");
+            player = PlayerController.instance.gameObject;
+
+            SaveManager.Instance.LoadPlayerData();
+            SaveManager.Instance.LoadCoreData();
+            SaveManager.Instance.SavePlayerData();
+            SaveManager.Instance.SaveCoreData();
+            SaveManager.Instance.SavePlayerPositionData();
+            isTransitioning = false;
             yield break;
         }
         else
@@ -51,7 +62,6 @@ public class SceneController :Singleton<SceneController>
             coll.enabled = false;
             player.transform.SetPositionAndRotation(GetDestination(destinationTag).transform.position, GetDestination(destinationTag).transform.rotation);
             coll.enabled = true;
-            Debug.Log("test");
             yield return null;
         }
     }

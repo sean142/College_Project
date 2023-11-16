@@ -861,6 +861,8 @@ MonoBehaviour:
   player: {fileID: 0}
   coll: {fileID: 0}
   isFirstTimeInGame: 0
+  isTransitioning: 0
+  isStandingUp: 0
 --- !u!4 &1587713679
 Transform:
   m_ObjectHideFlags: 0

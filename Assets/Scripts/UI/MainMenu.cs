@@ -22,11 +22,12 @@ public class MainMenu : MonoBehaviour
         SceneController.Instance.TransitionToFirstLevel();
 
         SceneController.instance.isFirstTimeInGame = true;
-        GameManager.isStandingUp = false;
+        SceneController.instance.isStandingUp = false;
     }
 
     public void ContinueGame()
     {
         SceneController.Instance.TransitionToLoadGame();
+        SceneController.instance.isStandingUp = true;
     }
 }

@@ -9,7 +9,7 @@ public class SaveManager : Singleton<SaveManager>
     string coreBoolKey = "coreBoolKey";
     public string SceneName { get { return PlayerPrefs.GetString(sceneName); } }
     public string CoreBoolKey { get { return PlayerPrefs.GetString(coreBoolKey); } }
-    public Vector3 playerPosition;
+    public Vector3 playerPosition;  // 到場景二時 存生成點
 
     protected override void Awake()
     {
@@ -60,8 +60,8 @@ public class SaveManager : Singleton<SaveManager>
 
     public void SavePlayerPositionData()
     {
-        SavePlayerPosition(GameManager.instance.playerStats.transform.position);
-        //SavePlayerPosition(SceneController.Instance.player.transform.position);
+        //SavePlayerPosition(GameManager.instance.playerStats.transform.position);
+        SavePlayerPosition(SceneController.Instance.player.transform.position);
     }
 
     public void LoadPlayerPositionData()
