@@ -17,6 +17,7 @@ TagManager:
   - ThirdPersonCamera
   - PlayerHPUI
   - BagUI
+  - VfxWarpSpeed
   layers:
   - Default
   - TransparentFX

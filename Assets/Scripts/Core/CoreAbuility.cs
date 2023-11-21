@@ -6,6 +6,7 @@ public class CoreAbuility : MonoBehaviour
 {
     public static void SpeedActivateAndNightVision()
     {
+        PlayerController.instance.DoParticles();
         // 以某種方式實現速度提升能力
         PlayerController.instance.currentSpeed = PlayerController.instance.runSpeed;
         PlayerController.instance.speedTransitionTime = PlayerController.instance.runSpeedTransitionTime;
@@ -47,13 +48,26 @@ public class CoreAbuility : MonoBehaviour
         Debug.Log("defense");
     }
 
-    public static void InitialState()
+    public static void InDoorInitialState()
     {
+        PlayerController.instance.NotDoParticles();
         PlayerController.instance.currentSpeed = PlayerController.instance.normalSpeed;
         PlayerController.instance.speedTransitionTime = PlayerController.instance.normalSpeedTransitionTime;
         Debug.Log("normalspeed");
 
         float fogEndDistance = 15f; // 宣告一個float變數
+        RenderSettings.fogEndDistance = fogEndDistance; // 將變數值設定給Fog的結束距離
+        Debug.Log("當前Fog結束距離為: " + RenderSettings.fogEndDistance);
+    }
+
+    public static void OutDoorInitialState()
+    {
+        PlayerController.instance.NotDoParticles();
+        PlayerController.instance.currentSpeed = PlayerController.instance.normalSpeed;
+        PlayerController.instance.speedTransitionTime = PlayerController.instance.normalSpeedTransitionTime;
+        Debug.Log("normalspeed");
+
+        float fogEndDistance = 35f; // 宣告一個float變數
         RenderSettings.fogEndDistance = fogEndDistance; // 將變數值設定給Fog的結束距離
         Debug.Log("當前Fog結束距離為: " + RenderSettings.fogEndDistance);
     }

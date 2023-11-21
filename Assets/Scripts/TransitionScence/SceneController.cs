@@ -7,18 +7,24 @@ public class SceneController :Singleton<SceneController>
 {
     public GameObject playerPrefab;
     public GameObject player;
-    public CharacterController coll;
+    CharacterController coll;
 
     [Header("Bool")]
     public bool isFirstTimeInGame;
     public bool isTransitioning; 
     public bool isStandingUp; // 用來判斷玩家是否standUp 因為只會觸發一次  有跨場景需要所以一直保持true
+    public bool outDoor;      // 判斷玩家在戶外還是室內 因為fog
 
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
-    }   
+    }
+
+    public void Update()
+    {
+        CheckOutdoorOrIndoor();
+    }
 
     public void TransitionToDestination(TransitionPoint transitionPoint)
     {
@@ -119,5 +125,17 @@ public class SceneController :Singleton<SceneController>
     {
         yield return SceneManager.LoadSceneAsync("MainMenu");
         yield break;
+    }
+
+    private void CheckOutdoorOrIndoor()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        if (sceneName.Contains("City") || sceneName.Contains("Sewer"))
+        {
+            outDoor = true;
+        }
+        else
+            outDoor = false;
     }
 }

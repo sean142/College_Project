@@ -57,6 +57,10 @@ public class PlayerController : MonoBehaviour
     [Header("VFX")]
     public GameObject vfxAbsorb;
     public GameObject vfxCaneTrail;
+    public VisualEffect vfxWarpSpeed;
+    private GameObject vfxWarpSpeedObject;
+    public float rate = 0.02f;
+    private bool warpActive;
 
     [Space(10)]
     public float forceMagnitude;//做用力的大小  
@@ -83,6 +87,9 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
 
+        vfxWarpSpeedObject = GameObject.FindGameObjectWithTag("VfxWarpSpeed");
+        vfxWarpSpeed = vfxWarpSpeedObject.GetComponent<VisualEffect>();
+
         vfxCaneTrail = GameObject.FindGameObjectWithTag("VfxCaneTrail");
         camObj = GameObject.FindGameObjectWithTag("MainCamera");
         cam = camObj.transform;
@@ -108,6 +115,8 @@ public class PlayerController : MonoBehaviour
 
         //characterStats.CurrentHealth = 50;
         vfxCaneTrail.SetActive(false);
+        vfxWarpSpeed.Stop();
+        vfxWarpSpeed.SetFloat("WarpAmount", 0);
     }
 
     private void Update()
@@ -456,5 +465,50 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
             GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;        
         }      
+    }
+
+    public void DoParticles()
+    {
+        warpActive = true;
+        StartCoroutine(ActivateParticles());
+    }
+
+    public void NotDoParticles()
+    {
+        warpActive = false;
+        StartCoroutine(ActivateParticles());
+    }
+
+    IEnumerator ActivateParticles()
+    {
+        if (warpActive)
+        {
+            vfxWarpSpeed.Play();
+
+            float amount = vfxWarpSpeed.GetFloat("WarpAmount");
+            while (amount < 1 && warpActive)
+            {
+                amount += rate;
+                vfxWarpSpeed.SetFloat("WarpAmount", amount);
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        else
+        {
+            float amount = vfxWarpSpeed.GetFloat("WarpAmount");
+            while (amount > 0 && !warpActive)
+            {
+                amount -= rate;
+                vfxWarpSpeed.SetFloat("WarpAmount", amount);
+
+                if (amount <= 0 + rate)
+                {
+                    amount = 0;
+                    vfxWarpSpeed.SetFloat("WarpAmount", amount);
+                    vfxWarpSpeed.Stop();
+                }
+            }
+
+        }
     }
 }

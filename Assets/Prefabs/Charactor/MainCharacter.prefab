@@ -3567,6 +3567,7 @@ MonoBehaviour:
   isDead: 0
   canMoveObstacle: 0
   canPush: 0
+  warpActive: 0
   currentSpeed: 0
   runSpeed: 4
   normalSpeed: 1
@@ -3589,6 +3590,8 @@ MonoBehaviour:
   refreshRate: 0.025
   vfxAbsorb: {fileID: 2457553663481004478}
   vfxCaneTrail: {fileID: 0}
+  vfxWarpSpeed: {fileID: 0}
+  rate: 0.02
   forceMagnitude: 2
   groundCheck: {fileID: 4004904062280266992}
   groundDistance: 0.55

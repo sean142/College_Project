@@ -177,7 +177,11 @@ public class CoreManager : Singleton<CoreManager>
         else if (coolTimer > 0)
         {
             coolTimer -= Time.deltaTime;
-            CoreAbuility.InitialState();
+
+            if (SceneController.Instance.outDoor)
+                CoreAbuility.OutDoorInitialState();
+            else
+                CoreAbuility.InDoorInitialState();
 
             if (coolTimer <= 0) // cooldown ends
             {
