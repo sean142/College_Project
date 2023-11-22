@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.RigisterPlayer(characterStats);
 
         SaveManager.Instance.LoadPlayerData();
-        SaveManager.Instance.LoadCoreData();
+        SaveManager.Instance.LoadCoreBugData();
 
         if (!SceneController.instance.isFirstTimeInGame)
         {

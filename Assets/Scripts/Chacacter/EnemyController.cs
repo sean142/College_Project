@@ -9,6 +9,8 @@ public enum EnemyStates { PATROL, CHASE, DEAD,GUARD }
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour, IEndGameObserver
 {
+    public static EnemyController instance;
+
     private EnemyStates enemyStates;
 
     NavMeshAgent agent;
@@ -55,11 +57,13 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
     void Awake()
     {
+        instance = this;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         characterStats = GetComponent<CharacterStats>();
         _collider = GetComponent<Collider>();
         coreManager = GameObject.Find("CoreManager").GetComponent<CoreManager>();
+
         speed = agent.speed;
         guardPos = transform.position;
         remainLookAtTime = LookAtTime;
@@ -90,6 +94,10 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         GameManager.Instance.AddObserver(this);
 
         skinnedMaterial.SetFloat("_DissolveAmount", 0);
+        SaveManager.Instance.LoadEnemyStateData();  // 在敵人死亡時保存敵人狀態
+        SaveManager.Instance.LoadCoreInSceneData();
+        if (isDead)
+            Destroy(this.gameObject);
     }
     /*
     //TODO 切換場景時啟用
@@ -108,14 +116,15 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     {
         if (characterStats.CurrentHealth == 0 && !isDead)
         {
+            SaveManager.Instance.SaveEnemyStateData();  // 在敵人死亡時保存敵人狀態
+            SaveManager.Instance.SaveCoreInSceneData();
             EnemyDeath();
-
         }
         if (!playerDead)
         {
             SwitchStates();
             lastAttackTime -= Time.deltaTime;
-        }
+        }      
     }
   
     void EnemyDeath()

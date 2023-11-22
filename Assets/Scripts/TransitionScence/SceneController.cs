@@ -44,7 +44,7 @@ public class SceneController :Singleton<SceneController>
     {
         //保存數據
         SaveManager.Instance.SavePlayerData();
-        SaveManager.Instance.SaveCoreData();
+        SaveManager.Instance.SaveCoreBugData();
         SaveManager.Instance.SavePlayerPositionData();
 
         if (SceneManager.GetActiveScene().name != sceneName)
@@ -54,9 +54,9 @@ public class SceneController :Singleton<SceneController>
             player = PlayerController.instance.gameObject;
 
             SaveManager.Instance.LoadPlayerData();
-            SaveManager.Instance.LoadCoreData();
+            SaveManager.Instance.LoadCoreBugData();
             SaveManager.Instance.SavePlayerData();
-            SaveManager.Instance.SaveCoreData();
+            SaveManager.Instance.SaveCoreBugData();
             SaveManager.Instance.SavePlayerPositionData();
             isTransitioning = false;
             yield break;
@@ -109,7 +109,7 @@ public class SceneController :Singleton<SceneController>
 
             // 數據保存
             SaveManager.Instance.SavePlayerData();
-            SaveManager.Instance.SaveCoreData();
+            SaveManager.Instance.SaveCoreBugData();
             
             if(isFirstTimeInGame)
             {

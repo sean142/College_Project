@@ -7,6 +7,8 @@ public class SaveManager : Singleton<SaveManager>
 {
     string sceneName = "level";
     string coreBoolKey = "coreBoolKey";
+    string coreInSceneKey = "coreInSceneKey";
+    string enemyState = "enemyState";
     public string SceneName { get { return PlayerPrefs.GetString(sceneName); } }
     public string CoreBoolKey { get { return PlayerPrefs.GetString(coreBoolKey); } }
     public Vector3 playerPosition;  // 到場景二時 存生成點
@@ -27,15 +29,19 @@ public class SaveManager : Singleton<SaveManager>
         if (Input.GetKeyDown(KeyCode.N))
         {
             SavePlayerData();
-            SaveCoreData();
+            SaveCoreBugData();
             SavePlayerPositionData();
+            SaveCoreInSceneData();
+            SaveEnemyStateData();
         }
 
         if (Input.GetKeyDown(KeyCode.M))
         {
             LoadPlayerData();
-            LoadCoreData();
+            LoadCoreBugData();
             LoadPlayerPositionData();
+            LoadCoreInSceneData();
+            LoadEnemyStateData();
         }
     }
 
@@ -111,16 +117,16 @@ public class SaveManager : Singleton<SaveManager>
 
 
     //存儲和加載背包核心數據
-    public void SaveCoreData()
+    public void SaveCoreBugData()
     {
-        SaveCore(CoreInventory.Instance.coreBool, coreBoolKey);
+        SaveCoreBug(CoreInventory.Instance.coreBool, coreBoolKey);
     }
-    public void LoadCoreData()
+    public void LoadCoreBugData()
     {
-        CoreInventory.Instance.coreBool = LoadCore(coreBoolKey, CoreInventory.Instance.coreBool.Length);
+        CoreInventory.Instance.coreBool = LoadCoreBug(coreBoolKey, CoreInventory.Instance.coreBool.Length);
     }
 
-    public void SaveCore(bool[] BoolArray, string key)
+    public void SaveCoreBug(bool[] BoolArray, string key)
     {
         //如果元素為 true，則在 PlayerPrefs 中設置對應的值為 1
         for (int i = 0; i < BoolArray.Length; i++)
@@ -132,7 +138,7 @@ public class SaveManager : Singleton<SaveManager>
         }
         PlayerPrefs.Save();
     }
-    public bool[] LoadCore(string key, int length)
+    public bool[] LoadCoreBug(string key, int length)
     {
         bool[] BoolArray = new bool[length];
 
@@ -148,4 +154,127 @@ public class SaveManager : Singleton<SaveManager>
 
         return BoolArray;
     }
+
+    //存儲場上中掉落那個核心
+    public void SaveCoreInSceneData()
+    {
+        SaveCoreInScene(CoreManager.Instance.corePool, coreInSceneKey);
+    }
+    public void LoadCoreInSceneData()
+    {
+        CoreManager.Instance.corePool = LoadCoreInScene(coreInSceneKey, CoreManager.Instance.corePool.Length);
+    }
+    public void SaveCoreInScene(CoreItemOnWorld[] coreArray, string key)
+    {
+        for (int i = 0; i < coreArray.Length; i++)
+        {
+            if (coreArray[i].isActive)
+            {
+                PlayerPrefs.SetInt(key + i, 1);
+                Debug.Log(coreArray[i]);
+            }
+        }
+        PlayerPrefs.Save();
+    }
+    public CoreItemOnWorld[] LoadCoreInScene(string key, int length)
+    {
+        CoreItemOnWorld[] BoolArray = new CoreItemOnWorld[length];
+
+        //如果在 PlayerPrefs 中有對應的值，則設置Bool
+        for (int i = 0; i < length; i++)
+        {
+            if (PlayerPrefs.HasKey(key + i))
+            {
+                int value = PlayerPrefs.GetInt(key + i);
+                BoolArray[i] = new CoreItemOnWorld();
+                BoolArray[i].isActive = value == 1;
+                Debug.Log("test222");
+            }
+        }
+        return BoolArray;
+    }
+
+    //敵人狀態
+    public void SaveEnemyStateData()
+    {
+        SaveEnemyState(EnemyController.instance.currentInt, "currentIntKey");
+
+        SaveEnemyState(EnemyController.instance.isDead, "isDeadKey");
+    }
+
+    public void LoadEnemyStateData()
+    {
+        EnemyController.instance.isDead = LoadEnemyState("isDeadKey");
+    }
+    public void SaveEnemyState(int value, string key)
+    {
+        var jsonDate = JsonUtility.ToJson(value, true);
+        PlayerPrefs.SetString(key, jsonDate);
+        PlayerPrefs.Save();
+    }
+    public void SaveEnemyState(bool Bool,string key)
+    {
+        PlayerPrefs.SetInt(key, Bool ? 1 : 0);
+        PlayerPrefs.Save();
+
+        // 檢查保存是否成功
+        if (PlayerPrefs.HasKey(key))
+        {
+            Debug.Log("Saved " + key + " successfully!");
+        }
+        else
+        {
+            Debug.LogWarning("Failed to save " + key + "!");
+        }
+    }
+
+    public bool LoadEnemyState(string key)
+    {
+        if (PlayerPrefs.HasKey(key))
+        {
+            // 如果PlayerPrefs中存在該鍵，則返回其值，否則返回false
+            return PlayerPrefs.GetInt(key) == 1;
+        }
+        else
+        {
+            // 如果PlayerPrefs中不存在該鍵，則返回預設值
+            return false;
+        }
+    }
+
+    //敵人狀態
+    //public void SaveEnemyStateData()
+    //{
+    //    SaveEnemyState("EnemyID", EnemyController.instance.currentInt);
+    //    SaveEnemyState("isDead", EnemyController.instance.isDead ? 1 : 0);
+    //}
+
+    //public void LoadEnemyStateData()
+    //{
+    //    // 從PlayerPrefs中讀取敵人的ID和死亡狀態
+    //    int enemyID = LoadEnemyState("EnemyID");
+    //    int isDead = LoadEnemyState("isDead");
+
+    //    // 使用讀取的數據來恢復敵人的狀態
+    //    EnemyController.instance.currentInt = enemyID;
+    //    EnemyController.instance.isDead = isDead == 1;
+    //}
+
+    //public void SaveEnemyState(string key, int value)
+    //{
+    //    PlayerPrefs.SetInt(key, value);
+
+    //    PlayerPrefs.Save();
+    //}   
+
+    //public int LoadEnemyState(string key)
+    //{
+    //    if (PlayerPrefs.HasKey(key))
+    //    {
+    //        // 如果PlayerPrefs中存在該鍵，則返回其值，否則返回0
+    //        return PlayerPrefs.GetInt(key);
+
+    //    }
+    //    return 0;
+    //}
 }
