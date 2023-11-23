@@ -8,9 +8,9 @@ public class SaveManager : Singleton<SaveManager>
     string sceneName = "level";
     string coreBoolKey = "coreBoolKey";
     string coreInSceneKey = "coreInSceneKey";
-    string enemyState = "enemyState";
     public string SceneName { get { return PlayerPrefs.GetString(sceneName); } }
     public string CoreBoolKey { get { return PlayerPrefs.GetString(coreBoolKey); } }
+    public string CoreInSceneKey { get { return PlayerPrefs.GetString(coreInSceneKey); } }
     public Vector3 playerPosition;  // 到場景二時 存生成點
     public CharacterController characterController;
 
@@ -154,7 +154,7 @@ public class SaveManager : Singleton<SaveManager>
 
         return BoolArray;
     }
-
+   
     //存儲場上中掉落那個核心
     public void SaveCoreInSceneData()
     {
@@ -162,8 +162,15 @@ public class SaveManager : Singleton<SaveManager>
     }
     public void LoadCoreInSceneData()
     {
-        CoreManager.Instance.corePool = LoadCoreInScene(coreInSceneKey, CoreManager.Instance.corePool.Length);
+        bool[] activeCores = LoadCoreInScene(coreInSceneKey, CoreManager.Instance.corePool.Length);
+
+        for (int i = 0; i < activeCores.Length; i++)
+        {
+            CoreManager.Instance.corePool[i].isActive = activeCores[i];
+            CoreManager.Instance.corePool[i].TurnOn();
+        }
     }
+
     public void SaveCoreInScene(CoreItemOnWorld[] coreArray, string key)
     {
         for (int i = 0; i < coreArray.Length; i++)
@@ -171,47 +178,52 @@ public class SaveManager : Singleton<SaveManager>
             if (coreArray[i].isActive)
             {
                 PlayerPrefs.SetInt(key + i, 1);
+                PlayerPrefs.SetFloat(key + i + "x", coreArray[i].transform.position.x);
+                PlayerPrefs.SetFloat(key + i + "y", coreArray[i].transform.position.y);
+                PlayerPrefs.SetFloat(key + i + "z", coreArray[i].transform.position.z);
                 Debug.Log(coreArray[i]);
             }
         }
         PlayerPrefs.Save();
     }
-    public CoreItemOnWorld[] LoadCoreInScene(string key, int length)
+    public bool [] LoadCoreInScene(string key, int length)
     {
-        CoreItemOnWorld[] BoolArray = new CoreItemOnWorld[length];
+        bool[] BoolArray = new bool[length];
+        Vector3[] positions = new Vector3[length];
 
-        //如果在 PlayerPrefs 中有對應的值，則設置Bool
+        //如果在 PlayerPrefs 中有對應的值，則設置Bool和位置
         for (int i = 0; i < length; i++)
         {
             if (PlayerPrefs.HasKey(key + i))
             {
                 int value = PlayerPrefs.GetInt(key + i);
-                BoolArray[i] = new CoreItemOnWorld();
-                BoolArray[i].isActive = value == 1;
-                Debug.Log("test222");
+                BoolArray[i] = value == 1;
+                positions[i] = new Vector3(PlayerPrefs.GetFloat(key + i + "x"), PlayerPrefs.GetFloat(key + i + "y"), PlayerPrefs.GetFloat(key + i + "z"));
             }
         }
+
+        //在這裡使用位置數組來實例化和放置核心物件
+
         return BoolArray;
     }
 
     //敵人狀態
     public void SaveEnemyStateData()
     {
-        SaveEnemyState(EnemyController.instance.currentInt, "currentIntKey");
-
-        SaveEnemyState(EnemyController.instance.isDead, "isDeadKey");
+        for (int i = 0; i < Enemy.instance.enemies.Length; i++)
+        {
+            SaveEnemyState(Enemy.instance.enemies[i].isDead, "isDeadKey" + i);
+        }       
     }
 
     public void LoadEnemyStateData()
     {
-        EnemyController.instance.isDead = LoadEnemyState("isDeadKey");
+        for (int i = 0; i < Enemy.instance.enemies.Length; i++)
+        {
+            Enemy.instance.enemies[i].isDead = LoadEnemyState("isDeadKey" + i);
+        }
     }
-    public void SaveEnemyState(int value, string key)
-    {
-        var jsonDate = JsonUtility.ToJson(value, true);
-        PlayerPrefs.SetString(key, jsonDate);
-        PlayerPrefs.Save();
-    }
+   
     public void SaveEnemyState(bool Bool,string key)
     {
         PlayerPrefs.SetInt(key, Bool ? 1 : 0);

@@ -39,7 +39,7 @@ public class CoreManager : Singleton<CoreManager>
     public int Duration = 5;
     public Transform[] bezierHandle;
     public GameObject bezierHandleParent;
-    private float _duration;
+    private float _duration;  
 
     protected override void Awake()
     {

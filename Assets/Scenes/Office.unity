@@ -10037,6 +10037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1035064810}
+  - component: {fileID: 1035064811}
   m_Layer: 0
   m_Name: -----Enemy-----
   m_TagString: Untagged
@@ -10062,6 +10063,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1035064811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035064809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3495e1a4a546c3b46bc51357b443b11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 1342413020}
+  - {fileID: 1661967818}
+  - {fileID: 1149820685}
 --- !u!1 &1048184356 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5668921623869333858, guid: 62e93da9cd355874c88ab1522f5e31f6,
@@ -12192,6 +12209,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1149820681}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1149820685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
+    type: 3}
+  m_PrefabInstance: {fileID: 1149820681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be85a830d28a858468c2b89b02c7d4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1152029521
 GameObject:
   m_ObjectHideFlags: 0
@@ -13109,6 +13138,16 @@ PrefabInstance:
       propertyPath: VFXGraph
       value: 
       objectReference: {fileID: 892003517}
+    - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
+        type: 3}
+      propertyPath: playerDead
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
+        type: 3}
+      propertyPath: enemyies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5706e80d0f2d4924a85f83f7c245d036, type: 3}
 --- !u!137 &1342413018 stripped
@@ -13123,6 +13162,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1342413017}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1342413020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
+    type: 3}
+  m_PrefabInstance: {fileID: 1342413017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be85a830d28a858468c2b89b02c7d4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1345880422
 GameObject:
   m_ObjectHideFlags: 0
@@ -14587,6 +14638,11 @@ PrefabInstance:
       propertyPath: skinnedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 91e83323bb85dd94e9bcddd62f537c47, type: 2}
+    - target: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
+        type: 3}
+      propertyPath: enemyies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3319852939831823477, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}
       propertyPath: m_Layer
@@ -14772,6 +14828,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1661967814}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1661967818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3223868700625164371, guid: 5706e80d0f2d4924a85f83f7c245d036,
+    type: 3}
+  m_PrefabInstance: {fileID: 1661967814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be85a830d28a858468c2b89b02c7d4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1695581998
 GameObject:
   m_ObjectHideFlags: 0

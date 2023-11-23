@@ -53,10 +53,10 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     public CoreManager coreManager;
 
     public int currentInt;  //用來判斷當前敵人編號
-    public Transform point; //用來生成核心位置
+    public Transform point; //用來生成核心位置  
 
     void Awake()
-    {
+    {      
         instance = this;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -95,7 +95,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
         skinnedMaterial.SetFloat("_DissolveAmount", 0);
         SaveManager.Instance.LoadEnemyStateData();  // 在敵人死亡時保存敵人狀態
-        SaveManager.Instance.LoadCoreInSceneData();
+        //SaveManager.Instance.LoadCoreInSceneData();
         if (isDead)
             Destroy(this.gameObject);
     }
@@ -117,7 +117,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         if (characterStats.CurrentHealth == 0 && !isDead)
         {
             SaveManager.Instance.SaveEnemyStateData();  // 在敵人死亡時保存敵人狀態
-            SaveManager.Instance.SaveCoreInSceneData();
+            //SaveManager.Instance.SaveCoreInSceneData();
             EnemyDeath();
         }
         if (!playerDead)
