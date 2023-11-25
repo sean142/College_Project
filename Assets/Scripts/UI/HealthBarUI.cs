@@ -28,9 +28,9 @@ public class HealthBarUI : MonoBehaviour
 
     private void Awake()
     {
-        //currentStats = GetComponent<CharacterStats>();
+        currentStats = GetComponent<CharacterStats>();
 
-        //currentStats.UpdataHealthBarOnAttack += UpdateHealthBar;
+        currentStats.UpdataHealthBarOnAttack += UpdateHealthBar;
 
         //backHealthBar = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         //frountHealthBar = transform.GetChild(0).GetChild(1).GetComponent<Image>();
@@ -45,17 +45,19 @@ public class HealthBarUI : MonoBehaviour
             if (canvas.renderMode == RenderMode.WorldSpace)
             {
                 UIBar = Instantiate(healthUIPrefab, canvas.transform).transform;
-                backHealthBar = UIBar.GetChild(0).GetComponent<Image>();
-                frountHealthBar = UIBar.GetChild(1).GetComponent<Image>();
-                //healthSlider = UIBar.GetChild(0).GetComponent<Image>();
+                //backHealthBar = UIBar.GetChild(0).GetComponent<Image>();
+                //frountHealthBar = UIBar.GetChild(1).GetComponent<Image>();
+                healthSlider = UIBar.GetChild(0).GetComponent<Image>();
                 UIBar.gameObject.SetActive(alwaysVisible);
             }
         }
     }
     public void Update()
     {
-        UpdateHealth();
-    }   
+        //UpdateHealth();
+        //currentStats.UpdataHealthBarOnAttack += UpdateHealthBar;
+
+    }
 
     private void LateUpdate()
     {
@@ -76,8 +78,28 @@ public class HealthBarUI : MonoBehaviour
         if (currentHealth <= 0)
             Destroy(UIBar.gameObject);
 
-        UIBar.gameObject.SetActive(true);
-        timeLeft = visibleTime;
+        //UIBar.gameObject.SetActive(true);
+        //timeLeft = visibleTime;
+
+        //float fillB = backHealthBar.fillAmount;
+
+        //sliderPercent = (float)currentHealth / maxHealth;
+        //frountHealthBar.fillAmount = sliderPercent;
+        //backHealthBar.fillAmount = sliderPercent;
+
+        //if (isReturningFromMenu)
+        //{
+        //    fillB = sliderPercent;
+        //    isReturningFromMenu = false;
+        //}
+
+        //if (fillB > sliderPercent)
+        //{
+        //    frountHealthBar.fillAmount = sliderPercent;
+        //    backHealthBar.color = Color.red;
+        //    float percentComplete = lerpTimer / chipSpeed;
+        //    backHealthBar.fillAmount = Mathf.Lerp(fillB, sliderPercent, percentComplete);
+        //}
 
         float sliderPercent = (float)currentHealth / maxHealth;
         healthSlider.fillAmount = sliderPercent;
@@ -85,12 +107,12 @@ public class HealthBarUI : MonoBehaviour
 
     void UpdateHealth()
     {
-        if(sliderPercent<=0)
+        if (sliderPercent <= 0)
             Destroy(UIBar.gameObject);
 
         float fillB = backHealthBar.fillAmount;
 
-        sliderPercent = (float)GameManager.Instance.enemyStats.CurrentHealth / GameManager.Instance.enemyStats.MaxHealth;
+        //sliderPercent = (float)GameManager.Instance.enemyStats.CurrentHealth / GameManager.Instance.enemyStats.MaxHealth;
 
 
         frountHealthBar.fillAmount = sliderPercent;

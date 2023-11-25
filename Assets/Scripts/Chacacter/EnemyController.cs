@@ -95,6 +95,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
 
         skinnedMaterial.SetFloat("_DissolveAmount", 0);
 
+
         GameManager.Instance.RigisterEnemy(characterStats);
 
         SaveManager.Instance.LoadEnemyStateData();

@@ -34,12 +34,14 @@ public class GameManager : Singleton<GameManager>
     }
     public void RigisterEnemy(CharacterStats enemy)
     {
-        //for (int i = 0; i < Enemy.instance.enemies.Length; i++)
-        //{
-        //    enemyStats[i] = Enemy.instance.enemies[i].GetComponentInChildren<CharacterStats>();
+        for (int i = 0; i < Enemy.instance.enemies.Length; i++)
+        {
+            //enemyStats[i] = Enemy.instance.enemies[i].GetComponentInChildren<CharacterStats>();
 
-        //}
+            //enemyStats[i] = enemy;
+        }
         enemyStats = enemy;
+
     }
 
     public void AddObserver(IEndGameObserver observer)

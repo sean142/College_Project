@@ -88,7 +88,21 @@ public class SaveManager : Singleton<SaveManager>
     {
         LoadEnemy(GameManager.Instance.enemyStats.characterData, enemyData);
     }
+    //public void SaveEnemyData()
+    //{
+    //    for (int i = 0; i < GameManager.Instance.enemyStats.Count; i++)
+    //    {
+    //        PlayerPrefs.SetInt("EnemyHealth" + i, GameManager.Instance.enemyStats[i].CurrentHealth);
+    //    }
+    //}
 
+    //public void LoadEnemyData()
+    //{
+    //    for (int i = 0; i < GameManager.Instance.enemyStats.Count; i++)
+    //    {
+    //        GameManager.Instance.enemyStats[i].CurrentHealth = PlayerPrefs.GetInt("EnemyHealth" + i);
+    //    }
+    //}
     public void SaveEnemy(Object data, string key)
     {
         // 將數據轉換為 JSON 格式並儲存到 PlayerPrefs
