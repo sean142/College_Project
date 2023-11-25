@@ -88,14 +88,18 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
             GetNewWayPoint();
         }
 
-        characterStats.CurrentHealth = 1;
+        //characterStats.CurrentHealth = 20;
 
         //TODO 場景切換後修改掉
         GameManager.Instance.AddObserver(this);
 
         skinnedMaterial.SetFloat("_DissolveAmount", 0);
-        SaveManager.Instance.LoadEnemyStateData();  // 在敵人死亡時保存敵人狀態
-        //SaveManager.Instance.LoadCoreInSceneData();
+
+        GameManager.Instance.RigisterEnemy(characterStats);
+
+        SaveManager.Instance.LoadEnemyStateData();
+        SaveManager.Instance.LoadEnemyData();
+
         if (isDead)
             Destroy(this.gameObject);
     }
@@ -116,8 +120,6 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     {
         if (characterStats.CurrentHealth == 0 && !isDead)
         {
-            SaveManager.Instance.SaveEnemyStateData();  // 在敵人死亡時保存敵人狀態
-            //SaveManager.Instance.SaveCoreInSceneData();
             EnemyDeath();
         }
         if (!playerDead)

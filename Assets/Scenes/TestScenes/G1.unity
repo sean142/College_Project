@@ -12998,7 +12998,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 8438643661667704058, guid: bddf021c5489d804c88250175f52663d,
     type: 3}
-  coll: {fileID: 0}
+  player: {fileID: 0}
+  isFirstTimeInGame: 0
+  isTransitioning: 0
+  isStandingUp: 0
+  outDoor: 0
 --- !u!1001 &801908080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15372,6 +15376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e87186840ee1c5439c760f22f3c2c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPosition: {x: 0, y: 0, z: 0}
+  characterController: {fileID: 0}
 --- !u!1 &1606661886
 GameObject:
   m_ObjectHideFlags: 0
@@ -16400,6 +16406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
+  enemyStats: {fileID: 0}
   followCinema: {fileID: 0}
 --- !u!4 &1856437553
 Transform:
