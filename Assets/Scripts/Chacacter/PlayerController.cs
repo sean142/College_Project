@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
         SaveManager.Instance.LoadPlayerData();
         SaveManager.Instance.LoadCoreBugData();
         SaveManager.Instance.LoadCoreInSceneData();
+        //SaveManager.Instance.LoadEnemyData();
 
         if (!SceneController.instance.isFirstTimeInGame)
         {

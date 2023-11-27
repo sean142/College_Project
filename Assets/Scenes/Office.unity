@@ -12200,6 +12200,16 @@ PrefabInstance:
       propertyPath: alwaysVisible
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3171776939210927867, guid: 5706e80d0f2d4924a85f83f7c245d036,
+        type: 3}
+      propertyPath: sliderPercent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171776939210927867, guid: 5706e80d0f2d4924a85f83f7c245d036,
+        type: 3}
+      propertyPath: isReturningFromMenu
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}
       propertyPath: m_Name
@@ -14962,6 +14972,16 @@ PrefabInstance:
     - target: {fileID: 3171776939210927867, guid: 5706e80d0f2d4924a85f83f7c245d036,
         type: 3}
       propertyPath: alwaysVisible
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171776939210927867, guid: 5706e80d0f2d4924a85f83f7c245d036,
+        type: 3}
+      propertyPath: sliderPercent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171776939210927867, guid: 5706e80d0f2d4924a85f83f7c245d036,
+        type: 3}
+      propertyPath: isReturningFromMenu
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3223868700625164369, guid: 5706e80d0f2d4924a85f83f7c245d036,

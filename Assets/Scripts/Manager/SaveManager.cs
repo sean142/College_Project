@@ -18,9 +18,11 @@ public class SaveManager : Singleton<SaveManager>
 
     public Vector3 playerPosition;  // 到場景二時 存生成點
     public CharacterController characterController;
+    //public bool isReturningFromMenu = true;
 
     protected override void Awake()
     {
+
         base.Awake();
         DontDestroyOnLoad(this);
     }
@@ -78,38 +80,30 @@ public class SaveManager : Singleton<SaveManager>
             JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(key), data);
         }
     }
-
+ 
     //存儲敵人血量
     public void SaveEnemyData()
     {
-        SaveEnemy(GameManager.Instance.enemyStats.characterData, enemyData);
+        for (int i = 0; i < GameManager.Instance.enemyStats.Length; i++)
+        {
+            SaveEnemy(GameManager.Instance.enemyStats[i].characterData, enemyData + i);
+        }
     }
+
     public void LoadEnemyData()
     {
-        LoadEnemy(GameManager.Instance.enemyStats.characterData, enemyData);
+        for (int i = 0; i < GameManager.Instance.enemyStats.Length; i++)
+        {
+            LoadEnemy(GameManager.Instance.enemyStats[i].characterData, enemyData + i);         
+        }
     }
-    //public void SaveEnemyData()
-    //{
-    //    for (int i = 0; i < GameManager.Instance.enemyStats.Count; i++)
-    //    {
-    //        PlayerPrefs.SetInt("EnemyHealth" + i, GameManager.Instance.enemyStats[i].CurrentHealth);
-    //    }
-    //}
 
-    //public void LoadEnemyData()
-    //{
-    //    for (int i = 0; i < GameManager.Instance.enemyStats.Count; i++)
-    //    {
-    //        GameManager.Instance.enemyStats[i].CurrentHealth = PlayerPrefs.GetInt("EnemyHealth" + i);
-    //    }
-    //}
     public void SaveEnemy(Object data, string key)
     {
         // 將數據轉換為 JSON 格式並儲存到 PlayerPrefs
-        var jsonDate = JsonUtility.ToJson(data, true);
-        PlayerPrefs.SetString(key, jsonDate);
-        PlayerPrefs.SetString("sceneName", SceneManager.GetActiveScene().name);
-        PlayerPrefs.Save();      
+        var jsonData = JsonUtility.ToJson(data, true);
+        PlayerPrefs.SetString(key, jsonData);
+        PlayerPrefs.Save();
     }
 
     public void LoadEnemy(Object data, string key)

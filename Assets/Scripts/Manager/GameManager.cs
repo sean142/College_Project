@@ -6,7 +6,7 @@ using Cinemachine;
 public class GameManager : Singleton<GameManager>
 {
     public CharacterStats playerStats;
-    public CharacterStats enemyStats;
+    public CharacterStats[] enemyStats;
     public CinemachineFreeLook followCinema;
 
 
@@ -32,15 +32,14 @@ public class GameManager : Singleton<GameManager>
             followCinema.m_XAxis.m_MaxSpeed = 0;
         }
     }
-    public void RigisterEnemy(CharacterStats enemy)
+    public void RigisterEnemy()
     {
         for (int i = 0; i < Enemy.instance.enemies.Length; i++)
         {
-            //enemyStats[i] = Enemy.instance.enemies[i].GetComponentInChildren<CharacterStats>();
+            enemyStats[i] = Enemy.instance.enemies[i].GetComponentInChildren<CharacterStats>();
 
-            //enemyStats[i] = enemy;
         }
-        enemyStats = enemy;
+        //enemyStats = enemy;
 
     }
 

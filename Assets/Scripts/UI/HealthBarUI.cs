@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
+    public static HealthBarUI instance;
+
     public GameObject healthUIPrefab;
     public Transform barPoint;
     public bool alwaysVisible;
@@ -23,11 +25,12 @@ public class HealthBarUI : MonoBehaviour
 
     public float chipSpeed = 20f;
     public float lerpTimer = 1f;
-    public bool isReturningFromMenu;
+    public bool isReturningFromMenu = true;
     public float sliderPercent;
 
     private void Awake()
     {
+        instance = this;
         currentStats = GetComponent<CharacterStats>();
 
         currentStats.UpdataHealthBarOnAttack += UpdateHealthBar;
@@ -55,8 +58,6 @@ public class HealthBarUI : MonoBehaviour
     public void Update()
     {
         //UpdateHealth();
-        //currentStats.UpdataHealthBarOnAttack += UpdateHealthBar;
-
     }
 
     private void LateUpdate()
@@ -73,35 +74,12 @@ public class HealthBarUI : MonoBehaviour
         }
     }
 
-    private void UpdateHealthBar(int currentHealth, int maxHealth)
+    public void UpdateHealthBar(int currentHealth, int maxHealth)
     {
         if (currentHealth <= 0)
             Destroy(UIBar.gameObject);
 
-        //UIBar.gameObject.SetActive(true);
-        //timeLeft = visibleTime;
-
-        //float fillB = backHealthBar.fillAmount;
-
-        //sliderPercent = (float)currentHealth / maxHealth;
-        //frountHealthBar.fillAmount = sliderPercent;
-        //backHealthBar.fillAmount = sliderPercent;
-
-        //if (isReturningFromMenu)
-        //{
-        //    fillB = sliderPercent;
-        //    isReturningFromMenu = false;
-        //}
-
-        //if (fillB > sliderPercent)
-        //{
-        //    frountHealthBar.fillAmount = sliderPercent;
-        //    backHealthBar.color = Color.red;
-        //    float percentComplete = lerpTimer / chipSpeed;
-        //    backHealthBar.fillAmount = Mathf.Lerp(fillB, sliderPercent, percentComplete);
-        //}
-
-        float sliderPercent = (float)currentHealth / maxHealth;
+        sliderPercent = (float)currentHealth / maxHealth;
         healthSlider.fillAmount = sliderPercent;
     }
 
