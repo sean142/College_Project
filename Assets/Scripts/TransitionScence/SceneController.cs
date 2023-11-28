@@ -46,6 +46,9 @@ public class SceneController :Singleton<SceneController>
         SaveManager.Instance.SavePlayerData();
         SaveManager.Instance.SaveCoreBugData();
         SaveManager.Instance.SavePlayerPositionData();
+        SaveManager.Instance.SaveCoreInSceneData();
+        SaveManager.Instance.SaveEnemyData();
+        SaveManager.Instance.SaveEnemyStateData();
 
         if (SceneManager.GetActiveScene().name != sceneName)
         {
@@ -55,9 +58,13 @@ public class SceneController :Singleton<SceneController>
 
             SaveManager.Instance.LoadPlayerData();
             SaveManager.Instance.LoadCoreBugData();
+
             SaveManager.Instance.SavePlayerData();
             SaveManager.Instance.SaveCoreBugData();
             SaveManager.Instance.SavePlayerPositionData();
+            SaveManager.Instance.SaveCoreInSceneData();
+            SaveManager.Instance.SaveEnemyData();
+            SaveManager.Instance.SaveEnemyStateData();
             isTransitioning = false;
             yield break;
         }

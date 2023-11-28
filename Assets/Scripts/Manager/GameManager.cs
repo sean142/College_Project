@@ -9,7 +9,6 @@ public class GameManager : Singleton<GameManager>
     public CharacterStats[] enemyStats;
     public CinemachineFreeLook followCinema;
 
-
     List<IEndGameObserver> endGameObserver = new List<IEndGameObserver>();
 
     protected override void Awake()
@@ -34,10 +33,11 @@ public class GameManager : Singleton<GameManager>
     }
     public void RigisterEnemy()
     {
-        for (int i = 0; i < Enemy.instance.enemies.Length; i++)
-        {
-            enemyStats[i] = Enemy.instance.enemies[i].GetComponentInChildren<CharacterStats>();
+        enemyStats = new CharacterStats[EnemyManager.instance.enemies.Length];
 
+        for (int i = 0; i < EnemyManager.instance.enemies.Length; i++)
+        {               
+            enemyStats[i] = EnemyManager.instance.enemies[i].GetComponentInChildren<CharacterStats>();
         }
         //enemyStats = enemy;
 

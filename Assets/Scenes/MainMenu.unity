@@ -614,10 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
-  enemyStats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemyStats: []
   followCinema: {fileID: 0}
 --- !u!4 &913834300
 Transform:

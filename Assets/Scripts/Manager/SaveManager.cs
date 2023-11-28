@@ -18,11 +18,9 @@ public class SaveManager : Singleton<SaveManager>
 
     public Vector3 playerPosition;  // 到場景二時 存生成點
     public CharacterController characterController;
-    //public bool isReturningFromMenu = true;
 
     protected override void Awake()
     {
-
         base.Awake();
         DontDestroyOnLoad(this);
     }
@@ -265,17 +263,17 @@ public class SaveManager : Singleton<SaveManager>
     //敵人狀態
     public void SaveEnemyStateData()
     {
-        for (int i = 0; i < Enemy.instance.enemies.Length; i++)
+        for (int i = 0; i < EnemyManager.instance.enemies.Length; i++)
         {
-            SaveEnemyState(Enemy.instance.enemies[i].isDead, enemyState + i);
+            SaveEnemyState(EnemyManager.instance.enemies[i].isDead, enemyState + i);
         }       
     }
 
     public void LoadEnemyStateData()
     {
-        for (int i = 0; i < Enemy.instance.enemies.Length; i++)
+        for (int i = 0; i < EnemyManager.instance.enemies.Length; i++)
         {
-            Enemy.instance.enemies[i].isDead = LoadEnemyState(enemyState + i);
+            EnemyManager.instance.enemies[i].isDead = LoadEnemyState(enemyState + i);
         }
     }
    
