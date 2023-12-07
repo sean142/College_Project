@@ -32,15 +32,13 @@ public class GameManager : Singleton<GameManager>
         }
     }
     public void RigisterEnemy()
-    {
-        enemyStats = new CharacterStats[EnemyManager.instance.enemies.Length];
+    {      
+        enemyStats = new CharacterStats[EnemyManager.instance.enemiesPool.Length];
 
-        for (int i = 0; i < EnemyManager.instance.enemies.Length; i++)
-        {               
-            enemyStats[i] = EnemyManager.instance.enemies[i].GetComponentInChildren<CharacterStats>();
+        for (int i = 0; i < EnemyManager.instance.enemiesPool.Length; i++)
+        {
+            enemyStats[i] = EnemyManager.instance.enemiesPool[i].GetComponentInChildren<CharacterStats>();
         }
-        //enemyStats = enemy;
-
     }
 
     public void AddObserver(IEndGameObserver observer)

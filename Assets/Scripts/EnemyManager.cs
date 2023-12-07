@@ -5,14 +5,37 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
-    public EnemyController[] enemies;
-    //public GameObject[] enemyPool;
+    public EnemyController[] enemiesPool;
+    public GameObject[] enemiesObject;
+    public bool[] enemiesBool;
+
     private void Awake()
     {
         instance = this;
-        //enemyPool[0] = GameObject.Find("Mouse");
-        //enemyPool[1] = GameObject.Find("Mouse (1)");
-        //enemyPool[2] = GameObject.Find("Mouse (2)");
+      
 
+    }
+    private void Start()
+    {
+        int trueIndex = 0;
+        for (int i = 0; i < enemiesBool.Length; i++)
+        {
+            if(enemiesBool[i]== true)
+            {
+                trueIndex++;
+            }
+        }
+        enemiesPool = new EnemyController[trueIndex];
+        int j = 0;
+        for (int i = 0; i < enemiesBool.Length; i++)
+        {
+            if (enemiesBool[i] == true)
+            {
+                enemiesPool[j] = Instantiate(enemiesObject[i]).GetComponent<EnemyController>();              
+                j++;
+            }
+              
+           
+        }       
     }
 }

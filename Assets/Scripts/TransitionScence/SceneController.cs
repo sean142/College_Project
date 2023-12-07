@@ -49,7 +49,6 @@ public class SceneController :Singleton<SceneController>
         SaveManager.Instance.SaveCoreInSceneData();
         SaveManager.Instance.SaveEnemyData();
         SaveManager.Instance.SaveEnemyStateData();
-
         if (SceneManager.GetActiveScene().name != sceneName)
         {
             yield return SceneManager.LoadSceneAsync(sceneName);
@@ -65,6 +64,7 @@ public class SceneController :Singleton<SceneController>
             SaveManager.Instance.SaveCoreInSceneData();
             SaveManager.Instance.SaveEnemyData();
             SaveManager.Instance.SaveEnemyStateData();
+
             isTransitioning = false;
             yield break;
         }

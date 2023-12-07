@@ -84,7 +84,7 @@ public class SaveManager : Singleton<SaveManager>
     {
         for (int i = 0; i < GameManager.Instance.enemyStats.Length; i++)
         {
-            SaveEnemy(GameManager.Instance.enemyStats[i].characterData, enemyData + i);
+            SaveEnemy(GameManager.Instance.enemyStats[i].characterData, enemyData + i + SceneManager.GetActiveScene().name);
         }
     }
 
@@ -92,7 +92,7 @@ public class SaveManager : Singleton<SaveManager>
     {
         for (int i = 0; i < GameManager.Instance.enemyStats.Length; i++)
         {
-            LoadEnemy(GameManager.Instance.enemyStats[i].characterData, enemyData + i);         
+            LoadEnemy(GameManager.Instance.enemyStats[i].characterData, enemyData + i + SceneManager.GetActiveScene().name);         
         }
     }
 
@@ -202,7 +202,7 @@ public class SaveManager : Singleton<SaveManager>
         {
             if (CoreManager.Instance.corePool[i].isActive)
             {
-                SaveCoreInScene(CoreManager.Instance.corePool[i], CoreManager.Instance.corePool[i].transform.position, coreInSceneKey + i);
+                SaveCoreInScene(CoreManager.Instance.corePool[i], CoreManager.Instance.corePool[i].transform.position, coreInSceneKey + i + SceneManager.GetActiveScene().name);
             }
         }     
     }
@@ -211,12 +211,12 @@ public class SaveManager : Singleton<SaveManager>
     {
         for (int i = 0; i < CoreManager.Instance.corePool.Length; i++)
         {
-            bool isActive = LoadCoreIsActive(coreInSceneKey + i);
+            bool isActive = LoadCoreIsActive(coreInSceneKey + i+ SceneManager.GetActiveScene().name);
             CoreManager.Instance.corePool[i].isActive = isActive;
           
             if (isActive)
             {
-                Vector3 position = LoadCorePosition(coreInSceneKey + i);
+                Vector3 position = LoadCorePosition(coreInSceneKey + i + SceneManager.GetActiveScene().name);
                 CoreManager.Instance.corePool[i].transform.position = position;
                 CoreManager.Instance.corePool[i].TurnOn();
                 CoreManager.instance.isCoreTurnOn = true;
@@ -263,17 +263,17 @@ public class SaveManager : Singleton<SaveManager>
     //敵人狀態
     public void SaveEnemyStateData()
     {
-        for (int i = 0; i < EnemyManager.instance.enemies.Length; i++)
+        for (int i = 0; i < EnemyManager.instance.enemiesPool.Length; i++)
         {
-            SaveEnemyState(EnemyManager.instance.enemies[i].isDead, enemyState + i);
+            SaveEnemyState(EnemyManager.instance.enemiesPool[i].isDead, enemyState + i + SceneManager.GetActiveScene().name);
         }       
     }
 
     public void LoadEnemyStateData()
     {
-        for (int i = 0; i < EnemyManager.instance.enemies.Length; i++)
+        for (int i = 0; i < EnemyManager.instance.enemiesPool.Length; i++)
         {
-            EnemyManager.instance.enemies[i].isDead = LoadEnemyState(enemyState + i);
+            EnemyManager.instance.enemiesPool[i].isDead = LoadEnemyState(enemyState + i + SceneManager.GetActiveScene().name);
         }
     }
    
@@ -307,39 +307,30 @@ public class SaveManager : Singleton<SaveManager>
         }
     }
 
-    //敵人狀態
-    //public void SaveEnemyStateData()
+  
+
+    ////敵人是否已出現在場景中(跨場景處理)
+    //public void SaveEnemyState()
     //{
-    //    SaveEnemyState("EnemyID", EnemyController.instance.currentInt);
-    //    SaveEnemyState("isDead", EnemyController.instance.isDead ? 1 : 0);
-    //}
-
-    //public void LoadEnemyStateData()
-    //{
-    //    // 從PlayerPrefs中讀取敵人的ID和死亡狀態
-    //    int enemyID = LoadEnemyState("EnemyID");
-    //    int isDead = LoadEnemyState("isDead");
-
-    //    // 使用讀取的數據來恢復敵人的狀態
-    //    EnemyController.instance.currentInt = enemyID;
-    //    EnemyController.instance.isDead = isDead == 1;
-    //}
-
-    //public void SaveEnemyState(string key, int value)
-    //{
-    //    PlayerPrefs.SetInt(key, value);
-
-    //    PlayerPrefs.Save();
-    //}   
-
-    //public int LoadEnemyState(string key)
-    //{
-    //    if (PlayerPrefs.HasKey(key))
+    //    for (int i = 0; i < EnemyManager.instance.enemyiesIsOnWorld.Length; i++)
     //    {
-    //        // 如果PlayerPrefs中存在該鍵，則返回其值，否則返回0
-    //        return PlayerPrefs.GetInt(key);
+    //        //SaveEnemyState(EnemyManager.instance.enemiesBool[i], enemy + i);
+    //        PlayerPrefs.SetInt("enemy" + i, EnemyManager.instance.enemyiesIsOnWorld[i] ? 1 : 0);
 
     //    }
-    //    return 0;
     //}
+
+    //public void LoadEnemyState()
+    //{
+    //    for (int i = 0; i < EnemyManager.instance.enemyiesIsOnWorld.Length; i++)
+    //    {
+    //        //EnemyManager.instance.enemiesBool[i] = LoadEnemyState(enemy + i);
+    //        EnemyManager.instance.enemyiesIsOnWorld[i] = PlayerPrefs.GetInt("enemy" + i) == 1;
+    //        //EnemyManager.instance.enemiesBool[0] = true;
+    //        //EnemyManager.instance.enemiesBool[2] = true;
+    //    }
+    //}
+
+
+
 }
