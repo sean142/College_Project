@@ -11,10 +11,10 @@ public class SaveManager : Singleton<SaveManager>
     string enemyState = "enemyState";
     string enemyData = "enemyData";
     public string SceneName { get { return PlayerPrefs.GetString(sceneName); } }
-    public string CoreBoolKey { get { return PlayerPrefs.GetString(coreBoolKey); } }
-    public string CoreInSceneKey { get { return PlayerPrefs.GetString(coreInSceneKey); } }
-    public string EnemyState {get { return PlayerPrefs.GetString(enemyState); } }
-    public string EnemyData {get { return PlayerPrefs.GetString(enemyData); } }
+    //public string CoreBoolKey { get { return PlayerPrefs.GetString(coreBoolKey); } }
+    //public string CoreInSceneKey { get { return PlayerPrefs.GetString(coreInSceneKey); } }
+    //public string EnemyState {get { return PlayerPrefs.GetString(enemyState); } }
+    //public string EnemyData {get { return PlayerPrefs.GetString(enemyData); } }
 
     public Vector3 playerPosition;  // 到場景二時 存生成點
     public CharacterController characterController;

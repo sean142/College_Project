@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     [Header("Patrol State（巡邏狀態設置）")]
     public float potralRange;   //巡邏圈的半徑大小
     Vector3 wayPoint;           //用於存儲巡邏的下一個目標位置點
-    Vector3 guardPos;           //Enemy的當前位置
+    [HideInInspector]public Vector3 guardPos;           //Enemy的當前位置
 
     [Header("Disintegrate&&Dissolve")]
     public SkinnedMeshRenderer skinnedMesh;

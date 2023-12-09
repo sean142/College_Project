@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public  Button newGameBtn;
+    public Button newGameBtn;
     public Button continueBtn;
+    public Button exitBtn;
+
     void Awake()
     {
         newGameBtn = transform.GetChild(0).GetComponent<Button>();
@@ -14,7 +16,11 @@ public class MainMenu : MonoBehaviour
 
         continueBtn = transform.GetChild(1).GetComponent<Button>();
         continueBtn.onClick.AddListener(ContinueGame);
+
+        exitBtn = transform.GetChild(2).GetComponent<Button>();
+        exitBtn.onClick.AddListener(ExitGame);
     }
+
     public void NewGame()
     {
         PlayerPrefs.DeleteAll();
@@ -29,5 +35,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneController.Instance.TransitionToLoadGame();
         SceneController.instance.isStandingUp = true;
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
