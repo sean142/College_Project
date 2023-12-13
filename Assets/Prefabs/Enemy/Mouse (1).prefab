@@ -2164,6 +2164,7 @@ MonoBehaviour:
   LookAtTime: 3
   sighRadius: 8
   potralRange: 8
+  guardPos: {x: 0, y: 0, z: 0}
   skinnedMesh: {fileID: 5442423506995002998}
   skinnedMaterial: {fileID: 2100000, guid: 91e83323bb85dd94e9bcddd62f537c47, type: 2}
   VFXGraph: {fileID: 5773349248908998725}
@@ -2222,7 +2223,7 @@ MonoBehaviour:
   healthUIPrefab: {fileID: 3039851453043371358, guid: 68fbde2b25fa0af43863b33539ddedb6,
     type: 3}
   barPoint: {fileID: 4654301260035046481}
-  alwaysVisible: 1
+  alwaysVisible: 0
   visibleTime: 5
   healthSlider: {fileID: 0}
   UIBar: {fileID: 0}

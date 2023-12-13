@@ -16,13 +16,13 @@ public class CharacterStats : MonoBehaviour
     [HideInInspector]
     public bool isCritical;
 
-    public void Update()
-    {
-        if (UpdataHealthBarOnAttack != null)
-        {
-            UpdataHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
-        }
-    }
+    //public void Update()
+    //{
+    //    if (UpdataHealthBarOnAttack != null)
+    //    {
+    //        UpdataHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
+    //    }
+    //}
 
     private void Awake()
     {
@@ -104,11 +104,11 @@ public class CharacterStats : MonoBehaviour
             defener.GetComponent<Animator>().SetTrigger("Hit");
         }
 
-        //// Update UI
-        //if (UpdataHealthBarOnAttack != null)
-        //{
-        //    UpdataHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
-        //}
+        // Update UI
+        if (UpdataHealthBarOnAttack != null)
+        {
+            UpdataHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
+        }
         //TODO ∏g≈Áupdata
     }
 

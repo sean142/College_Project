@@ -102,7 +102,11 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         SaveManager.Instance.LoadEnemyData();
 
         if (isDead)
+        {
             Destroy(this.gameObject);
+            //HealthBarUI.instance.UIBar.gameObject.SetActive(false);
+            //Destroy(HealthBarUI.instance.UIBar.gameObject);
+        }
     }
     /*
     //TODO 切換場景時啟用

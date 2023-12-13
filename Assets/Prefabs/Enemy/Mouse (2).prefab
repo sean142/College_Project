@@ -1151,6 +1151,7 @@ MonoBehaviour:
   LookAtTime: 3
   sighRadius: 8
   potralRange: 8
+  guardPos: {x: 0, y: 0, z: 0}
   skinnedMesh: {fileID: 7742461193082140638}
   skinnedMaterial: {fileID: 2100000, guid: cca34d8c4a8f3d14a9dacf488e2d0fa9, type: 2}
   VFXGraph: {fileID: 8136578162247700524}
@@ -1209,12 +1210,8 @@ MonoBehaviour:
   healthUIPrefab: {fileID: 3039851453043371358, guid: 68fbde2b25fa0af43863b33539ddedb6,
     type: 3}
   barPoint: {fileID: 6945261326617736697}
-  alwaysVisible: 1
+  alwaysVisible: 0
   visibleTime: 5
-  healthSlider: {fileID: 0}
-  UIBar: {fileID: 0}
-  cam: {fileID: 0}
-  timeLeft: 0
   sliderPercent: 1
 --- !u!1 &6843380239917474571
 GameObject:

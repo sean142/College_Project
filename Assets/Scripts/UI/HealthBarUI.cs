@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
+    public static HealthBarUI instance;
     public GameObject healthUIPrefab;
     public Transform barPoint;
     public bool alwaysVisible;
     public float visibleTime;
 
-    public Image healthSlider;
+    private Image healthSlider;
     public Transform UIBar;
-    public Transform cam;
-    public float timeLeft;
+    private Transform cam;
+    private float timeLeft;
 
     CharacterStats currentStats;
 
@@ -28,15 +29,18 @@ public class HealthBarUI : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         currentStats = GetComponent<CharacterStats>();
 
         currentStats.UpdataHealthBarOnAttack += UpdateHealthBar;
 
         //backHealthBar = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         //frountHealthBar = transform.GetChild(0).GetChild(1).GetComponent<Image>();
-    }
 
-    private void OnEnable()
+
+    }
+    
+    private void Start()
     {
         cam = Camera.main.transform;
 
@@ -47,11 +51,12 @@ public class HealthBarUI : MonoBehaviour
                 UIBar = Instantiate(healthUIPrefab, canvas.transform).transform;
                 //backHealthBar = UIBar.GetChild(0).GetComponent<Image>();
                 //frountHealthBar = UIBar.GetChild(1).GetComponent<Image>();
-                healthSlider = UIBar.GetChild(0).GetComponent<Image>();
+                healthSlider = UIBar.GetChild(0).GetComponent<Image>();     
                 UIBar.gameObject.SetActive(alwaysVisible);
             }
         }
-    }
+    } 
+
     public void Update()
     {
         //UpdateHealth();
@@ -62,11 +67,11 @@ public class HealthBarUI : MonoBehaviour
         if (currentHealth <= 0)
         {
             UIBar.gameObject.SetActive(false);
-            Destroy(UIBar.gameObject,5f);
+            Destroy(UIBar.gameObject);
         }
 
-        //UIBar.gameObject.SetActive(true);
-        //timeLeft = visibleTime;
+        UIBar.gameObject.SetActive(true);
+        timeLeft = visibleTime;
 
         sliderPercent = (float)currentHealth / maxHealth;
         healthSlider.fillAmount = sliderPercent;
@@ -85,8 +90,7 @@ public class HealthBarUI : MonoBehaviour
                 timeLeft -= Time.deltaTime;
         }
     }
-
-
+   
 
     //void UpdateHealth()
     //{
