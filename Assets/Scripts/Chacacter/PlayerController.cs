@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         SaveManager.Instance.LoadCoreInSceneData();
         //SaveManager.Instance.LoadEnemyData();
 
-        if (!SceneController.instance.isFirstTimeInGame)
+        if (!SceneController.Instance.isFirstTimeInGame)
         {
             SaveManager.Instance.LoadPlayerPositionData();
         }
@@ -277,7 +277,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             //CoreInventory.instance.ToggleInventory();
-            InvertoryManager.instance.OnControlBagButtonClick();
+            InvertoryManager.Instance.OnControlBagButtonClick();
         }
     }
 
@@ -419,11 +419,11 @@ public class PlayerController : MonoBehaviour
 
     private void AbsorptionAndUseCore()
     {
-        if (!CoreManager.instance.isUseTime)
+        if (!CoreManager.Instance.isUseTime)
         {
-            if (Input.GetKeyDown(KeyCode.F) && CoreInventory.instance.currentInt != 0)
+            if (Input.GetKeyDown(KeyCode.F) && CoreInventory.Instance.currentInt != 0)
             {
-                CoreManager.instance.UseCoreAbility(CoreInventory.instance.currentInt);
+                CoreManager.Instance.UseCoreAbility(CoreInventory.Instance.currentInt);
             }
         }
         if(Input.GetKeyDown(KeyCode.E))
@@ -431,37 +431,37 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.E))
             vfxAbsorb.SetActive(false);
 
-        if (Input.GetKeyDown(KeyCode.E) && !CoreManager.instance.isBeingAbsorbed && CoreManager.instance.isCoreTurnOn && !CoreManager.instance.isCoreGenerating)
+        if (Input.GetKeyDown(KeyCode.E) && !CoreManager.Instance.isBeingAbsorbed && CoreManager.Instance.isCoreTurnOn && !CoreManager.Instance.isCoreGenerating)
         {
             // 開始吸收計時
             animator.SetBool("Absorb", true);
             caneAnimator.SetBool("openCaneHead", true);
-            CoreManager.instance.TurnOnTrail();
+            CoreManager.Instance.TurnOnTrail();
             //CoreManager.instance.absorptionTimer = 0.0f;
 
-            CoreManager.instance.isBeingAbsorbed = true;
+            CoreManager.Instance.isBeingAbsorbed = true;
             vfxAbsorb.SetActive(true);
         }
 
-        if (Input.GetKeyUp(KeyCode.E) && CoreManager.instance.isBeingAbsorbed && !CoreManager.instance.isCoreGenerating)
+        if (Input.GetKeyUp(KeyCode.E) && CoreManager.Instance.isBeingAbsorbed && !CoreManager.Instance.isCoreGenerating)
         {
             animator.SetBool("Absorb", false);
             caneAnimator.SetBool("openCaneHead", false);
 
-            CoreManager.instance.isBeingAbsorbed = false;
+            CoreManager.Instance.isBeingAbsorbed = false;
             vfxAbsorb.SetActive(false);
-            CoreManager.instance.TurnOffTrail();
+            CoreManager.Instance.TurnOffTrail();
         }
     }
     
     public void StandUPControlAnimationEvent()
     {
-        SceneController.instance.isStandingUp = true;
+        SceneController.Instance.isStandingUp = true;
     }
 
     void ContinueIdle()
     {
-        if (SceneController.instance.isStandingUp)
+        if (SceneController.Instance.isStandingUp)
         {
             canMove = true;
             GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;

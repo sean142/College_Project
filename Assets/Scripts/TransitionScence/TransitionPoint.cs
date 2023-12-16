@@ -22,9 +22,9 @@ public class TransitionPoint : MonoBehaviour
             FadeOut.instance.TurnOnFadeOut();
             StartCoroutine(Static.DelayToInvokeDo(() =>
             {
-                if (!SceneController.instance.isTransitioning)
+                if (!SceneController.Instance.isTransitioning)
                     SceneController.Instance.TransitionToDestination(this);
-                SceneController.instance.isTransitioning = true;
+                SceneController.Instance.isTransitioning = true;
             }, 5f));
         }
     }

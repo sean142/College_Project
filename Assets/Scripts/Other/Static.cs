@@ -7,10 +7,10 @@ public class Static : MonoBehaviour
     // 核心生成延遲
     public static IEnumerator DelayToTurnCore(System.Action action, float delaySeconds)
     {
-        CoreManager.instance.isCoreGenerating = true;
+        CoreManager.Instance.isCoreGenerating = true;
         yield return new WaitForSeconds(delaySeconds);
         //yield return new WaitForSecondsRealtime(delaySeconds);
-        CoreManager.instance.isCoreGenerating = false;
+        CoreManager.Instance.isCoreGenerating = false;
         action();        
     } 
     

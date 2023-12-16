@@ -29,7 +29,7 @@ public class SaveManager : Singleton<SaveManager>
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneController.instance.TransitionToMain();
+            SceneController.Instance.TransitionToMain();
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
@@ -55,11 +55,11 @@ public class SaveManager : Singleton<SaveManager>
     //存儲和加載玩家血量與場景名稱
     public void SavePlayerData()
     {
-        Save(GameManager.Instance.playerStats.characterData, GameManager.instance.playerStats.characterData.name);
+        Save(GameManager.Instance.playerStats.characterData, GameManager.Instance.playerStats.characterData.name);
     }
     public void LoadPlayerData()
     {
-        Load(GameManager.Instance.playerStats.characterData, GameManager.instance.playerStats.characterData.name);
+        Load(GameManager.Instance.playerStats.characterData, GameManager.Instance.playerStats.characterData.name);
     }    
 
     public void Save(Object data, string key)
@@ -198,7 +198,7 @@ public class SaveManager : Singleton<SaveManager>
     // 存儲場上中掉落那個核心
     public void SaveCoreInSceneData()
     {
-        for (int i = 0; i < CoreManager.instance.corePool.Length; i++)
+        for (int i = 0; i < CoreManager.Instance.corePool.Length; i++)
         {
             if (CoreManager.Instance.corePool[i].isActive)
             {
@@ -219,13 +219,13 @@ public class SaveManager : Singleton<SaveManager>
                 Vector3 position = LoadCorePosition(coreInSceneKey + i + SceneManager.GetActiveScene().name);
                 CoreManager.Instance.corePool[i].transform.position = position;
                 CoreManager.Instance.corePool[i].TurnOn();
-                CoreManager.instance.isCoreTurnOn = true;
+                CoreManager.Instance.isCoreTurnOn = true;
             }
         }
 
-        for (int i = 0; i < CoreInventory.instance.coreBool.Length; i++)
+        for (int i = 0; i < CoreInventory.Instance.coreBool.Length; i++)
         {
-            if (CoreInventory.instance.coreBool[i] == true)
+            if (CoreInventory.Instance.coreBool[i] == true)
             {
                 Debug.LogError("核心關閉");
                 CoreManager.Instance.corePool[i].TurnOff();

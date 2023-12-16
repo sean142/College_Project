@@ -116,7 +116,7 @@ public class CoreManager : Singleton<CoreManager>
             {
                 int currentCoreIndex = currentAbsorbCore[i];
                 corePool[currentAbsorbCore[currentCoreIndex]].TurnOff();
-                CoreInventory.instance.coreBool[currentCoreIndex] = true;
+                CoreInventory.Instance.coreBool[currentCoreIndex] = true;
             }              
         }
         // 檢測是否正在被吸收中

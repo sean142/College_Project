@@ -27,14 +27,14 @@ public class MainMenu : MonoBehaviour
 
         SceneController.Instance.TransitionToFirstLevel();
 
-        SceneController.instance.isFirstTimeInGame = true;
-        SceneController.instance.isStandingUp = false;
+        SceneController.Instance.isFirstTimeInGame = true;
+        SceneController.Instance.isStandingUp = false;
     }
 
     public void ContinueGame()
     {
         SceneController.Instance.TransitionToLoadGame();
-        SceneController.instance.isStandingUp = true;
+        SceneController.Instance.isStandingUp = true;
     }
 
     public void ExitGame()

@@ -112,7 +112,7 @@ public class SceneController :Singleton<SceneController>
         if (scene != "")
         {
             yield return SceneManager.LoadSceneAsync(scene);
-            yield return player = Instantiate(playerPrefab, GameManager.instance.GetEntrance().position, GameManager.instance.GetEntrance().rotation);
+            yield return player = Instantiate(playerPrefab, GameManager.Instance.GetEntrance().position, GameManager.Instance.GetEntrance().rotation);
 
             // 數據保存
             SaveManager.Instance.SavePlayerData();

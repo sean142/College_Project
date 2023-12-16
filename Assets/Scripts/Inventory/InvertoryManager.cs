@@ -42,7 +42,7 @@ public class InvertoryManager :Singleton<InvertoryManager>
             OpenBag(openBagIndex);
         }
  
-        CoreInventory.instance.ToggleInventory();
+        CoreInventory.Instance.ToggleInventory();
 
     }
 
