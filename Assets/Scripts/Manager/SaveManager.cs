@@ -16,7 +16,7 @@ public class SaveManager : Singleton<SaveManager>
     //public string EnemyState {get { return PlayerPrefs.GetString(enemyState); } }
     //public string EnemyData {get { return PlayerPrefs.GetString(enemyData); } }
 
-    public Vector3 playerPosition;  // 到場景二時 存生成點
+    public Vector3 playerPosition;  
     public CharacterController characterController;
 
     protected override void Awake()

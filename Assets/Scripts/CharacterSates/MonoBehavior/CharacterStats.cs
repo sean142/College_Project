@@ -5,7 +5,7 @@ using System;
 
 public class CharacterStats : MonoBehaviour
 {
-    public event Action<int, int> UpdataHealthBarOnAttack;
+    public event Action<int, int> UpdateHealthBarOnAttack;
 
     public CharacterData_SO templateData;
 
@@ -105,9 +105,9 @@ public class CharacterStats : MonoBehaviour
         }
 
         // Update UI
-        if (UpdataHealthBarOnAttack != null)
+        if (UpdateHealthBarOnAttack != null)
         {
-            UpdataHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
+            UpdateHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
         }
         //TODO ∏g≈Áupdata
     }

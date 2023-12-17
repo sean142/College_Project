@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
-    public static HealthBarUI instance;
     public GameObject healthUIPrefab;
     public Transform barPoint;
     public bool alwaysVisible;
@@ -29,10 +28,9 @@ public class HealthBarUI : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
         currentStats = GetComponent<CharacterStats>();
 
-        currentStats.UpdataHealthBarOnAttack += UpdateHealthBar;
+        currentStats.UpdateHealthBarOnAttack += UpdateHealthBar;
 
         //backHealthBar = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         //frountHealthBar = transform.GetChild(0).GetChild(1).GetComponent<Image>();
@@ -90,33 +88,4 @@ public class HealthBarUI : MonoBehaviour
                 timeLeft -= Time.deltaTime;
         }
     }
-   
-
-    //void UpdateHealth()
-    //{
-    //    if (sliderPercent <= 0)
-    //        Destroy(UIBar.gameObject);
-
-    //    float fillB = backHealthBar.fillAmount;
-
-    //    //sliderPercent = (float)GameManager.Instance.enemyStats.CurrentHealth / GameManager.Instance.enemyStats.MaxHealth;
-
-
-    //    frountHealthBar.fillAmount = sliderPercent;
-    //    backHealthBar.fillAmount = sliderPercent;
-
-    //    if (isReturningFromMenu)
-    //    {
-    //        fillB = sliderPercent;
-    //        isReturningFromMenu = false;
-    //    }
-
-    //    if (fillB > sliderPercent)
-    //    {
-    //        frountHealthBar.fillAmount = sliderPercent;
-    //        backHealthBar.color = Color.red;
-    //        float percentComplete = lerpTimer / chipSpeed;
-    //        backHealthBar.fillAmount = Mathf.Lerp(fillB, sliderPercent, percentComplete);
-    //    }
-    //}
 }

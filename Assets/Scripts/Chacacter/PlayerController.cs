@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             Movement();
-            Jump();
+            //Jump();
             AbsorptionAndUseCore();
         }
         Attack();
