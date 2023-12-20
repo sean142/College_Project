@@ -49,6 +49,9 @@ public class SceneController :Singleton<SceneController>
         SaveManager.Instance.SaveCoreInSceneData();
         SaveManager.Instance.SaveEnemyData();
         SaveManager.Instance.SaveEnemyStateData();
+        SaveManager.Instance.SaveEnemyStateAndCoreStateData();
+
+        //用TransitionPoint 中的 sceneName 來判斷是否為同場景。如果不相同，則表示目標轉換點位於不同的場景
         if (SceneManager.GetActiveScene().name != sceneName)
         {
             yield return SceneManager.LoadSceneAsync(sceneName);
@@ -78,7 +81,7 @@ public class SceneController :Singleton<SceneController>
             yield return null;
         }
     }
-
+    //尋找目標點
     private TransitionDestination GetDestination(TransitionDestination.DestinationTag destinationTag)
     {
         var entrances = FindObjectsOfType<TransitionDestination>();

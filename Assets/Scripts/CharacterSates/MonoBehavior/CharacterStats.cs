@@ -105,10 +105,11 @@ public class CharacterStats : MonoBehaviour
         }
 
         // Update UI
-        if (UpdateHealthBarOnAttack != null)
-        {
-            UpdateHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
-        }
+        //if (UpdateHealthBarOnAttack != null)
+        //{
+        //    UpdateHealthBarOnAttack.Invoke(CurrentHealth, MaxHealth);
+        //}
+        UpdateHealthBarOnAttack?.Invoke(CurrentHealth, MaxHealth);
         //TODO ∏g≈Áupdata
     }
 

@@ -14,12 +14,13 @@ public class TransitionPoint : MonoBehaviour
     public TransitionType transitionType;
     public TransitionDestination.DestinationTag destinationTag;
     public bool canTrans;
-
+  
     private void Update()
     {
         if (canTrans)
         {
             FadeOut.instance.TurnOnFadeOut();
+            PlayerController.instance.animator.SetBool("Move", false);
             StartCoroutine(Static.DelayToInvokeDo(() =>
             {
                 if (!SceneController.Instance.isTransitioning)
@@ -34,6 +35,7 @@ public class TransitionPoint : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             canTrans = true;
+
         }
     }
 

@@ -228,7 +228,7 @@ public class CoreManager : Singleton<CoreManager>
 
     //抓取corePoint位置 與從新計算當前編號
     public void TureOnCore(Transform enemypoint, int enemyType)
-    {
+    {        
         corePool[enemyType].transform.position = enemypoint.position;
         corePool[enemyType].transform.rotation = enemypoint.rotation;
         corePool[enemyType].TurnOn();

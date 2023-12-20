@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CoreItemOnWorld : BacePoolObject
 {
-    public GameObject core1;
-    public int CoreIndex; //核心編號
+    //public GameObject core1;
+    //public int CoreIndex; //核心編號
 
     void Awake()
      {

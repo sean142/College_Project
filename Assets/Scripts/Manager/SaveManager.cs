@@ -18,13 +18,12 @@ public class SaveManager : Singleton<SaveManager>
 
     public Vector3 playerPosition;  
     public CharacterController characterController;
-
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
     }
-   
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -39,17 +38,18 @@ public class SaveManager : Singleton<SaveManager>
             SaveCoreInSceneData();
             SaveEnemyStateData();
             SaveEnemyData();
+            SaveEnemyStateAndCoreStateData();
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            LoadPlayerData();
-            LoadCoreBugData();
-            LoadPlayerPositionData();
-            LoadCoreInSceneData();
-            LoadEnemyStateData();
-            LoadEnemyData();
-        }
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    LoadPlayerData();
+        //    LoadCoreBugData();
+        //    LoadPlayerPositionData();
+        //    LoadCoreInSceneData();
+        //    LoadEnemyStateData();
+        //    LoadEnemyData();
+        //}
     }
 
     //存儲和加載玩家血量與場景名稱
@@ -221,6 +221,7 @@ public class SaveManager : Singleton<SaveManager>
                 CoreManager.Instance.corePool[i].TurnOn();
                 CoreManager.Instance.isCoreTurnOn = true;
             }
+         
         }
 
         for (int i = 0; i < CoreInventory.Instance.coreBool.Length; i++)
@@ -229,8 +230,11 @@ public class SaveManager : Singleton<SaveManager>
             {
                 Debug.LogError("核心關閉");
                 CoreManager.Instance.corePool[i].TurnOff();
+                CoreManager.Instance.isCoreTurnOn = false;
             }
         }
+
+      
     }
 
     public void SaveCoreInScene(CoreItemOnWorld coreItem, Vector3 position, string key)
@@ -273,7 +277,7 @@ public class SaveManager : Singleton<SaveManager>
     {
         for (int i = 0; i < EnemyManager.instance.enemiesPool.Length; i++)
         {
-            EnemyManager.instance.enemiesPool[i].isDead = LoadEnemyState(enemyState + i + SceneManager.GetActiveScene().name);
+            EnemyManager.instance.enemiesPool[i].isDead = LoadEnemyState(enemyState + i + SceneManager.GetActiveScene().name);          
         }
     }
    
@@ -306,31 +310,81 @@ public class SaveManager : Singleton<SaveManager>
             return false;
         }
     }
+    //當敵人已死亡、核心未生成的狀態就存檔 需要強制生成核心到敵人死亡位置
+    public void SaveEnemyStateAndCoreStateData()
+    {       
+        for (int i = 0; i < EnemyManager.instance.enemiesPool.Length; i++)
+        {
+            if (EnemyManager.instance.enemiesPool[i].isDead && !CoreManager.Instance.corePool[i].isActive)
+            {
+                PlayerPrefs.SetInt("enemyState" + i, 1);
+                PlayerPrefs.SetInt("coreState" + i, 0);
+                SaveEnemyPosition(EnemyManager.instance.enemiesPool[i].transform.position);
+                SaveEnemyInt(EnemyManager.instance.enemiesPool[i].currentInt);
+            }
+        }       
+    }
+    public void LoadEnemyStateAndCoreStateData()
+    {
+        Vector3 enemyPosition = LoadEnemyPosition();
+        int enemyIndex = LoadEnemyInt();
+        Debug.Log("Enemy" + enemyIndex);
+        for (int i = 0; i < EnemyManager.instance.enemiesPool.Length; i++)
+        {
+            if (PlayerPrefs.GetInt("enemyState" + i) == 1)
+            {    
+                CoreManager.Instance.corePool[enemyIndex].transform.position = enemyPosition;
+                CoreManager.Instance.isCoreTurnOn = true;
+                CoreManager.Instance.corePool[enemyIndex].TurnOn();
+            }
+        }
 
-  
+        for (int i = 0; i < CoreInventory.Instance.coreBool.Length; i++)
+        {
+            if (CoreInventory.Instance.coreBool[i] == true)
+            {
+                Debug.LogError("核心關閉");
+                CoreManager.Instance.corePool[i].TurnOff();
+                CoreManager.Instance.isCoreTurnOn = false;
+            }
+        }
 
-    ////敵人是否已出現在場景中(跨場景處理)
-    //public void SaveEnemyState()
-    //{
-    //    for (int i = 0; i < EnemyManager.instance.enemyiesIsOnWorld.Length; i++)
-    //    {
-    //        //SaveEnemyState(EnemyManager.instance.enemiesBool[i], enemy + i);
-    //        PlayerPrefs.SetInt("enemy" + i, EnemyManager.instance.enemyiesIsOnWorld[i] ? 1 : 0);
+        for (int i = 0; i < CoreManager.Instance.corePool.Length; i++)
+        {
+            if (CoreManager.Instance.corePool[i].isActive)
+            {
+                CoreManager.Instance.isCoreTurnOn = true;
+            }
+        }
+    }
 
-    //    }
-    //}
+    public void SaveEnemyPosition(Vector3 position)
+    {
+        // 將敵人位置儲存到變數和 PlayerPrefs
+        PlayerPrefs.SetFloat("EnemyPosX", position.x);
+        PlayerPrefs.SetFloat("EnemyPosY", position.y + 0.5f);
+        PlayerPrefs.SetFloat("EnemyPosZ", position.z);
 
-    //public void LoadEnemyState()
-    //{
-    //    for (int i = 0; i < EnemyManager.instance.enemyiesIsOnWorld.Length; i++)
-    //    {
-    //        //EnemyManager.instance.enemiesBool[i] = LoadEnemyState(enemy + i);
-    //        EnemyManager.instance.enemyiesIsOnWorld[i] = PlayerPrefs.GetInt("enemy" + i) == 1;
-    //        //EnemyManager.instance.enemiesBool[0] = true;
-    //        //EnemyManager.instance.enemiesBool[2] = true;
-    //    }
-    //}
+        PlayerPrefs.Save();
+    }
+    public Vector3 LoadEnemyPosition()
+    {
+        // 從 PlayerPrefs 獲取敵人位置並返回
+        float x = PlayerPrefs.GetFloat("EnemyPosX");
+        float y = PlayerPrefs.GetFloat("EnemyPosY");
+        float z = PlayerPrefs.GetFloat("EnemyPosZ");
+        return new Vector3(x, y, z);
+    }
 
+    public void SaveEnemyInt(int index)
+    {
+        // 拿到當前死亡敵人的CurrnetIndex
+        PlayerPrefs.SetInt("EnemyIndex", index);
+    }
 
-
+    public int LoadEnemyInt()
+    {
+        return PlayerPrefs.GetInt("EnemyIndex");
+    }
+   
 }

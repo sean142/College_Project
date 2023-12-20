@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
 
     private CharacterController coll;
-    private Animator animator;
+    [HideInInspector] public  Animator animator;
     private CharacterStats characterStats;
     public Animator caneAnimator;
 
@@ -105,6 +105,8 @@ public class PlayerController : MonoBehaviour
         SaveManager.Instance.LoadPlayerData();
         SaveManager.Instance.LoadCoreBugData();
         SaveManager.Instance.LoadCoreInSceneData();
+        SaveManager.Instance.LoadEnemyStateAndCoreStateData();
+
         //SaveManager.Instance.LoadEnemyData();
 
         if (!SceneController.Instance.isFirstTimeInGame)
