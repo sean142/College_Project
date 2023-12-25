@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Enemy Data
   m_EditorClassIdentifier: 
   maxHealth: 8
-  currentHealth: 1
+  currentHealth: 8
   baseDefence: 2
   currentDefence: 2

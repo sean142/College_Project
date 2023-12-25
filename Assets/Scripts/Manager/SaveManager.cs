@@ -315,7 +315,7 @@ public class SaveManager : Singleton<SaveManager>
     {       
         for (int i = 0; i < EnemyManager.instance.enemiesPool.Length; i++)
         {
-            if (EnemyManager.instance.enemiesPool[i].isDead && !CoreManager.Instance.corePool[i].isActive)
+            if (EnemyManager.instance.enemiesPool[i]!= null && EnemyManager.instance.enemiesPool[i].isDead && !CoreManager.Instance.corePool[i].isActive)
             {
                 PlayerPrefs.SetInt("enemyState" + i, 1);
                 PlayerPrefs.SetInt("coreState" + i, 0);
@@ -386,5 +386,26 @@ public class SaveManager : Singleton<SaveManager>
     {
         return PlayerPrefs.GetInt("EnemyIndex");
     }
-   
+
+    //可以參考
+    //public void SaveEnemyState()
+    //{
+    //    for (int i = 0; i < EnemyManager.instance.enemiesBool.Length; i++)
+    //    {
+    //        //SaveEnemyState(EnemyManager.instance.enemiesBool[i], enemy + i);
+    //        PlayerPrefs.SetInt(enemy + i, EnemyManager.instance.enemiesBool[i] ? 1 : 0);
+
+    //    }
+    //}
+
+    //public void LoadEnemyState()
+    //{
+    //    for (int i = 0; i < EnemyManager.instance.enemiesBool.Length; i++)
+    //    {
+    //        //EnemyManager.instance.enemiesBool[i] = LoadEnemyState(enemy + i);
+    //        EnemyManager.instance.enemiesBool[i] = PlayerPrefs.GetInt(enemy + i) == 1;
+    //        //EnemyManager.instance.enemiesBool[0] = true;
+    //        //EnemyManager.instance.enemiesBool[2] = true;
+    //    }
+    //}
 }
