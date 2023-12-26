@@ -39,6 +39,7 @@ public class SaveManager : Singleton<SaveManager>
             SaveEnemyStateData();
             SaveEnemyData();
             SaveEnemyStateAndCoreStateData();
+            SaveMinimapPositionData();
         }
 
         //if (Input.GetKeyDown(KeyCode.M))
@@ -387,6 +388,33 @@ public class SaveManager : Singleton<SaveManager>
         return PlayerPrefs.GetInt("EnemyIndex");
     }
 
+    public void SaveMinimapPositionData()
+    {
+        SaveMinimapPosition(Minimap.instance.target.transform.position);
+    }
+
+    public void LoadMinimapPositionData()
+    {
+        Vector3 minimapPosition = LoadMiniPosition();
+        Debug.Log("MinimapPosition" + minimapPosition);
+        Minimap.instance.transform.position = minimapPosition;
+    }
+
+    public void SaveMinimapPosition(Vector3 position)
+    {
+        PlayerPrefs.SetFloat("MinimapPosX", position.x);
+        PlayerPrefs.SetFloat("MinimapPosY", position.y);
+        PlayerPrefs.SetFloat("MinimapPosZ", position.z);
+
+        PlayerPrefs.Save();
+    }
+    public Vector3 LoadMiniPosition()
+    {
+        float x = PlayerPrefs.GetFloat("MinimapPosX");
+        float y = PlayerPrefs.GetFloat("MinimapPosY");
+        float z = PlayerPrefs.GetFloat("MinimapPosZ");
+        return new Vector3(x, y, z);
+    }
     //可以參考
     //public void SaveEnemyState()
     //{

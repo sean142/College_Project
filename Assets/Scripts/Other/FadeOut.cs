@@ -16,6 +16,10 @@ public class FadeOut : MonoBehaviour
 
         UI[0] = GameObject.FindGameObjectWithTag("PlayerHPUI");
         UI[1] = GameObject.FindGameObjectWithTag("BagUI");
+        UI[2] = GameObject.FindGameObjectWithTag("MinimapUI");
+        UI[3] = GameObject.FindGameObjectWithTag("BackGroundUI");
+
+        
     }
 
     public void TurnOnFadeOut()
@@ -33,6 +37,8 @@ public class FadeOut : MonoBehaviour
             PlayerController.instance.canMove = false;
             UI[0].SetActive(false);
             UI[1].SetActive(false);
+            UI[2].SetActive(false);
+            UI[3].SetActive(false);
             yield return null;
         }
         fadeCanvasGroup.alpha = 1;

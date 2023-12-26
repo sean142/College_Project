@@ -106,12 +106,12 @@ public class PlayerController : MonoBehaviour
         SaveManager.Instance.LoadCoreBugData();
         SaveManager.Instance.LoadCoreInSceneData();
         SaveManager.Instance.LoadEnemyStateAndCoreStateData();
-
         //SaveManager.Instance.LoadEnemyData();
 
         if (!SceneController.Instance.isFirstTimeInGame)
         {
             SaveManager.Instance.LoadPlayerPositionData();
+            SaveManager.Instance.LoadMinimapPositionData();
         }
         else
             animator.SetTrigger("StandUp");

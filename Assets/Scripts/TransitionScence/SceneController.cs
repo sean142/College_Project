@@ -67,6 +67,7 @@ public class SceneController :Singleton<SceneController>
             SaveManager.Instance.SaveCoreInSceneData();
             SaveManager.Instance.SaveEnemyData();
             SaveManager.Instance.SaveEnemyStateData();
+            SaveManager.Instance.SaveMinimapPositionData();
 
             isTransitioning = false;
             yield break;
@@ -124,6 +125,8 @@ public class SceneController :Singleton<SceneController>
             if(isFirstTimeInGame)
             {
                 SaveManager.Instance.SavePlayerPositionData();
+                SaveManager.Instance.SaveMinimapPositionData();
+
                 isFirstTimeInGame = false;
             }
 
