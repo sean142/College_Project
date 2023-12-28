@@ -38,7 +38,7 @@ public class FadeOut : MonoBehaviour
             UI[0].SetActive(false);
             UI[1].SetActive(false);
             UI[2].SetActive(false);
-            UI[3].SetActive(false);
+            //UI[3].SetActive(false);
             yield return null;
         }
         fadeCanvasGroup.alpha = 1;

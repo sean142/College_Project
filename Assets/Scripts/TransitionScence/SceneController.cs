@@ -57,6 +57,7 @@ public class SceneController :Singleton<SceneController>
             yield return SceneManager.LoadSceneAsync(sceneName);
             yield return Instantiate(playerPrefab, GetDestination(destinationTag).transform.position, GetDestination(destinationTag).transform.rotation);
             player = PlayerController.instance.gameObject;
+            PlayerController.instance.canMove = true;
 
             SaveManager.Instance.LoadPlayerData();
             SaveManager.Instance.LoadCoreBugData();
@@ -129,7 +130,8 @@ public class SceneController :Singleton<SceneController>
 
                 isFirstTimeInGame = false;
             }
-
+            if (isStandingUp)
+                PlayerController.instance.canMove = true;
             yield break;
         }
     }

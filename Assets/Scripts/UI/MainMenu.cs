@@ -33,8 +33,8 @@ public class MainMenu : MonoBehaviour
 
     public void ContinueGame()
     {
-        SceneController.Instance.TransitionToLoadGame();
-        SceneController.Instance.isStandingUp = true;
+        SceneController.Instance.TransitionToLoadGame();        
+        SceneController.Instance.isStandingUp = true;        
     }
 
     public void ExitGame()

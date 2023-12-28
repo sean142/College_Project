@@ -15,8 +15,8 @@ public class PlayerHealthUI : MonoBehaviour
 
     private void Awake()
     {
-        backHealthBar = transform.GetChild(0).GetChild(0).GetComponent<Image>();
-        frountHealthBar = transform.GetChild(0).GetChild(1).GetComponent<Image>();
+        backHealthBar = transform.GetChild(1).GetChild(0).GetComponent<Image>();
+        frountHealthBar = transform.GetChild(1).GetChild(1).GetComponent<Image>();
     }
  
     private void Update()

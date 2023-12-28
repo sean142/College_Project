@@ -11,6 +11,8 @@ public class AttackData_SO : ScriptableObject
 
     public float coolDown;
 
+    public float continuousClickMouseLeftCoolTime;
+
     public int minDamage;
 
     public int maxDamage;

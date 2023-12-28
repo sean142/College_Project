@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 468f52affe2e3874b955d8b459f4035d
+guid: 797b4eb6ff7ee0446ae868457955fe2e
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Standing Melee Attack 360 Low
+    second: Sword And Shield Slash
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Standing Melee Attack 360 Low
+      name: Sword And Shield Slash
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 75
+      lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -59,15 +59,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.35246867
-        functionName: Hit
-        data: 
-        objectReferenceParameter: {fileID: 1270302571625289049, guid: 92badb36d6c70304ca17511656e671ef,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

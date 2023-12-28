@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
     public float normalSpeedTransitionTime = 1f;
 
     [Header("Player Attack")]
+    public float continuousClickMouseLeftTime; // 限制玩家不能連續點擊左鍵的冷卻時間
     //public float attackCooldown;
     public bool isAttacking = false;
-
     private GameObject lockedEnemy;
     private float lastAttackTime;
     public LayerMask enemyLayer; 
@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
 
         lastAttackTime -= Time.deltaTime;
         //attackCooldown -= Time.deltaTime;
+        continuousClickMouseLeftTime -= Time.deltaTime;
 
         if (characterStats.CurrentHealth == 0)
         {
@@ -165,9 +166,9 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
-        if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0))
+        if (FoundEnemy() && Input.GetKeyDown(KeyCode.Mouse0) && continuousClickMouseLeftTime <= 0f)
         {
-            vfxCaneTrail.SetActive(true);
+            continuousClickMouseLeftTime = characterStats.attackData.continuousClickMouseLeftCoolTime;
             if (!isAttacking)
                 StartCoroutine(Attacking());
             else
@@ -177,12 +178,21 @@ public class PlayerController : MonoBehaviour
 
         // 判斷當前播放的動畫長度是否超過70%
         AnimatorStateInfo currentAnimState = animator.GetCurrentAnimatorStateInfo(1);
-        if (currentAnimState.normalizedTime >= 0.7f && (currentAnimState.IsName("hit1") || currentAnimState.IsName("hit2") || currentAnimState.IsName("hit3")))
+        if (currentAnimState.normalizedTime > 0.7f && (currentAnimState.IsName("hit1") || currentAnimState.IsName("hit2") || currentAnimState.IsName("hit3")))
         {
             animator.SetTrigger("idle");
             isAttacking = false;
+            canMove = true;
+        }
+
+        if (currentAnimState.IsName("idle"))
+        {
             vfxCaneTrail.SetActive(false);
         }    
+        else
+        {
+            vfxCaneTrail.SetActive(true);
+        }
     }
 
     private IEnumerator Attacking()
@@ -205,6 +215,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("hit1");
             isAttacking = true;
+            canMove = false;
             lastAttackTime = characterStats.attackData.coolDown;
         }
     }
@@ -459,16 +470,16 @@ public class PlayerController : MonoBehaviour
     public void StandUPControlAnimationEvent()
     {
         SceneController.Instance.isStandingUp = true;
+        canMove = true;
     }
 
     void ContinueIdle()
     {
         if (SceneController.Instance.isStandingUp)
         {
-            canMove = true;
             GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
             GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;        
-        }      
+        }           
     }
 
     public void DoParticles()
