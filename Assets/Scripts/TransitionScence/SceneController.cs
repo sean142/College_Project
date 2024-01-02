@@ -118,7 +118,6 @@ public class SceneController :Singleton<SceneController>
         {
             yield return SceneManager.LoadSceneAsync(scene);
             yield return player = Instantiate(playerPrefab, GameManager.Instance.GetEntrance().position, GameManager.Instance.GetEntrance().rotation);
-
             // 數據保存
             SaveManager.Instance.SavePlayerData();
             SaveManager.Instance.SaveCoreBugData();
