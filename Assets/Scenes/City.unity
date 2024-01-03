@@ -6987,7 +6987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.91374505, g: 0.9433962, b: 0.6096476, a: 0.6862745}
+  m_Color: {r: 0.91374505, g: 0.9433962, b: 0.6096476, a: 0.8784314}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9811,7 +9811,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 10632
+    m_Bits: 10504
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: ffbc3e79f80faac469a8a04ad8fad901, type: 2}
   m_TargetDisplay: 0

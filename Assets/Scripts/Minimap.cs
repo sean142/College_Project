@@ -8,6 +8,10 @@ public class Minimap : MonoBehaviour
     public Transform target;
     public float offsetX, offsetY,offsetZ;
     public float lerpSpeed;
+    public GameObject miniMap;
+    public GameObject maxMap;
+    public bool minimapChange;
+    public bool maxmapChange;
 
     private void Awake()
     {
@@ -21,5 +25,18 @@ public class Minimap : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x + offsetX, target.position.y + offsetY, target.position.z + offsetZ), lerpSpeed);
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            minimapChange = !minimapChange;
+            maxmapChange = !maxmapChange;
+            miniMap.SetActive(minimapChange);
+            maxMap.SetActive(maxmapChange);
+            if (maxmapChange)
+            {
+                offsetY = 10;
+            }
+            else
+                offsetY = 4;
+        }
     }
 }
