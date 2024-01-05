@@ -565,8 +565,8 @@ MonoBehaviour:
   m_Strategy: 0
   m_MaximumEffort: 4
   m_SmoothingTime: 0
-  m_Damping: 3
-  m_DampingWhenOccluded: 0.2
+  m_Damping: 0.05
+  m_DampingWhenOccluded: 0.01
   m_OptimalTargetDistance: 0
 --- !u!114 &61016613
 MonoBehaviour:
@@ -4157,7 +4157,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 10632
+    m_Bits: 10376
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: ffbc3e79f80faac469a8a04ad8fad901, type: 2}
   m_TargetDisplay: 0
@@ -4190,6 +4190,9 @@ MonoBehaviour:
   maxMap: {fileID: 776252894}
   minimapChange: 1
   maxmapChange: 0
+  minimapCamera: {fileID: 837142227}
+  minimapFieldOfView: 60
+  maxmapFieldOfView: 100
 --- !u!65 &849776689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4488,7 +4491,7 @@ PrefabInstance:
     - target: {fileID: -8135473145668487922, guid: 45285b9bbce941944ae5388364854f3f,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8135473145668487922, guid: 45285b9bbce941944ae5388364854f3f,
         type: 3}
@@ -5083,7 +5086,7 @@ PrefabInstance:
     - target: {fileID: 8715528380888108859, guid: 45285b9bbce941944ae5388364854f3f,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8715528380888108859, guid: 45285b9bbce941944ae5388364854f3f,
         type: 3}
@@ -11004,7 +11007,7 @@ PrefabInstance:
     - target: {fileID: -4876107695272518306, guid: 9fc53e726f70331438d68737365361bb,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -4876107695272518306, guid: 9fc53e726f70331438d68737365361bb,
         type: 3}

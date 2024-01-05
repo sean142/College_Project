@@ -12,7 +12,9 @@ public class Minimap : MonoBehaviour
     public GameObject maxMap;
     public bool minimapChange;
     public bool maxmapChange;
-
+    public Camera minimapCamera;
+    public float minimapFieldOfView;
+    public float maxmapFieldOfView;
     private void Awake()
     {
         instance = this;
@@ -33,10 +35,12 @@ public class Minimap : MonoBehaviour
             maxMap.SetActive(maxmapChange);
             if (maxmapChange)
             {
-                offsetY = 10;
+                offsetY = 5.5f;
+                minimapCamera.fieldOfView = maxmapFieldOfView;
             }
             else
                 offsetY = 4;
+            minimapCamera.fieldOfView = minimapFieldOfView;
         }
     }
 }
