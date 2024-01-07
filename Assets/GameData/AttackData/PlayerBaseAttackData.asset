@@ -16,7 +16,7 @@ MonoBehaviour:
   skillRange: 0
   coolDown: 2
   continuousClickMouseLeftCoolTime: 0.7
-  minDamage: 0
-  maxDamage: 0
+  minDamage: 5
+  maxDamage: 8
   criticalMultiplier: 2
   criticalChance: 0

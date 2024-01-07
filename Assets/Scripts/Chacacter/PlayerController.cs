@@ -137,6 +137,7 @@ public class PlayerController : MonoBehaviour
             Movement();
             //Jump();
             AbsorptionAndUseCore();
+            AbsorbKey();
         }
         Attack();
         SwitchAnimator();
@@ -466,7 +467,28 @@ public class PlayerController : MonoBehaviour
             CoreManager.Instance.TurnOffTrail();
         }
     }
-    
+
+    public void AbsorbKey()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && KeyController.instance.isOnKeyRange)
+        {
+            KeyController.instance.isBeingAbsorbKey = true;
+            animator.SetBool("Absorb", true);
+            vfxAbsorb.SetActive(true);
+            KeyController.instance.TurnOnTrail();
+        }
+
+        if (Input.GetKeyUp(KeyCode.E) && KeyController.instance.isBeingAbsorbKey && KeyController.instance.isOnKeyRange)
+        {
+            animator.SetBool("Absorb", false);
+            vfxAbsorb.SetActive(false);
+            KeyController.instance.isOnKeyRange = false;
+            KeyController.instance.isBeingAbsorbKey = false;
+
+            KeyController.instance.TurnOffTrail();
+        }
+    }
+
     public void StandUPControlAnimationEvent()
     {
         SceneController.Instance.isStandingUp = true;

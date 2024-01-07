@@ -21,6 +21,8 @@ TagManager:
   - MinimapUI
   - BackGroundUI
   - MinimapPoint
+  - Door
+  - Key
   layers:
   - Default
   - TransparentFX

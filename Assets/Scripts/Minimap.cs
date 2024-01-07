@@ -39,8 +39,10 @@ public class Minimap : MonoBehaviour
                 minimapCamera.fieldOfView = maxmapFieldOfView;
             }
             else
+            {
                 offsetY = 4;
-            minimapCamera.fieldOfView = minimapFieldOfView;
+                minimapCamera.fieldOfView = minimapFieldOfView;
+            }
         }
     }
 }
