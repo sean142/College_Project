@@ -15,7 +15,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 3001
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -35,22 +35,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Metallic: 0
-    - _NormalsStrength: 0
-    - _QueueControl: 0
+    - _Metallic: 0.4
+    - _NormalsStrength: 0.12
+    - _QueueControl: 1
     - _QueueOffset: 0
-    - _Smoothness: 0
-    - _Transparnecy: 0
-    - _TransparnecyMask: 0
-    - _VoronoiAgitation: 0.5
-    - _VoronoiPower: 2
-    - _VoronoiScale: 5
+    - _Smoothness: 1.4
+    - _Transparnecy: 0.15
+    - _TransparnecyMask: 1
+    - _VoronoiAgitation: 1
+    - _VoronoiPower: 4
+    - _VoronoiScale: 6
     m_Colors:
-    - _BaseColor: {r: 0.060341742, g: 0.10304104, b: 0.11320752, a: 1}
-    - _NormalSpeed: {r: 0, g: 0, b: 0, a: 0}
-    - _VoronoiColor: {r: 0.066571735, g: 0.072600745, b: 0.0754717, a: 1}
-    - _VoronoiSpeed: {r: 0, g: -0.2, b: 0, a: 0}
-    - _VoronoiTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _BaseColor: {r: 0.5206479, g: 0.9433962, b: 0.87293816, a: 1}
+    - _NormalSpeed: {r: 0, g: -0.5, b: 0, a: 0}
+    - _VoronoiColor: {r: 0.1982467, g: 0.4245283, b: 0.4245283, a: 1}
+    - _VoronoiSpeed: {r: 0, g: -0.5, b: 0, a: 0}
+    - _VoronoiTiling: {r: 1.2, g: 0.6, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2199416644629398209
 MonoBehaviour:
