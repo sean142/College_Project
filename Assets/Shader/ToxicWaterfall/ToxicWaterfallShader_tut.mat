@@ -10,13 +10,15 @@ Material:
   m_Name: ToxicWaterfallShader_tut
   m_Shader: {fileID: -6465566751694194690, guid: eb4e6e105b61b3a45abdf060d94f89a6,
     type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3001
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -35,22 +37,34 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClip: 0
+    - _Blend: 0
+    - _CastShadows: 1
+    - _Cull: 0
+    - _DstBlend: 10
     - _Metallic: 0.4
     - _NormalsStrength: 0.12
     - _QueueControl: 1
     - _QueueOffset: 0
+    - _ReceiveShadows: 1
     - _Smoothness: 1.4
+    - _SrcBlend: 5
+    - _Surface: 1
     - _Transparnecy: 0.15
     - _TransparnecyMask: 1
     - _VoronoiAgitation: 1
-    - _VoronoiPower: 4
-    - _VoronoiScale: 6
+    - _VoronoiPower: 4.25
+    - _VoronoiScale: 8
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _ZWriteControl: 1
     m_Colors:
-    - _BaseColor: {r: 0.5206479, g: 0.9433962, b: 0.87293816, a: 1}
+    - _BaseColor: {r: 0.6847144, g: 1.7207954, b: 1.621692, a: 1}
     - _NormalSpeed: {r: 0, g: -0.5, b: 0, a: 0}
-    - _VoronoiColor: {r: 0.1982467, g: 0.4245283, b: 0.4245283, a: 1}
-    - _VoronoiSpeed: {r: 0, g: -0.5, b: 0, a: 0}
-    - _VoronoiTiling: {r: 1.2, g: 0.6, b: 0, a: 0}
+    - _VoronoiColor: {r: 0.5629919, g: 1.6810462, b: 0.9386043, a: 1}
+    - _VoronoiSpeed: {r: 0, g: -0.2, b: 0, a: 0}
+    - _VoronoiTiling: {r: 1.5, g: 0.6, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2199416644629398209
 MonoBehaviour:
