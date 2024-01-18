@@ -12677,7 +12677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813295109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 37.383, y: 0.488, z: -0.095}
+  m_LocalPosition: {x: 37.383, y: 0.474, z: -0.095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12723,7 +12723,7 @@ VFXRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!2083052967 &1813295112
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -14886,7 +14886,7 @@ PrefabInstance:
     - target: {fileID: -4336683658925895750, guid: 8b7e8b050dc154d4fa1eafd9d90cbb33,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.29
+      value: 33.7
       objectReference: {fileID: 0}
     - target: {fileID: -3974487083468754105, guid: 8b7e8b050dc154d4fa1eafd9d90cbb33,
         type: 3}
