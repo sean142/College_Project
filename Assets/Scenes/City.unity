@@ -6508,7 +6508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7784,9 +7784,9 @@ MonoBehaviour:
   offsetY: 8
   offsetZ: 0
   lerpSpeed: 0.05
-  miniMap: {fileID: 0}
-  maxMap: {fileID: 0}
-  minimapChange: 0
+  miniMap: {fileID: 212475571}
+  maxMap: {fileID: 8603782}
+  minimapChange: 1
   maxmapChange: 0
   minimapCamera: {fileID: 0}
   minimapFieldOfView: 0
