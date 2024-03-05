@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestScenes/Deep_Tunnel_set.unity
     guid: 43287e45f2e40984da907fcfa18f5871
+  - enabled: 1
+    path: Assets/Scenes/UncleHouse.unity
+    guid: 1f47aee40b67bbd439e41e1bf03dace8
   m_configObjects: {}
