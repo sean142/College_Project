@@ -33,4 +33,9 @@ public class Keypad : MonoBehaviour
             charHolder.text = "";
         }
     }
+
+    public void Clear()
+    {
+        charHolder.text = "";
+    }
 }
