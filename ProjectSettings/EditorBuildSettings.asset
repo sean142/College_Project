@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UncleHouse.unity
     guid: 1f47aee40b67bbd439e41e1bf03dace8
+  - enabled: 1
+    path: Assets/Scenes/Dungeon.unity
+    guid: 64fcf55af77670248a32225690aa8e03
   m_configObjects: {}
