@@ -10731,7 +10731,7 @@ MonoBehaviour:
   - {fileID: 3512132784603507705, guid: b99d7a6f2abefdf47a57f203ed971916, type: 3}
   - {fileID: 8980869307470986887, guid: 9c41ba817a345144ab040cc5f8c4f3ec, type: 3}
   - {fileID: 6653951052032800559, guid: 49a8b8eb17d074c49a43c0a35f56c772, type: 3}
-  enemiesBool: 010001
+  enemiesBool: 000000
   enemiesPositon:
   - {fileID: 1377015560}
   - {fileID: 1574186826}

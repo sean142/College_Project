@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: cf231855859c960438718dfa441172c2
+guid: f199d6bfa9504094a86b31ef16476598
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Idle
+    second: attack
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,19 +36,19 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: attack
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 160
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -63,7 +63,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []

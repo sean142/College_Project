@@ -146,7 +146,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     }
 
     void SwitchStates()
-    {
+    { 
         if (isDead)
             enemyStates = EnemyStates.DEAD;
 
