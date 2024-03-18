@@ -23,6 +23,7 @@ public class EnterKey : MonoBehaviour
         if (inputPassword == password)
         {
             print("¸ÑÂê¦¨¥\");
+            SewerRailing.instance.animator.SetTrigger("isOpen");
         }
         else
         {

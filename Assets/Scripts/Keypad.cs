@@ -12,7 +12,8 @@ public class Keypad : MonoBehaviour
 
     void Awake()
     {
-        password = "2";     
+        password = "2";
+        //charHolder.text = "";
     }
 
     public void ButtonClick(int buttonNumber)
@@ -26,6 +27,7 @@ public class Keypad : MonoBehaviour
         if (charHolder.text == password)
         {
             Debug.Log("жие\");
+            UncleHouseDoor.instance.animator.SetBool("isOpen",true);
         }
         else
         {
