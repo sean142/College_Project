@@ -23,6 +23,7 @@ TagManager:
   - MinimapPoint
   - Door
   - Key
+  - _gameObject
   layers:
   - Default
   - TransparentFX

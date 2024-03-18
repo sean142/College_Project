@@ -3472,7 +3472,7 @@ PrefabInstance:
     - target: {fileID: 5064420016753337549, guid: 5ac1190a9960af64683781efdd303eb0,
         type: 3}
       propertyPath: sceneName
-      value: Sewer
+      value: Dungeon
       objectReference: {fileID: 0}
     - target: {fileID: 5064420016753337549, guid: 5ac1190a9960af64683781efdd303eb0,
         type: 3}
@@ -12161,7 +12161,7 @@ PrefabInstance:
     - target: {fileID: 5064420016753337536, guid: 5ac1190a9960af64683781efdd303eb0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5064420016753337537, guid: 5ac1190a9960af64683781efdd303eb0,
         type: 3}
