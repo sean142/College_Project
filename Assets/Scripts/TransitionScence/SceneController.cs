@@ -47,7 +47,7 @@ public class SceneController :Singleton<SceneController>
         SaveManager.Instance.SaveCoreBugData();
         SaveManager.Instance.SavePlayerPositionData();
         SaveManager.Instance.SaveCoreInSceneData();
-        SaveManager.Instance.SaveEnemyData();
+        //SaveManager.Instance.SaveEnemyData();
         SaveManager.Instance.SaveEnemyStateData();
         SaveManager.Instance.SaveEnemyStateAndCoreStateData();
 
@@ -66,7 +66,7 @@ public class SceneController :Singleton<SceneController>
             SaveManager.Instance.SaveCoreBugData();
             SaveManager.Instance.SavePlayerPositionData();
             SaveManager.Instance.SaveCoreInSceneData();
-            SaveManager.Instance.SaveEnemyData();
+            //SaveManager.Instance.SaveEnemyData();
             SaveManager.Instance.SaveEnemyStateData();
             SaveManager.Instance.SaveMinimapPositionData();
 
