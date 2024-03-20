@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mouse_Body
+  m_Name: BossMouse
   m_Shader: {fileID: -6465566751694194690, guid: 14e274f72c225114a844b1d1f36ab410,
     type: 3}
   m_ValidKeywords:
@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Akbedo:
-        m_Texture: {fileID: 2800000, guid: 009e8824bd271de4493990b4bb8c8301, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5416756e4afda3c4e96aee98791d4c60, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normals:
-        m_Texture: {fileID: 2800000, guid: 40cef0ab127ef004b8011a6e05103d5e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7a9895148cfa7c94ba30ba3250be8b95, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -48,17 +48,17 @@ Material:
     - _AlphaClip: 1
     - _Blend: 0
     - _CastShadows: 1
-    - _Cull: 2
+    - _Cull: 0
     - _DissolveAmount: 0
     - _DissolveScale: 40
     - _DissolveWidth: 0.02
     - _DstBlend: 0
-    - _Metallic: 0
+    - _Metallic: 0.1
     - _NormalsStrength: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0.21
     - _SrcBlend: 1
     - _Surface: 0
     - _WorkflowMode: 1
@@ -66,8 +66,8 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _BaceColor: {r: 0.7169812, g: 0, b: 0.5445599, a: 0}
-    - _DissolveColor: {r: 0.4436749, g: 0.3105724, b: 2.673141, a: 0}
+    - _BaceColor: {r: 1, g: 1, b: 1, a: 0}
+    - _DissolveColor: {r: 0.32189655, g: 1.3327178, b: 2.673141, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4255025631628524520
 MonoBehaviour:
