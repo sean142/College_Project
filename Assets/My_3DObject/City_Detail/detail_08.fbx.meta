@@ -3,7 +3,47 @@ guid: 7a6e5a52abf64564ea4f099db480defa
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Board.001
+    second: {fileID: 2100000, guid: 8ba059c0c54947c46896acd36bfd33f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brass.lamp
+    second: {fileID: 2100000, guid: d6eba7009440e71409093ff681b0ef4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coast_land_rocks_04
+    second: {fileID: 2100000, guid: 615f2850e4dee0245ba23225355b8baa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gray_rocks
+    second: {fileID: 2100000, guid: b400cbc35cc3b1c4bb6c33cad487bcef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gray_rocks.002
+    second: {fileID: 2100000, guid: 63b16e1403535a34689ba2e6cc0044a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.bench
+    second: {fileID: 2100000, guid: 3c265066154739a46962b0f1c4f25718, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal.bench.dark
+    second: {fileID: 2100000, guid: c9afebedb0ba0044ea2e3771f1d38d41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood.bench
+    second: {fileID: 2100000, guid: 2caa29c4673a4524995a6a89ee6819f4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

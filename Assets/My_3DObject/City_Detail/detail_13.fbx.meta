@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: a58f5d2cc3dab1249af6ec7ee9272877
+guid: f33d54c6698f07e4bb5bb140eb45dc6a
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cloth_Burned
+    second: {fileID: 2100000, guid: 5f96cf116c5d6c448811fcf0bfd77822, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Truck_Burned
+    second: {fileID: 2100000, guid: 9ae5d1d852b3bc44393baf4f20bdf6a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window
+    second: {fileID: 2100000, guid: 10d1499e3ccd40c409d3f736a105c977, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

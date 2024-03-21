@@ -1,9 +1,39 @@
 fileFormatVersion: 2
-guid: be17ae1e869fc2d4588c1a34a332fded
+guid: d64cd5236dff5a54d811c76d44b2756f
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 3DModel.001
+    second: {fileID: 2100000, guid: d15a16a6ddcc2fe419fc6dff4de0bbe4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Board
+    second: {fileID: 2100000, guid: 4fe40a47813ad9e4b8fbbd7261a47e0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Old Wooden Pole 02
+    second: {fileID: 2100000, guid: 584044e8d32339d459f06cc09aa95e80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coast_land_rocks_04
+    second: {fileID: 2100000, guid: 7315984e5e3862447a22282ae59ce9f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gray_rocks
+    second: {fileID: 2100000, guid: 137570c7af5e953478c7a43d570906e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gray_rocks.001
+    second: {fileID: 2100000, guid: e50a8cf1f955cbb4ca1507e9670b7dcc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

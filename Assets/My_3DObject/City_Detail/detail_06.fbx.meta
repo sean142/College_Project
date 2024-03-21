@@ -3,7 +3,67 @@ guid: ab7ce10f39e12994db9fe1cc1e0738e2
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Board
+    second: {fileID: 2100000, guid: 25bcb98ab7913784aab8dcb0b31fcc2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Board.001
+    second: {fileID: 2100000, guid: 9291233229958c84da3da9d751d15643, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Old white plastic
+    second: {fileID: 2100000, guid: fcdce8a20235cb741aa7644b4486a5aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Orange Plastic
+    second: {fileID: 2100000, guid: 56fa06856df960244b08ba6aaf6ca1af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone.001
+    second: {fileID: 2100000, guid: 23721f5e69f03c245b4cc0ba79b4e9f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coast_land_rocks_04
+    second: {fileID: 2100000, guid: be5016b13bf1d874d9617ab0a2cabc45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gray_rocks
+    second: {fileID: 2100000, guid: af09a8388c2a2bb4c88f9bf91ed148bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gray_rocks.002
+    second: {fileID: 2100000, guid: b28bb11e8fcb0bf40b84aa480ff9ceba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sedia
+    second: {fileID: 2100000, guid: 0c8dd20aef43e8d46b8612ec74cb8c6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood.bench
+    second: {fileID: 2100000, guid: 771402bdeafab5048b442bc313efd664, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u6750\u8CEA.005"
+    second: {fileID: 2100000, guid: 863cd7320395da94e8babdd13a4d4f45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u6750\u8CEA.006"
+    second: {fileID: 2100000, guid: 5895b28c9cf942f4a87c3534604a8591, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

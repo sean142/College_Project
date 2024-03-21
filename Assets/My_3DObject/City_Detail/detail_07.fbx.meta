@@ -3,7 +3,32 @@ guid: 75b8372757dce874096859e0b96240df
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 3DModel.001
+    second: {fileID: 2100000, guid: 01be747691be4e14ea95f5b8ea64f740, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Board.001
+    second: {fileID: 2100000, guid: 9b65eacd820638b48b22c3fe0d052121, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coast_land_rocks_04
+    second: {fileID: 2100000, guid: c4c246f993e07d94f9dc0e697a305bc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gray_rocks
+    second: {fileID: 2100000, guid: 6e7a96130fa25ec4c8f519eb473106f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gray_rocks.002
+    second: {fileID: 2100000, guid: 2d646b2527338d24389a4464da3db586, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

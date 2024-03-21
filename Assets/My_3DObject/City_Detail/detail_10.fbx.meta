@@ -1,9 +1,34 @@
 fileFormatVersion: 2
-guid: b8c526bc30088404eb6e58a713e1bdc2
+guid: b1247776b66a38c4d87e0258ba87a34a
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete_Chipped_Cracked
+    second: {fileID: 2100000, guid: 1482391dc4f0a264f951d02c1ffb8542, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 9987a8dec2c5b9f4ab56dfc5728eb53d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.033
+    second: {fileID: 2100000, guid: 256ee05d67f5d6e488f628c2c00cfa6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.034
+    second: {fileID: 2100000, guid: 64a5cd612b420ce46ab813b8a3403bd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grid
+    second: {fileID: 2100000, guid: 8ace6634fad07d048a1935f062575f87, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
