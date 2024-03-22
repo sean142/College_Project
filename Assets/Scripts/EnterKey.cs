@@ -9,8 +9,8 @@ public class EnterKey : MonoBehaviour
     public string inputPassword;//¿é¤J±K½X
     void Start()
     {
-        //password = "2534";
-        password = "0000";
+        password = "2534";
+        //password = "0000";
     }
 
     // ÀË¬d±K½X 
