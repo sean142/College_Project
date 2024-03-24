@@ -7,6 +7,8 @@ public class EnterKey : MonoBehaviour
     public GameObject[] slot;//密碼格子數組
     string password;//正確密碼
     public string inputPassword;//輸入密碼
+    public GameObject[] water;
+    public GameObject _audio;
     void Start()
     {
         password = "2534";
@@ -25,6 +27,11 @@ public class EnterKey : MonoBehaviour
         {
             print("解鎖成功");
             SewerRailing.instance.animator.SetTrigger("isOpen");
+            water[0].SetActive(false);
+            water[1].SetActive(false);
+            water[2].SetActive(false);
+            water[3].SetActive(false);
+            _audio.SetActive(false);
         }
         else
         {

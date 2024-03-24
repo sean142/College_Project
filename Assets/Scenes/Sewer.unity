@@ -3742,6 +3742,12 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &560581194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3545517030217938377, guid: 8b7e8b050dc154d4fa1eafd9d90cbb33,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120287290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &575811324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4587,7 +4593,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
-    m_InvertInput: 1
+    m_InvertInput: 0
     m_MinValue: 0
     m_MaxValue: 1
     m_Wrap: 0
@@ -13493,6 +13499,12 @@ MonoBehaviour:
   - {fileID: 1149485532}
   - {fileID: 1600469514}
   inputPassword: 
+  water:
+  - {fileID: 18137248}
+  - {fileID: 560581194}
+  - {fileID: 1852571200}
+  - {fileID: 798943733}
+  _audio: {fileID: 1281454359}
 --- !u!114 &1956511395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14961,6 +14973,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c4937e8a387b61b4e9da29b176a27960, type: 2}
+    - target: {fileID: -3545517030217938377, guid: 8b7e8b050dc154d4fa1eafd9d90cbb33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3541111015573781349, guid: 8b7e8b050dc154d4fa1eafd9d90cbb33,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
