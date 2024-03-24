@@ -260,6 +260,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mouse
       objectReference: {fileID: 0}
+    - target: {fileID: 3512132784603507705, guid: b99d7a6f2abefdf47a57f203ed971916,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4320722824596287811, guid: b99d7a6f2abefdf47a57f203ed971916,
         type: 3}
       propertyPath: m_RootOrder
