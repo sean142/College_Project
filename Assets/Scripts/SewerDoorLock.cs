@@ -7,7 +7,7 @@ public class SewerDoorLock : MonoBehaviour
     public GameObject lockUI;
     public Animator sewerDoorAnimator;
     public bool lookingForKey;
-
+    public GameObject pointLight;
  
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +29,7 @@ public class SewerDoorLock : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             lockUI.SetActive(false);
+            pointLight.SetActive(true);
         }
     }
 }

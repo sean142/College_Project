@@ -13,8 +13,8 @@ public class CoreInventory : Singleton<CoreInventory>
     public bool isOpenBag;
     public Button currentButton;
     public int currentInt;
-    public bool[] coreBool; 
-
+    public bool[] coreBool;
+    public EnemyManager enemyManager;
     protected override void Awake()
     {
         base.Awake();
@@ -37,6 +37,7 @@ public class CoreInventory : Singleton<CoreInventory>
         for (int i = 0; i < coreBool.Length; i++)
         {
             coreButton[i].gameObject.SetActive(coreBool[i]);
+          
         }
 
         //if (CoreManager.instance.isCoreAbsorbed)

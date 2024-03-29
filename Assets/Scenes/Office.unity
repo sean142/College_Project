@@ -14337,6 +14337,7 @@ MonoBehaviour:
   currentButton: {fileID: 0}
   currentInt: 0
   coreBool: 000000
+  enemyManager: {fileID: 0}
 --- !u!114 &1429366940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15818,6 +15819,7 @@ MonoBehaviour:
   currentButton: {fileID: 0}
   currentInt: 0
   coreBool: 000000
+  enemyManager: {fileID: 0}
 --- !u!114 &1785288966
 MonoBehaviour:
   m_ObjectHideFlags: 0

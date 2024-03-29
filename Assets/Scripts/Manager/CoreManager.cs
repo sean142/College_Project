@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
+
 public class CoreManager : Singleton<CoreManager>
 {
     public bool isCoreTurnOn;
@@ -39,7 +41,7 @@ public class CoreManager : Singleton<CoreManager>
     public int Duration = 5;
     public Transform[] bezierHandle;
     public GameObject bezierHandleParent;
-    private float _duration;  
+    private float _duration;
 
     protected override void Awake()
     {
@@ -117,6 +119,7 @@ public class CoreManager : Singleton<CoreManager>
                 int currentCoreIndex = currentAbsorbCore[i];
                 corePool[currentAbsorbCore[currentCoreIndex]].TurnOff();
                 CoreInventory.Instance.coreBool[currentCoreIndex] = true;
+                GetCoreEvent();               
             }              
         }
         // 檢測是否正在被吸收中
@@ -293,8 +296,21 @@ public class CoreManager : Singleton<CoreManager>
                 }
             }
             _duration += Time.deltaTime;
-        }
+        }       
+    }
 
-       
+    void GetCoreEvent()
+    {
+        //CameraShaker.instance.cameraShaker.enabled = true;
+        //CameraShaker.instance.followCinema.enabled = false;
+        CameraShaker.instance.ShakeCamera(2, 2);
+        StartCoroutine(Static.DelayToInvokeDo(() =>
+        {
+            //CameraShaker.instance.cameraShaker.enabled = false;
+            //CameraShaker.instance.followCinema.enabled = true;
+            //CameraShaker.instance.ShakeCamera(0,0);
+
+            CoreInventory.Instance.enemyManager.enabled = true;
+        }, 2f));
     }
 }
