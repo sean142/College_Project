@@ -303,7 +303,7 @@ public class CoreManager : Singleton<CoreManager>
     {
         //CameraShaker.instance.cameraShaker.enabled = true;
         //CameraShaker.instance.followCinema.enabled = false;
-        CameraShaker.instance.ShakeCamera(2, 2);
+        CameraShaker.instance.ShakeCamera(5, 4);
         StartCoroutine(Static.DelayToInvokeDo(() =>
         {
             //CameraShaker.instance.cameraShaker.enabled = false;

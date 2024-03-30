@@ -11,13 +11,14 @@ public class CameraShaker : MonoBehaviour
     public CinemachineBasicMultiChannelPerlin noise;
     public float shakeIntensity = 1f; // Intensity of the shake
     public float shakeDuration = 0.3f; // Duration of the shake
+    public float amplitudeGain;
+    public float frequemcyGain;
     private void Awake()
     {
         instance = this;
         freeLookCamera = GetComponent<CinemachineFreeLook>();
-        Shake();
     }
-  
+
     private void Update()
     {
         if (shakeTimer > 0)
@@ -25,52 +26,31 @@ public class CameraShaker : MonoBehaviour
             shakeTimer -= Time.deltaTime;
             if (shakeTimer <= 0f)
             {
-                for (int i = 0; i < 3; i++)
                 {
-                    noise = freeLookCamera.GetRig(i).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-                    noise.m_AmplitudeGain = 0;
+                    CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = 
+                        freeLookCamera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+                    cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0;
                 }
             }
         }
-      
+
     }
+    
+
+
     public void ShakeCamera(float intensity, float time)
     {
-        // Iterate over each rig and access the Perlin component
-        for (int i = 0; i < 3; i++)
-        {
-            noise = freeLookCamera.GetRig(i).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-            if (noise != null)
-            {
-                noise.m_AmplitudeGain = intensity;
-                shakeTimer = time;
-            }
-        }
-        
-    }
+        //freeLookCamera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = amplitude;
+        //freeLookCamera.GetRig(1).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = amplitude;
+        //freeLookCamera.GetRig(2).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = amplitude;
 
-    public void Shake()
-    {
-        StartCoroutine(ShakeCoroutine());
-    }
-
-    private IEnumerator ShakeCoroutine()
-    {
-        // Shake each rig of the FreeLook Camera
-        for (int i = 0; i < 3; i++) // Three rigs: 0 for bottom, 1 for mid, 2 for top
-        {
-            CinemachineVirtualCamera vCam = freeLookCamera.GetRig(i);
-            if (vCam != null)
-            {
-                CinemachineBasicMultiChannelPerlin perlin = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-                if (perlin != null)
-                {
-                    perlin.m_AmplitudeGain = shakeIntensity;
-                    yield return new WaitForSeconds(shakeDuration);
-                    perlin.m_AmplitudeGain = 0f;
-                }
-            }
-        }
+        //freeLookCamera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = frequency;
+        //freeLookCamera.GetRig(1).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = frequency;
+        //freeLookCamera.GetRig(2).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = frequency;
+        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = freeLookCamera.GetRig(0).GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
+        shakeTimer = time;
     }
 }
 

@@ -1444,7 +1444,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: 1
+    Value: 0.5
     m_SpeedMode: 0
     m_MaxSpeed: 2
     m_AccelTime: 0.2
@@ -1544,6 +1544,8 @@ MonoBehaviour:
   noise: {fileID: 0}
   shakeIntensity: 1
   shakeDuration: 0.3
+  amplitudeGain: 0
+  frequemcyGain: 0
 --- !u!1001 &37493193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1806,7 +1808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5, z: -4}
+  m_FollowOffset: {x: 0, y: 2.47, z: -5.37}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -16140,7 +16142,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423284819}
-  m_LocalRotation: {x: 0.072663836, y: 0.6939702, z: -0.070741706, w: 0.71282613}
+  m_LocalRotation: {x: 0.04672252, y: 0.6960818, z: -0.045486595, w: 0.7149952}
   m_LocalPosition: {x: -3.85, y: 5.32, z: 0.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34207,7 +34209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5, z: -4}
+  m_FollowOffset: {x: 0, y: 2.47, z: -5.37}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -73902,7 +73904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5, z: -4}
+  m_FollowOffset: {x: 0, y: 2.47, z: -5.37}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
