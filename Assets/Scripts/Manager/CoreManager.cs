@@ -303,7 +303,8 @@ public class CoreManager : Singleton<CoreManager>
     {
         //CameraShaker.instance.cameraShaker.enabled = true;
         //CameraShaker.instance.followCinema.enabled = false;
-        CameraShaker.instance.ShakeCamera(5, 4);
+        CameraShaker.instance.ShakeCamera(6,4);
+        //PlayerController.instance.canMove = false;
         StartCoroutine(Static.DelayToInvokeDo(() =>
         {
             //CameraShaker.instance.cameraShaker.enabled = false;
@@ -311,6 +312,7 @@ public class CoreManager : Singleton<CoreManager>
             //CameraShaker.instance.ShakeCamera(0,0);
 
             CoreInventory.Instance.enemyManager.enabled = true;
-        }, 2f));
+
+        }, 4.1f));
     }
 }
