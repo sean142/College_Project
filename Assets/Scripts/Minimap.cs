@@ -27,22 +27,22 @@ public class Minimap : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x + offsetX, target.position.y + offsetY, target.position.z + offsetZ), lerpSpeed);
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            minimapChange = !minimapChange;
-            maxmapChange = !maxmapChange;
-            miniMap.SetActive(minimapChange);
-            maxMap.SetActive(maxmapChange);
-            if (maxmapChange)
-            {
-                offsetY = 5.5f;
-                minimapCamera.fieldOfView = maxmapFieldOfView;
-            }
-            else
-            {
-                offsetY = 4;
-                minimapCamera.fieldOfView = minimapFieldOfView;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    minimapChange = !minimapChange;
+        //    maxmapChange = !maxmapChange;
+        //    miniMap.SetActive(minimapChange);
+        //    maxMap.SetActive(maxmapChange);
+        //    if (maxmapChange)
+        //    {
+        //        offsetY = 5.5f;
+        //        minimapCamera.fieldOfView = maxmapFieldOfView;
+        //    }
+        //    else
+        //    {
+        //        offsetY = 4;
+        //        minimapCamera.fieldOfView = minimapFieldOfView;
+        //    }
+        //}
     }
 }

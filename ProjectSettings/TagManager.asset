@@ -24,6 +24,8 @@ TagManager:
   - Door
   - Key
   - _gameObject
+  - MissionUI
+  - checkToMainMenu
   layers:
   - Default
   - TransparentFX

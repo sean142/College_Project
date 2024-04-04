@@ -18,18 +18,15 @@ public class SaveManager : Singleton<SaveManager>
 
     public Vector3 playerPosition;  
     public CharacterController characterController;
+
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
     }
-
+   
     private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneController.Instance.TransitionToMain();
-        }
+    {        
         if (Input.GetKeyDown(KeyCode.N))
         {
             SavePlayerData();
