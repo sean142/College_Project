@@ -300,20 +300,15 @@ public class CoreManager : Singleton<CoreManager>
     }
 
     void GetCoreEvent()
-    {
-        //CameraShaker.instance.cameraShaker.enabled = true;
-        //CameraShaker.instance.followCinema.enabled = false;
+    {        
         CameraShaker.instance.ShakeCamera(6,4);
-        //PlayerController.instance.canMove = false;
         DungeonGate.instance.isbool = true;
         DungeonGate1.instance.isbool = true;
+        CameraShaker.instance.textUI[0].SetActive(false);
+        CameraShaker.instance.textUI[1].SetActive(true);
 
         StartCoroutine(Static.DelayToInvokeDo(() =>
-        {
-            //CameraShaker.instance.cameraShaker.enabled = false;
-            //CameraShaker.instance.followCinema.enabled = true;
-            //CameraShaker.instance.ShakeCamera(0,0);
-
+        {       
             CoreInventory.Instance.enemyManager.enabled = true;
         }, 4.1f));
     }

@@ -9,7 +9,7 @@ public class CameraShaker : MonoBehaviour
     public CinemachineFreeLook freeLookCamera;
     public float shakeTimer;
     public  CinemachineBasicMultiChannelPerlin[] perlinChannels;
-
+    public GameObject[] textUI; 
 
     private void Awake()
     {

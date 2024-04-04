@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dungeon.unity
     guid: 64fcf55af77670248a32225690aa8e03
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 8e5a13ed9c9084845b5d19b3abef2d3b
   - enabled: 0
     path: Assets/Scenes/TestScenes/G1.unity
     guid: bc7a83e91e5c3294192a638fa7561bde

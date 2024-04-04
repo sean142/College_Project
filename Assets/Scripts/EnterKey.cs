@@ -9,6 +9,7 @@ public class EnterKey : MonoBehaviour
     public string inputPassword;//¿é¤J±K½X
     public GameObject[] water;
     public GameObject _audio;
+    public AudioSource audioSource;
     void Start()
     {
         password = "2534";
@@ -32,6 +33,8 @@ public class EnterKey : MonoBehaviour
             water[2].SetActive(false);
             water[3].SetActive(false);
             _audio.SetActive(false);
+            audioSource.Play();
+
         }
         else
         {

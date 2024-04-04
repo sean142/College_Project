@@ -7861,7 +7861,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8ACB\u627E\u5230\u51FA\u53E3\uFF0C\u9003\n\u51FA\u5BE6\u9A57\u5BA4"
+  m_Text: "\u89E3\u958B\u8B0E\u984C\uFF0C\u524D\u5F80\n\u4E0B\u6C34\u9053"
 --- !u!222 &948173386
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9715,6 +9715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartTimer: 2.5
   UI:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
