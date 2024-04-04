@@ -9,6 +9,7 @@ public class Keypad : MonoBehaviour
     public GameObject[] buttons;
     public GameObject enterButton;
     string password = "";
+    public AudioSource audioSource;
 
     void Awake()
     {
@@ -27,7 +28,11 @@ public class Keypad : MonoBehaviour
         if (charHolder.text == password)
         {
             Debug.Log("жие\");
-            UncleHouseDoor.instance.animator.SetBool("isOpen",true);
+            audioSource.Play();
+            StartCoroutine(Static.DelayToInvokeDo(() =>
+            {
+                UncleHouseDoor.instance.animator.SetBool("isOpen", true);
+            }, 1f));
         }
         else
         {
