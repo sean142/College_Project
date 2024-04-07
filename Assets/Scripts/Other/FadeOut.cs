@@ -14,11 +14,11 @@ public class FadeOut : MonoBehaviour
         instance = this;
         fadeCanvasGroup = GetComponent<CanvasGroup>();
 
-        UI[0] = GameObject.FindGameObjectWithTag("PlayerHPUI");
-        UI[1] = GameObject.FindGameObjectWithTag("BagUI");
-        //UI[2] = GameObject.FindGameObjectWithTag("MinimapUI");
-        UI[3] = GameObject.FindGameObjectWithTag("BackGroundUI");
-        UI[4] = GameObject.FindGameObjectWithTag("MissionUI");
+        //UI[0] = GameObject.FindGameObjectWithTag("PlayerHPUI");
+        //UI[1] = GameObject.FindGameObjectWithTag("BagUI");
+        ////UI[2] = GameObject.FindGameObjectWithTag("MinimapUI");
+        //UI[3] = GameObject.FindGameObjectWithTag("BackGroundUI");
+        //UI[4] = GameObject.FindGameObjectWithTag("MissionUI");
 
         
     }

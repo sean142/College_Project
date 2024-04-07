@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CheckToMainMenu : MonoBehaviour
 {
-    //public static CheckToMainMenu instance;
+    public static CheckToMainMenu instance;
     public GameObject checkUI;
     private void Awake()
     {
-        //instance = this;
+        instance = this;
     }
     public void ButtonOnClicked(int index)
     {
@@ -27,7 +27,7 @@ public class CheckToMainMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            checkUI.SetActive(true);
+            checkUI.SetActive(true);          
         }
     }
 }
