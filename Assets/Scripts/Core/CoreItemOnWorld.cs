@@ -77,6 +77,8 @@ public class CoreItemOnWorld : BacePoolObject
     {
         base.TurnOn();
         this.gameObject.SetActive(true);
+        TeachingUI.instance.UI.SetActive(true);
+        Debug.LogError("TEST");
     }
 
     public override void TurnOff()

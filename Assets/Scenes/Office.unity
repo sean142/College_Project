@@ -13116,6 +13116,7 @@ MonoBehaviour:
   noviceTeachingUI:
   - {fileID: 904764578}
   - {fileID: 1026697904}
+  followCinema: {fileID: 61016613}
 --- !u!65 &1132307654
 BoxCollider:
   m_ObjectHideFlags: 0
