@@ -26,6 +26,7 @@ TagManager:
   - _gameObject
   - MissionUI
   - checkToMainMenu
+  - RiddleLiquor
   layers:
   - Default
   - TransparentFX
