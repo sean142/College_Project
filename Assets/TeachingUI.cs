@@ -18,11 +18,15 @@ public class TeachingUI : MonoBehaviour
         if (UI.activeSelf)
         {
             followCinema.enabled = false;
+            CheckToMainMenu.instance.checkUI.SetActive(false);
+            PlayerController.instance.canMove = false;
         }
     }
     public void OnButtonOnClicked()
     {
         UI.SetActive(false);
         followCinema.enabled = true;
+        PlayerController.instance.canMove = true;
+
     }
 }

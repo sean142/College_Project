@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("StandUp");
 
 
-        //characterStats.CurrentHealth = 50;
+        characterStats.CurrentHealth = 50;
         vfxCaneTrail.SetActive(false);
         vfxWarpSpeed.Stop();
         vfxWarpSpeed.SetFloat("WarpAmount", 0);
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
             AbsorbKey();
         }
         Attack();
-        SwitchAnimator();
+        //SwitchAnimator();
         OpenBag();
         Push();
         ContinueIdle();
@@ -162,7 +162,8 @@ public class PlayerController : MonoBehaviour
 
         //if(Input.GetKeyDown(KeyCode.Space))
         //     StartCoroutine(Dissolve());
-
+        //if (KeyController.instance.isHaveKey)
+        //    animator.SetBool("Absorb", false);
     }
 
     void Attack()
@@ -476,6 +477,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Absorb", true);
             vfxAbsorb.SetActive(true);
             KeyController.instance.TurnOnTrail();
+            //canMove = false;
         }
 
         if (Input.GetKeyUp(KeyCode.E) && KeyController.instance.isBeingAbsorbKey && KeyController.instance.isOnKeyRange)
@@ -486,22 +488,24 @@ public class PlayerController : MonoBehaviour
             KeyController.instance.isBeingAbsorbKey = false;
 
             KeyController.instance.TurnOffTrail();
+            //canMove = true;
         }
     }
 
     public void StandUPControlAnimationEvent()
     {
         SceneController.Instance.isStandingUp = true;
-        canMove = true;
     }
 
     void ContinueIdle()
     {
-        if (SceneController.Instance.isStandingUp)
+        if (SceneController.Instance.isStandingUp && SceneController.Instance.isButtonPressed)
         {
+            canMove = true;
             GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
-            GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;        
-        }           
+            GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;
+        }
+
     }
 
     public void DoParticles()

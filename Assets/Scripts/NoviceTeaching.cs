@@ -28,13 +28,23 @@ public class NoviceTeaching : MonoBehaviour
             GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 0;
         }
 
-        if (SceneController.Instance.isStandingUp == true)
+        if (SceneController.Instance.isStandingUp && SceneController.Instance.isButtonPressed)
         {
             noviceTeachingUI[0].SetActive(false);
             noviceTeachingUI[1].SetActive(false);
             playerHealthUI.SetActive(true);
             playerBagUI.SetActive(true);
             missionUI.SetActive(true);
+        }
+        if (SceneController.Instance.isStandingUp && SceneController.Instance.hasExtraBool)
+        {
+            noviceTeachingUI[0].SetActive(false);
+            noviceTeachingUI[1].SetActive(false);
+            playerHealthUI.SetActive(true);
+            playerBagUI.SetActive(true);
+            missionUI.SetActive(true);
+            GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
+            GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;
         }
     }
 
@@ -51,12 +61,7 @@ public class NoviceTeaching : MonoBehaviour
             playerHealthUI.SetActive(true);
             playerBagUI.SetActive(true);
             missionUI.SetActive(true);
-            GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 2;
-            GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 400;
-            SceneController.Instance.isStandingUp = true;
-            PlayerController.instance.canMove = true;
-            //SceneController.Instance.isStandingUp = true;
-            //PlayerController.instance.canMove = true;
+            SceneController.Instance.isButtonPressed = true;       
         }
-    }
+    }  
 }

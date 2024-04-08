@@ -2324,7 +2324,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 0
+    Value: 180
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -3166,6 +3166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkUI: {fileID: 255218076}
+  followCinema: {fileID: 0}
 --- !u!114 &422662569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4651,7 +4652,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 0
+    Value: 180
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -5194,7 +5195,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 0
+    Value: 180
     m_SpeedMode: 0
     m_MaxSpeed: 300
     m_AccelTime: 0.1
@@ -6347,6 +6348,7 @@ MonoBehaviour:
   isTransitioning: 0
   isStandingUp: 0
   outDoor: 0
+  isbool: 0
 --- !u!4 &835176344
 Transform:
   m_ObjectHideFlags: 0
@@ -14610,7 +14612,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
-    Value: 0
+    Value: 180
     m_SpeedMode: 0
     m_MaxSpeed: 400
     m_AccelTime: 0.1

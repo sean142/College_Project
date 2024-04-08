@@ -14,6 +14,8 @@ public class SceneController :Singleton<SceneController>
     public bool isTransitioning; 
     public bool isStandingUp; // 用來判斷玩家是否standUp 因為只會觸發一次  有跨場景需要所以一直保持true
     public bool outDoor;      // 判斷玩家在戶外還是室內 因為fog
+    public bool hasExtraBool;       //多判斷一個bool  才不會跟isStandingUP的bool起衝突
+    public bool isButtonPressed;         //確定玩家有按到按鈕 才不會跟isStandingUP的bool起衝突  
 
     protected override void Awake()
     {

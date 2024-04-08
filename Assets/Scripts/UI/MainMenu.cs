@@ -29,12 +29,16 @@ public class MainMenu : MonoBehaviour
 
         SceneController.Instance.isFirstTimeInGame = true;
         SceneController.Instance.isStandingUp = false;
+        SceneController.Instance.hasExtraBool = false;
+        SceneController.Instance.isButtonPressed = false;
     }
 
     public void ContinueGame()
     {
         SceneController.Instance.TransitionToLoadGame();        
-        SceneController.Instance.isStandingUp = true;      
+        SceneController.Instance.isStandingUp = true;
+        SceneController.Instance.hasExtraBool = true;
+        SceneController.Instance.isButtonPressed = true;
     }
 
     public void ExitGame()
