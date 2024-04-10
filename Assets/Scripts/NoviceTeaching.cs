@@ -23,7 +23,7 @@ public class NoviceTeaching : MonoBehaviour
         {
             CheckToMainMenu.instance.checkUI.SetActive(false);
             PlayerController.instance.canMove = false;
-
+            followCinema.enabled = true;
             GameManager.Instance.followCinema.m_YAxis.m_MaxSpeed = 0;
             GameManager.Instance.followCinema.m_XAxis.m_MaxSpeed = 0;
         }

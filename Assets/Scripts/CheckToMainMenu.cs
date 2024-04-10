@@ -39,5 +39,7 @@ public class CheckToMainMenu : MonoBehaviour
             followCinema.enabled = false;
             PlayerController.instance.canMove = false;
         }
+        
+
     }
 }
