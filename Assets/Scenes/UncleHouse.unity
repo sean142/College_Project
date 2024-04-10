@@ -5806,7 +5806,7 @@ MonoBehaviour:
   - {fileID: 140032955}
   checkUI: {fileID: 1347276451}
   followCinema: {fileID: 459110086}
-  riddleNumber: -1
+  riddleNumber: 0
 --- !u!1001 &681157292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6821,6 +6821,8 @@ MonoBehaviour:
   isTransitioning: 0
   isStandingUp: 0
   outDoor: 0
+  hasExtraBool: 0
+  isButtonPressed: 0
 --- !u!4 &802730384
 Transform:
   m_ObjectHideFlags: 0
@@ -13615,6 +13617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkUI: {fileID: 796405595}
+  followCinema: {fileID: 0}
 --- !u!114 &1544049934
 MonoBehaviour:
   m_ObjectHideFlags: 0

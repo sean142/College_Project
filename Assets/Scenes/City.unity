@@ -6348,7 +6348,8 @@ MonoBehaviour:
   isTransitioning: 0
   isStandingUp: 0
   outDoor: 0
-  isbool: 0
+  hasExtraBool: 0
+  isButtonPressed: 0
 --- !u!4 &835176344
 Transform:
   m_ObjectHideFlags: 0
@@ -7906,7 +7907,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018041825}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: b593a1f2b84cb6b45b31adb4aa74ccb0, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: ea36f95ad8b53474bb016668aaab0848, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1618922085}

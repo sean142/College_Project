@@ -17,7 +17,13 @@ public class SewerRailing : MonoBehaviour
         //animator = GetComponent<Animator>();
         instance = this;
     }
-
+    private void Update()
+    {
+        if (UI.activeSelf)
+            CheckToMainMenu.instance.checkUI.SetActive(false);
+        if (checkUI.activeSelf)
+            CheckToMainMenu.instance.checkUI.SetActive(false);
+    }
     public void OnButtonClicked(int index)
     {
         // 如果玩家按下是

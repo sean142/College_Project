@@ -15,7 +15,19 @@ public class UncleRiddleManager : MonoBehaviour
     {
         instance = this;
     }
-   
+
+    public void Update()
+    {
+        if (UI[riddleNumber].activeSelf)
+        {
+            CheckToMainMenu.instance.checkUI.SetActive(false);
+        }
+        if(checkUI.activeSelf)
+            CheckToMainMenu.instance.checkUI.SetActive(false);
+        //else
+        //    CheckToMainMenu.instance.checkUI.SetActive(true);
+    }
+
     public void OnButtonClicked(int index)
     {
         // 如果玩家按下是
