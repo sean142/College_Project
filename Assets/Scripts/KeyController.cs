@@ -62,6 +62,7 @@ public class KeyController : MonoBehaviour
                     key.SetActive(false);
                     isHaveKey = true;
                     Debug.Log("獲得鑰匙");
+                    ItemOnWorld.instance.AddNewItem();
                 }
             }
             else

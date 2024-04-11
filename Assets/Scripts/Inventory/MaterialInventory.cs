@@ -53,6 +53,7 @@ public class MaterialInventory : Singleton<MaterialInventory>
             if (Instance.slotGrid.transform.childCount == 0)
                 break;
             Destroy(Instance.slotGrid.transform.GetChild(i).gameObject);
+            Debug.Log("test");
         }
 
         for (int i = 0; i < Instance.myBag.itemList.Count; i++)

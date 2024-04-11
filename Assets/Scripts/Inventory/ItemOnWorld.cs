@@ -6,15 +6,19 @@ public class ItemOnWorld : MonoBehaviour
 {
     public Item thisItem;
     public Inventory playerInventory;
-
+    public static ItemOnWorld instance;
+    private void Awake()
+    {
+        instance = this;
+    }
 
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            AddNewItem();
-            Destroy(gameObject);
+            //AddNewItem();
+            //Destroy(gameObject);
         }
     }
 
