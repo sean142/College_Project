@@ -16,11 +16,14 @@ public class MaterialInventory : Singleton<MaterialInventory>
     {
         base.Awake();
         //DontDestroyOnLoad(this);
+        //DestoryRefreshItem();
+
     }
 
     private void OnEnable()
     {
         RefreshItem();
+
         Instance.itemInformation.text = "";
     }
 
@@ -53,12 +56,23 @@ public class MaterialInventory : Singleton<MaterialInventory>
             if (Instance.slotGrid.transform.childCount == 0)
                 break;
             Destroy(Instance.slotGrid.transform.GetChild(i).gameObject);
-            Debug.Log("test");
         }
 
         for (int i = 0; i < Instance.myBag.itemList.Count; i++)
         {
             CreatNewItem(Instance.myBag.itemList[i]);
+        }
+    }
+    public static void DestoryRefreshItem()
+    {
+        //for (int i = 0; i < Instance.slotGrid.transform.childCount; i++)
+        //{
+        //    Debug.LogError("test");
+        //    Destroy(Instance.slotGrid.transform.GetChild(i).gameObject);
+        //}
+        if (Inventory.instance.itemList != null)
+        {
+            Inventory.instance.itemList.Clear();
         }
     }
 

@@ -253,6 +253,7 @@ public class PlayerController : MonoBehaviour
         float inputMagnitude = Mathf.Clamp01(direction.magnitude);
         animator.SetFloat("Speed", inputMagnitude, speedTransitionTime, Time.deltaTime);
 
+
         if (direction.magnitude >= 0.1f && currentSpeed > 0f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -262,11 +263,16 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             coll.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
+            AudioManager.instance.FootStepAudioAudio();
             animator.SetBool("Move", true);
+
         }
         else
         {
             animator.SetBool("Move", false);
+            AudioManager.instance.audioSource.loop=false;
+
+            //footstepSource.Pause();
         }
     }
    

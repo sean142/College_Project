@@ -31,8 +31,7 @@ public class MainMenu : MonoBehaviour
         SceneController.Instance.isStandingUp = false;
         SceneController.Instance.hasExtraBool = false;
         SceneController.Instance.isButtonPressed = false;
-        Inventory.instance.itemList.Clear();
-        MaterialInventory.RefreshItem();
+        //MaterialInventory.DestoryRefreshItem();
     }
 
     public void ContinueGame()
