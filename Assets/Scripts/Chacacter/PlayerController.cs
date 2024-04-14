@@ -263,14 +263,14 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             coll.Move(moveDir.normalized * currentSpeed * Time.deltaTime);
-            AudioManager.instance.FootStepAudioAudio();
+            //AudioManager.instance.FootStepAudioAudio();
             animator.SetBool("Move", true);
 
         }
         else
         {
             animator.SetBool("Move", false);
-            AudioManager.instance.audioSource.loop=false;
+            //AudioManager.instance.audioSource.loop=false;
 
             //footstepSource.Pause();
         }
