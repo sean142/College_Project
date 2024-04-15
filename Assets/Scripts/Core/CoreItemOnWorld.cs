@@ -84,6 +84,10 @@ public class CoreItemOnWorld : BacePoolObject
     public override void TurnOff()
     {
         base.TurnOff();
+        //TeachingUI.instance.UI[1].SetActive(true);
+        //Debug.LogError("_TEST");
+        //CameraShaker.instance.textUI[3].SetActive(true);
+
         this.gameObject.SetActive(false);
     } 
 }

@@ -47,6 +47,6 @@ public class CameraShaker : MonoBehaviour
         }
         shakeTimer = time;
     }
-   
+  
 }
 

@@ -119,7 +119,10 @@ public class CoreManager : Singleton<CoreManager>
                 int currentCoreIndex = currentAbsorbCore[i];
                 corePool[currentAbsorbCore[currentCoreIndex]].TurnOff();
                 CoreInventory.Instance.coreBool[currentCoreIndex] = true;
-                GetCoreEvent();               
+                StartCoroutine(Static.DelayToInvokeDo(() =>
+                {
+                    Teaching.instance.UI.SetActive(true);
+                }, 1f));
             }              
         }
         // 檢測是否正在被吸收中
@@ -299,7 +302,7 @@ public class CoreManager : Singleton<CoreManager>
         }       
     }
 
-    void GetCoreEvent()
+    public void GetCoreEvent()
     {        
         CameraShaker.instance.ShakeCamera(6,4);
         DungeonGate.instance.isbool = true;
@@ -311,5 +314,5 @@ public class CoreManager : Singleton<CoreManager>
         {       
             CoreInventory.Instance.enemyManager.enabled = true;
         }, 4.1f));
-    }
+    }   
 }
