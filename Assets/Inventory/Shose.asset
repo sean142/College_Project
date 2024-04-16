@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Shose
   m_EditorClassIdentifier: 
   itemName: Shose
-  itemImage: {fileID: 21300000, guid: ffb94a36ca28e244d9a5e0b2bdd26d7c, type: 3}
+  itemImage: {fileID: 21300000, guid: cf39399da5c06d7458ecf9b2383dad33, type: 3}
   itemHeld: 1
-  itemInfo: 'This is a Shose!
-
-'
+  itemInfo: "\u9019\u662F\u628A\u9470\u5319\n"
