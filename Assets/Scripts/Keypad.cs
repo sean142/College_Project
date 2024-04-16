@@ -13,7 +13,7 @@ public class Keypad : MonoBehaviour
 
     void Awake()
     {
-        password = "2";
+        password = "5137";
         //charHolder.text = "";
     }
 
